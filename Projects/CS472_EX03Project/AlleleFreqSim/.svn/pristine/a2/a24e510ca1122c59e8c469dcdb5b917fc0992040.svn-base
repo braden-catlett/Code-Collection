@@ -1,0 +1,28 @@
+﻿<Window x:Class="AlleleFrequencySim.ExternPopForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:allele="clr-namespace:AlleleFrequencySim"
+        Title="External Population Form" SizeToContent="WidthAndHeight" Visibility="Collapsed" Closing="ExternPopForm_OnClosing"
+		Padding="15">
+	<DockPanel>
+		<StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
+			<Label>Enable the use of these external population settings:</Label>
+			<CheckBox Name="EnableExternPop" VerticalAlignment="Center" />
+		</StackPanel>
+		<StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom">
+			<allele:SlideText x:Name="AADistribution" Conversion="1000" IsInt="False" Minimum="0" Maximum="1000" Text="AA Distribution" TickFrequency="100" />
+
+			<allele:SlideText x:Name="AaDistribution" Conversion="1000" IsInt="False" Minimum="0" Maximum="1000" Text="Aa Distribution" TickFrequency="100" />
+
+			<allele:SlideText x:Name="aaDistribution" Conversion="1000" IsInt="False" Minimum="0" Maximum="1000" Text="aa Distribution" TickFrequency="100" />
+
+			<allele:SlideText x:Name="ExposureBegin" Minimum="1" Maximum="550" Text="Exposure Begin" TickFrequency="55" />
+
+			<allele:SlideText x:Name="ExposureDuration" Minimum="1" Maximum="550" Text="Exposure Duration" TickFrequency="55" />
+
+			<allele:SlideText x:Name="ExposureChance" Conversion="1000" IsInt="False" Minimum="0" Maximum="1000" Text="Exposure Chance" TickFrequency="100" />
+
+			<allele:SlideText x:Name="MigrationSize" Conversion="1000" IsInt="False" Minimum="0" Maximum="1000" Text="Migration Size" TickFrequency="100" />
+		</StackPanel>
+	</DockPanel>
+</Window>

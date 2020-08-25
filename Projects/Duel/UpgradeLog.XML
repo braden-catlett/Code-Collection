@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="Final Project">
+</Property><Property Name="Solution File" Value="C:\Users\Bad\Desktop\Projects\Final Project v3.22 File error check\Final Project.sln">
+</Property><Property Name="Date" Value="Sunday, March 06, 2011">
+</Property><Property Name="Time" Value="21:27 PM">
+</Property></Properties><Event ErrorLevel="0" Project="Final Project" Source="Final Project.vcproj" Description="Converting project file 'C:\Users\Bad\Desktop\Projects\Final Project v3.22 File error check\Final Project.vcproj'.">
+</Event><Event ErrorLevel="1" Project="Final Project" Source="Final Project.vcproj" Description="VCWebServiceProxyGeneratorTool is no longer supported. The tool has been removed from your project settings.">
+</Event><Event ErrorLevel="0" Project="Final Project" Source="Final Project.vcproj" Description="Done converting to new project file 'C:\Users\Bad\Desktop\Projects\Final Project v3.22 File error check\Final Project.vcxproj'.">
+</Event><Event ErrorLevel="3" Project="Final Project" Source="Final Project.vcproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="Final Project.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="Final Project.sln" Description="Converted">
+</Event></UpgradeLog>

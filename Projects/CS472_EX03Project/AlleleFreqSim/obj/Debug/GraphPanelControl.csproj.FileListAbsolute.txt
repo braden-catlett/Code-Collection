@@ -1,0 +1,11 @@
+G:\CS472_EX03Project\AlleleFreqSim\bin\Debug\Allele Frequency Sim.exe
+G:\CS472_EX03Project\AlleleFreqSim\bin\Debug\Allele Frequency Sim.pdb
+G:\CS472_EX03Project\AlleleFreqSim\obj\Debug\AlleleFrequencySim.ExternPopForm.resources
+G:\CS472_EX03Project\AlleleFreqSim\obj\Debug\AlleleFrequencySim.GraphForm.resources
+G:\CS472_EX03Project\AlleleFreqSim\obj\Debug\AlleleFrequencySim.GraphPanel.resources
+G:\CS472_EX03Project\AlleleFreqSim\obj\Debug\AlleleFrequencySim.EnterTheMain.resources
+G:\CS472_EX03Project\AlleleFreqSim\obj\Debug\AlleleFrequencySim.SlideText.resources
+G:\CS472_EX03Project\AlleleFreqSim\obj\Debug\ZedGraph.ZedGraphControl.resources
+G:\CS472_EX03Project\AlleleFreqSim\obj\Debug\GraphPanelControl.csproj.GenerateResource.Cache
+G:\CS472_EX03Project\AlleleFreqSim\obj\Debug\Allele Frequency Sim.exe
+G:\CS472_EX03Project\AlleleFreqSim\obj\Debug\Allele Frequency Sim.pdb

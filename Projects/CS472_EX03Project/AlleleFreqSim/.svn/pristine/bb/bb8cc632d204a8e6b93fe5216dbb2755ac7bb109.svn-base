@@ -1,0 +1,31 @@
+﻿<Window x:Class="AlleleFrequencySim.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:allele="clr-namespace:AlleleFrequencySim"
+        Title="MainWindow"  SizeToContent="WidthAndHeight" Closing="MainWindowOnClosing">
+	<Grid>
+		<Menu>
+			<MenuItem Name="File" Header="File">
+				<MenuItem Name="Exit" Header="Exit" Click="ExitOnClick" InputGestureText="Alt+F4" />
+			</MenuItem>
+			<MenuItem Name="Options" Header="Options">
+				<MenuItem Name="ExternalPopulations" Header="External Populations" Click="ExternPopClick" />
+				<MenuItem Name="ShowSecondGraph" Header="Show Second Graph" IsCheckable="True" />
+			</MenuItem>
+			<MenuItem Name="Help" Header="Help">
+				<MenuItem Name="About" Header="About..." Click="AboutClick" />
+			</MenuItem>
+		</Menu>
+		
+        <StackPanel>
+			<Button Name="GoButton" Width="50" Height="25" Click="GoButtonOnClick">Go</Button>
+			
+			<Label>Use sliders or text boxes to select values for each factor:</Label>
+			
+			<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+				<allele:GraphPanel Margin="5" x:Name="graphPanel1" />
+				<allele:GraphPanel Margin="5" x:Name="graphPanel2" Visibility="{Binding IsChecked, ElementName=ShowSecondGraph, Converter={StaticResource BooleanToVisibilityConverter}}" />
+			</StackPanel>
+		</StackPanel>
+    </Grid>
+</Window>

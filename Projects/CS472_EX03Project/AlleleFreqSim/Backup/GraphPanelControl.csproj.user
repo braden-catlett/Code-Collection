@@ -1,0 +1,48 @@
+<VisualStudioProject>
+    <CSHARP LastOpenVersion = "7.10.3077" >
+        <Build>
+            <Settings ReferencePath = "C:\Documents and Settings\jordanwelsh\Desktop\GraphPanelControl\;C:\Documents and Settings\mklump02\Desktop\GraphPanelControl\;C:\Documents and Settings\jordanwelsh\Desktop\GraphPanelControl2\GraphPanelControl\;C:\Documents and Settings\jordanwelsh\Desktop\GraphPanelContro3\GraphPanelControl\;C:\Documents and Settings\jordanwelsh\Desktop\GraphPanelControl4\GraphPanelControl\;C:\Documents and Settings\Nitro\Desktop\GraphPanelControl4\GraphPanelControl\;C:\Documents and Settings\mklump02\Desktop\Project 5-6-05\GraphPanelControl\;C:\Documents and Settings\mklump02\Desktop\Project 5-7-05\GraphPanelControl\;C:\Documents and Settings\jordanwelsh\Desktop\Project 5-7-05 Matt\GraphPanelControl\;C:\Documents and Settings\mklump02\Desktop\New Folder\Project 5-9-05 Matt\GraphPanelControl\" >
+                <Config
+                    Name = "Debug"
+                    EnableASPDebugging = "false"
+                    EnableASPXDebugging = "false"
+                    EnableUnmanagedDebugging = "false"
+                    EnableSQLServerDebugging = "false"
+                    RemoteDebugEnabled = "false"
+                    RemoteDebugMachine = ""
+                    StartAction = "Project"
+                    StartArguments = ""
+                    StartPage = ""
+                    StartProgram = ""
+                    StartURL = ""
+                    StartWorkingDirectory = ""
+                    StartWithIE = "true"
+                />
+                <Config
+                    Name = "Release"
+                    EnableASPDebugging = "false"
+                    EnableASPXDebugging = "false"
+                    EnableUnmanagedDebugging = "false"
+                    EnableSQLServerDebugging = "false"
+                    RemoteDebugEnabled = "false"
+                    RemoteDebugMachine = ""
+                    StartAction = "Project"
+                    StartArguments = ""
+                    StartPage = ""
+                    StartProgram = ""
+                    StartURL = ""
+                    StartWorkingDirectory = ""
+                    StartWithIE = "false"
+                />
+            </Settings>
+        </Build>
+        <OtherProjectSettings
+            CopyProjectDestinationFolder = ""
+            CopyProjectUncPath = ""
+            CopyProjectOption = "0"
+            ProjectView = "ProjectFiles"
+            ProjectTrust = "0"
+        />
+    </CSHARP>
+</VisualStudioProject>
+

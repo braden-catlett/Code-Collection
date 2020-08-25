@@ -1,0 +1,7 @@
+[paths]
+default = C:\Users\Bad\Desktop\ZombieMaze
+
+
+[tortoisehg]
+postpull = update
+autoresolve = False

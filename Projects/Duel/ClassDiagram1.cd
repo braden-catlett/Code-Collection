@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="alchemist">
+    <Position X="0.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAAAAAgAAAAAABAAAAAAAAEAAAA=</HashCode>
+      <FileName>Alchemist.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="archer">
+    <Position X="9.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAAAAAgAAAAAABAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Archer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="cardinal">
+    <Position X="11.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAEAAAAAAAAAAAAAAAAAAgAAAAAABAAAAEAAAAAAAA=</HashCode>
+      <FileName>Cardinal.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="knight">
+    <Position X="0.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAABAAAAAAgAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Knight.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="mage">
+    <Position X="11.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IgAAAAAAAAAAAAAAAAAAAAgAAAAAABAAEAAAAAAAAAA=</HashCode>
+      <FileName>Mage.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="omniclass">
+    <Position X="6" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAEABAAAAAAAAAAAgAAAAEAABCJQAEgABAAAw=</HashCode>
+      <FileName>megaClass.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="rogue">
+    <Position X="3" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAAAAAggAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Rogue.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

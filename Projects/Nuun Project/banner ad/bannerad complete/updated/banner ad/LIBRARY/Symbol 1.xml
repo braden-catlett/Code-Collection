@@ -1,0 +1,64 @@
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="Symbol 1" itemID="4f18f822-0000020e" lastModified="1327036450">
+  <timeline>
+    <DOMTimeline name="Symbol 1">
+      <layers>
+        <DOMLayer name="Layer 1" color="#4FFF4F" current="true" isSelected="true">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMGroup selected="true">
+                  <members>
+                    <DOMShape selected="true">
+                      <fills>
+                        <FillStyle index="1">
+                          <SolidColor color="#FFCC33"/>
+                        </FillStyle>
+                        <FillStyle index="2">
+                          <SolidColor color="#07375C"/>
+                        </FillStyle>
+                      </fills>
+                      <edges>
+                        <Edge fillStyle0="1" fillStyle1="2" edges="!4719 986S3|40 986!40 986|40 226!40 226|4719 226!4719 226|4719 986"/>
+                        <Edge fillStyle1="1" edges="!4759 2426S2|0 2426!0 2426|0 186!0 186|4759 186!4759 186|4759 2426"/>
+                      </edges>
+                    </DOMShape>
+                    <DOMGroup selected="true">
+                      <members>
+                        <DOMStaticText width="225.9" height="71.7" isSelectable="false">
+                          <matrix>
+                            <Matrix tx="10.05" ty="42.95"/>
+                          </matrix>
+                          <textRuns>
+                            <DOMTextRun>
+                              <characters>Peel Now!&#xD;Buy 3 get 1 FREE!</characters>
+                              <textAttrs>
+                                <DOMTextAttrs alignment="center" aliasText="false" letterSpacing="3" size="18" bitmapSize="360" face="DokChampa" fillColor="#07375C"/>
+                              </textAttrs>
+                            </DOMTextRun>
+                          </textRuns>
+                        </DOMStaticText>
+                        <DOMStaticText width="144" height="48.45" isSelectable="false">
+                          <matrix>
+                            <Matrix tx="46.55" ty="2"/>
+                          </matrix>
+                          <textRuns>
+                            <DOMTextRun>
+                              <characters>nuun</characters>
+                              <textAttrs>
+                                <DOMTextAttrs alignment="center" aliasText="false" letterSpacing="1" size="25" bitmapSize="500" face="DokChampa" fillColor="#B5D6F0"/>
+                              </textAttrs>
+                            </DOMTextRun>
+                          </textRuns>
+                        </DOMStaticText>
+                      </members>
+                    </DOMGroup>
+                  </members>
+                </DOMGroup>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+      </layers>
+    </DOMTimeline>
+  </timeline>
+</DOMSymbolItem>

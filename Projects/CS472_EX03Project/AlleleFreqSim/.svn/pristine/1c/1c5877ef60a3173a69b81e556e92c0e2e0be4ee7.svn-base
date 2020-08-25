@@ -1,0 +1,260 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>8.0.30319</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1DB59560-707C-43E7-B390-8E15C4D4C16A}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon>bin\Release\large.dna.icon.ico</ApplicationIcon>
+    <AssemblyKeyContainerName />
+    <AssemblyName>Allele Frequency Sim</AssemblyName>
+    <AssemblyOriginatorKeyFile />
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>GraphPanelControl</RootNamespace>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <StartupObject />
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>0.0</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile />
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile />
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn />
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile />
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile />
+    <DebugSymbols>false</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn />
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>none</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Name>System.Drawing</Name>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Name>System.Windows.Forms</Name>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ArrowItem.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Axis.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Bar.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BarItem.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Border.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BoxItem.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CollectionPlus.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ColorSymbolRotator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CurveItem.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CurveList.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="EllipseItem.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ErrorBar.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ErrorBarItem.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ExternPopForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExternPopForm.Designer.cs">
+      <DependentUpon>ExternPopForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fill.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FontSpec.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GraphForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GraphItem.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GraphItemList.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GraphPane.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GraphPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="HiLowBar.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="HiLowBarItem.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ImageItem.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Legend.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Line.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="LineItem.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Location.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Main.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MasterPane.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="PaneBase.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="PaneList.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="PieItem.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="PointPair.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="PointPairList.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SlideText.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Symbol.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TextItem.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Types.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ValueHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="XAxis.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="XDate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Y2Axis.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="YAxis.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ZedGraphControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ZedGraphException.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ZoomState.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="ExternPopForm.resx">
+      <DependentUpon>ExternPopForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GraphForm.resx">
+      <DependentUpon>GraphForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GraphPanel.resx">
+      <DependentUpon>GraphPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main.resx">
+      <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SlideText.resx">
+      <DependentUpon>SlideText.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ZedGraphControl.resx">
+      <DependentUpon>ZedGraphControl.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent />
+    <PostBuildEvent />
+  </PropertyGroup>
+</Project>

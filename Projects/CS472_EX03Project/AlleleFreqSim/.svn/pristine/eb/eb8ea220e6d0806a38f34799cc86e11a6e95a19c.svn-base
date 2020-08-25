@@ -1,0 +1,169 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
+using System.Windows.Forms;
+
+namespace AlleleFrequencySim
+{
+    public partial class ExternPopForm : Form
+    {
+        #region Variables
+        public Boolean enable;
+        public GraphForm MainForm;
+        public AlleleFrequencySim.SlideText AADistribution;
+        public AlleleFrequencySim.SlideText AaDistribution;
+        public AlleleFrequencySim.SlideText aaDistribution;
+        public AlleleFrequencySim.SlideText ExposureBegin;
+        public AlleleFrequencySim.SlideText ExposureChance;
+        public AlleleFrequencySim.SlideText ExposureDuration;
+        public AlleleFrequencySim.SlideText MigrationSize;
+        #endregion
+
+
+        public ExternPopForm()
+        {
+            initialize(false);
+        }
+
+        public ExternPopForm(Boolean enabled)
+        {
+            initialize(enabled);
+            
+        }
+
+        private void initialize(Boolean enabled)
+        {
+            InitializeComponent();
+            enable = enabled;
+            #region AADistribution Initialization
+            AADistribution = new AlleleFrequencySim.SlideText();
+            AADistribution.Conversion = 1000;
+            AADistribution.IsInt = false;
+            AADistribution.Minimum = 0;
+            AADistribution.Maximum = 1000;
+            AADistribution.Text = "AADistribution";
+            AADistribution.TickFrequency = 100;
+            AADistribution.Location = new System.Drawing.Point(8, 15);
+            #endregion
+
+            #region AaDistribution Initialization
+            AaDistribution = new SlideText();
+            AaDistribution.Conversion = 1000;
+            AaDistribution.IsInt = false;
+            AaDistribution.Minimum = 0;
+            AaDistribution.Maximum = 1000;
+            AaDistribution.Text = "AaDistribution";
+            AaDistribution.TickFrequency = 100;
+            AaDistribution.Location = new System.Drawing.Point(AADistribution.Location.X + AADistribution.Width + 10, 15);
+            #endregion
+
+            #region aaDistribution Initialization
+            aaDistribution = new AlleleFrequencySim.SlideText();
+            aaDistribution.Conversion = 1000;
+            aaDistribution.IsInt = false;
+            aaDistribution.Minimum = 0;
+            aaDistribution.Maximum = 1000;
+            aaDistribution.Text = "aaDistribution";
+            aaDistribution.TickFrequency = 100;
+            aaDistribution.Location = new System.Drawing.Point(AaDistribution.Location.X + AaDistribution.Width + 10, 15);
+            #endregion
+
+            #region ExposureBegin Initialization
+            ExposureBegin = new SlideText();
+            ExposureBegin.IsInt = true;
+            ExposureBegin.Minimum = 1;
+            ExposureBegin.Maximum = 550;
+            ExposureBegin.TickFrequency = (ExposureBegin.Maximum - ExposureBegin.Minimum) / 10;
+            ExposureBegin.Text = "ExposureBegin";
+            ExposureBegin.Location = new System.Drawing.Point(aaDistribution.Location.X + aaDistribution.Width + 10, 15);
+            #endregion
+
+            #region ExposureDuration Initialization
+            ExposureDuration = new SlideText();
+            ExposureDuration.IsInt = true;
+            ExposureDuration.Minimum = 1;
+            ExposureDuration.Maximum = ExposureBegin.Maximum-(int)ExposureBegin.Value;
+            ExposureDuration.TickFrequency = (ExposureDuration.Maximum - ExposureDuration.Minimum) / 10;
+            ExposureDuration.Text = "ExposureDuration";
+            ExposureDuration.Location = new System.Drawing.Point(ExposureBegin.Location.X + ExposureBegin.Width + 10, 15);
+            #endregion
+
+            #region ExposureChance Initialization
+            ExposureChance = new SlideText();
+            ExposureChance.IsInt = true;
+            ExposureChance.Minimum = 0;
+            
+            ExposureChance.Conversion = 1000;
+            ExposureChance.Maximum = 1000;
+            ExposureChance.TickFrequency = 100;
+            ExposureChance.Text = "ExposureChance";
+            ExposureChance.Location = new System.Drawing.Point(ExposureDuration.Location.X + ExposureDuration.Width + 10, 15);
+            #endregion
+
+            #region MigrationSize Initialization
+            MigrationSize = new SlideText();
+            MigrationSize.IsInt = true;
+            MigrationSize.Minimum = 0;
+            
+            MigrationSize.Conversion = 1000;
+            MigrationSize.Maximum = 1000;
+            MigrationSize.TickFrequency = 100;
+            MigrationSize.Text = "MigrationSize";
+            MigrationSize.Location = new System.Drawing.Point(ExposureChance.Location.X + ExposureChance.Width + 10, 15);
+            #endregion
+
+            #region this Initialization
+            this.Size = new System.Drawing.Size(MigrationSize.Location.X + MigrationSize.Width + 10, 250);
+            this.MinimumSize = this.Size;
+            this.MaximumSize = this.Size;
+            this.MaximizeBox = false;
+            this.Text = "External Population Form";
+
+            this.Controls.Add(AADistribution);
+            this.Controls.Add(AaDistribution);
+            this.Controls.Add(aaDistribution);
+            this.Controls.Add(ExposureBegin);
+            this.Controls.Add(ExposureDuration);
+            this.Controls.Add(ExposureChance);
+            this.Controls.Add(MigrationSize);
+
+            
+            ExposureBegin.sliderBar.MouseUp += new MouseEventHandler(updateExposure);
+            ExposureBegin.textBox.LostFocus += new EventHandler(updateExposure);
+            #endregion
+            
+        }
+
+        public void updateExposure(object sender, EventArgs e)
+        {
+            updateExposure();
+        }
+
+        public void updateExposure(object sender, MouseEventArgs e)
+        {
+            updateExposure();
+        }
+
+        public void updateExposure()
+        {
+            int temp = (int)ExposureBegin.Value;
+            int dtemp = (int)ExposureDuration.Value;
+            ExposureBegin.Maximum = (int)MainForm.graphPanelLeft.generation.Value-1;
+            ExposureBegin.SetStartValue = (temp < ExposureBegin.Maximum) ? temp : ExposureBegin.Maximum;
+            ExposureBegin.TickFrequency = (ExposureBegin.Maximum - ExposureBegin.Minimum) / 10;
+            ExposureDuration.Maximum = ExposureBegin.Maximum + 1 - (int)ExposureBegin.Value;
+            ExposureDuration.TickFrequency = (ExposureDuration.Maximum - ExposureDuration.Minimum) / 10;
+            ExposureDuration.SetStartValue = (dtemp<ExposureDuration.Maximum)? dtemp : ExposureDuration.Maximum;
+        }
+
+        private void onClose(object sender, FormClosingEventArgs e)
+        {
+            this.Hide();
+            e.Cancel = true;
+            enable = false;
+        }
+    }
+}

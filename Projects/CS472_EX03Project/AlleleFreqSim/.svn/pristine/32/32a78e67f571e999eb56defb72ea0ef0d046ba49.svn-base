@@ -1,0 +1,23 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Linq;
+using System.Windows;
+
+namespace AlleleFrequencySim
+{
+	/// <summary>
+	/// Interaction logic for App.xaml
+	/// </summary>
+	public partial class App : Application
+	{
+		static public ExternPopForm externPopForm;
+
+		public App()
+		{
+			externPopForm = new ExternPopForm();
+			externPopForm.Visibility = Visibility.Collapsed;
+		}
+	}
+}

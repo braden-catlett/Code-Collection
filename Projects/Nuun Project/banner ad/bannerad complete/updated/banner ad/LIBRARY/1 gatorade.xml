@@ -1,0 +1,51 @@
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="1 gatorade" itemID="4f18f095-000001e3" symbolType="graphic" lastModified="1327034583">
+  <timeline>
+    <DOMTimeline name="1 gatorade">
+      <layers>
+        <DOMLayer name="Layer 1" color="#4FFF4F" current="true" isSelected="true">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMShape>
+                  <strokes>
+                    <StrokeStyle index="1">
+                      <SolidStroke scaleMode="normal">
+                        <fill>
+                          <SolidColor color="#393130"/>
+                        </fill>
+                      </SolidStroke>
+                    </StrokeStyle>
+                  </strokes>
+                  <edges>
+                    <Edge strokeStyle="1" edges="!1340 -760S4|1420 -260"/>
+                    <Edge strokeStyle="1" edges="!1420 -260|1360 160!1360 160|1360 800!1360 800|1040 1280!1040 1280|740 1100!740 1100|540 660!540 660[515 555 493 438!493 438[448 203 460 140!460 140[480 40 600 -500!600 -500|640 -1020!640 -1020|1060 -1100!1060 -1100[1115 -1015 1178 -930
+!1178 -930[1303 -760 1340 -760"/>
+                    <Edge cubics="!1340 -760(;1340,-760 1420,-260 1420,-260p1340 -760q1420 -260);"/>
+                    <Edge cubics="!1420 -260(;1420,-260 1360,160 1360,160q1420 -260 1360 160);"/>
+                    <Edge cubics="!1360 160(;1360,160 1360,800 1360,800q1360 160 1360 800);"/>
+                    <Edge cubics="!1360 800(;1360,800 1040,1280 1040,1280q1360 800 1040 1280);"/>
+                    <Edge cubics="!1040 1280(;1040,1280 740,1100 740,1100q1040 1280 740 1100);"/>
+                    <Edge cubics="!740 1100(;740,1100 540,660 540,660q740 1100 540 660);"/>
+                    <Edge cubics="!540 660(;540,660 440,240 460,140q540 660Q515 555q493 438Q448 203q460 140);"/>
+                    <Edge cubics="!460 140(;480,40 600,-500 600,-500q460 140Q480 40q600 -500);"/>
+                    <Edge cubics="!600 -500(;600,-500 640,-1020 640,-1020q600 -500 640 -1020);"/>
+                    <Edge cubics="!640 -1020(;640,-1020 1060,-1100 1060,-1100q640 -1020 1060 -1100);"/>
+                    <Edge cubics="!1060 -1100(;1060,-1100 1280,-760 1340,-760q1060 -1100Q1115 -1015q1178 -930Q1303 -760q1340 -760);"/>
+                  </edges>
+                </DOMShape>
+                <DOMSymbolInstance libraryItemName="gatorade" symbolType="graphic" loop="loop">
+                  <matrix>
+                    <Matrix a="0.448272705078125" d="0.448272705078125" tx="-55.7" ty="-12.75"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point x="0.45" y="0.45"/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+      </layers>
+    </DOMTimeline>
+  </timeline>
+</DOMSymbolItem>

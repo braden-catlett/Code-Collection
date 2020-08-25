@@ -1,0 +1,3 @@
+Changed port number and I.P. address
+Fixed log out issue
+Fixed blank message and username issue

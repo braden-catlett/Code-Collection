@@ -1,0 +1,37 @@
+﻿Build started 12/15/2012 1:14:07 AM.
+     1>Project "C:\Users\USER\Desktop\Homework\Projects\Final Project v3.22 File error check\Final Project.vcxproj" on node 2 (rebuild target(s)).
+     1>_PrepareForClean:
+         Deleting file "Release\Final Project.lastbuildstate".
+       InitializeBuildStatus:
+         Touching "Release\Final Project.unsuccessfulbuild".
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt "Final Project.cpp"
+         Final Project.cpp
+     1>c:\users\user\desktop\homework\projects\final project v3.22 file error check\megaClass.h(138): warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+     1>c:\users\user\desktop\homework\projects\final project v3.22 file error check\megaClass.h(144): warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+     1>c:\users\user\desktop\homework\projects\final project v3.22 file error check\Alchemist.h(55): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
+     1>c:\users\user\desktop\homework\projects\final project v3.22 file error check\Alchemist.h(64): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
+     1>c:\users\user\desktop\homework\projects\final project v3.22 file error check\Mage.h(54): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
+     1>c:\users\user\desktop\homework\projects\final project v3.22 file error check\Knight.h(54): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
+     1>c:\users\user\desktop\homework\projects\final project v3.22 file error check\Rogue.h(54): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
+     1>c:\users\user\desktop\homework\projects\final project v3.22 file error check\Rogue.h(79): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
+     1>Final Project.cpp(169): error C2601: 'loadGame2' : local function definitions are illegal
+                 Final Project.cpp(64): this line contains a '{' which has not yet been matched
+     1>Final Project.cpp(275): error C2601: 'roll' : local function definitions are illegal
+                 Final Project.cpp(64): this line contains a '{' which has not yet been matched
+     1>Final Project.cpp(284): error C2601: 'classDetails' : local function definitions are illegal
+                 Final Project.cpp(64): this line contains a '{' which has not yet been matched
+     1>Final Project.cpp(319): error C2601: 'logo' : local function definitions are illegal
+                 Final Project.cpp(64): this line contains a '{' which has not yet been matched
+     1>Final Project.cpp(329): error C2601: 'mainMenu' : local function definitions are illegal
+                 Final Project.cpp(64): this line contains a '{' which has not yet been matched
+     1>Final Project.cpp(367): error C2601: 'classCreation' : local function definitions are illegal
+                 Final Project.cpp(64): this line contains a '{' which has not yet been matched
+     1>Final Project.cpp(500): error C2601: 'game' : local function definitions are illegal
+                 Final Project.cpp(64): this line contains a '{' which has not yet been matched
+     1>Final Project.cpp(571): fatal error C1075: end of file found before the left brace '{' at 'Final Project.cpp(64)' was matched
+     1>Done Building Project "C:\Users\USER\Desktop\Homework\Projects\Final Project v3.22 File error check\Final Project.vcxproj" (rebuild target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:01.20

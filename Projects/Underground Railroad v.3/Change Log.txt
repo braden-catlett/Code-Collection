@@ -1,0 +1,3 @@
+Fixed Log out issue
+Finally fixed the update online user text field
+Fixed the bug with the online user not updating correctly when someone logged out.

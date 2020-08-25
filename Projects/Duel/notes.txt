@@ -1,0 +1,12 @@
+Work the code out so the functions that deal damage to the other player take in the other players health 
+and just subtract the damage directly without the need with of calculations in main
+
+Figure out how to have damage variable reset every round
+
+Figure out how to subtract the damage done directly from the other player's health
+
+Use inherientance for the classes
+
+Add Save & Load functions
+
+Improve UI

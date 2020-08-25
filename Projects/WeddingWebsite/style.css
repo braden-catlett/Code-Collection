@@ -1,0 +1,53 @@
+* {
+margin:0; /* zero out margin */
+padding:0; /* zero out padding */
+}
+html, body{
+	background-repeat:no-repeat;
+	background-attachment:fixed;
+	background-position:center;
+	background-color:#1F001F;
+	height:100%;
+}
+#SlideshowDiv{	
+	height:18em;
+	width:20em;
+	margin-bottom:8em;
+	margin-right:15em;
+	bottom:0px;
+	right:0px;
+	position:fixed;
+	border-style:outset;
+	border-width:1.75em;
+	border-color:#1F0018;
+	overflow:hidden;
+	background-image: url("Slideshow5.jpg");
+	background-repeat:no-repeat;
+	background-size:contain;
+	background-position:center center;
+	background-color:#1F001F;
+	z-index:2;
+}
+#BottonContentBar{
+	height:20%;
+	width:100%;
+	position:fixed;
+	bottom:0px;
+	background-color:#1F001F;
+	clear:both;
+	z-index:1;
+	overflow:scroll;
+}
+#AddressForm{
+	color: Silver;
+	padding-left:15%;
+}
+#MainTitle{
+	text-align:left;
+}
+.TextFormat{
+	padding-left:15%;
+}
+h1,h2,h3,h4,h5,h6,p{
+	color: Silver;
+}

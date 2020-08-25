@@ -1,0 +1,7 @@
+Managed to create the board vector and fill it with the correct objects in the each spot. To test this, I had a for loop cout all the names of the objects. The vector is filled with 37 pointers to objects that have been dynamically created which is one way of doing it but probably not the most efficient. Plus main looks like hell now.
+
+Put the board creation into a function
+worked on a menu
+completed the values for when rent chances when you add a house or whatnot
+Got the function enter_data complete. It asks for the amount of players and their names.
+Main looks loads better with the use of the functions

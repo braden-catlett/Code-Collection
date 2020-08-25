@@ -1,0 +1,96 @@
+html{
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+#allcontent {
+    margin-left: auto;
+    margin-right: auto;
+}
+#header{
+    background: #b5d6f0 0 0 no-repeat;
+    height: 40px;
+    width: 100%;
+    padding: 1.5em 0;
+    position: fixed;
+    top: -1px;
+    left: -.15px;
+}
+#main_logo img{
+    margin-left:25%;
+    width: 100px;
+    position:fixed;
+}
+
+#mainnav{
+    margin-left: 30%;
+    float:left;
+    width: auto;
+    position: fixed;
+    min-width:1000px;
+    list-style-type: none;
+}
+#home{
+    margin-left: 55px;
+    width: 50px;
+    float: left;
+    position: relative;
+}
+#products{
+    margin-left: 60px;
+    width: 50px;
+    float: left;
+    position: relative;
+}
+#sports{
+    margin-left: 100px;
+    width: 50px;
+    float: left;
+    position: relative;
+}
+#aboutnuun{
+    margin-left: 60px;
+    width: 200px;
+    float: left;
+    position: relative;
+}
+#fb_icon{
+    top: -15px;
+    margin-left:150px;
+    position: relative;
+}
+
+
+#bodycontent{
+    top: 86px;
+    left: -.15px;
+    height: 100%;
+    width: 100%;
+    background:#0A5289;
+    opacity:0.8;
+    position: fixed;    
+}
+
+
+#contentplane{
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    background-color:#0A5289;
+}
+#load_img{
+    height:50px;
+    width:50px;
+    position: relative; 
+    top: 49%; 
+    left: 49%;
+}
+
+.headertext{
+    font-weight:bold;
+    font-size: 2em;    
+    font-family: Telex, sans-serif;
+    color: #0A5289;
+    text-decoration: none;
+    
+}

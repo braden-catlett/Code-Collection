@@ -1,0 +1,42 @@
+﻿using System.ComponentModel;
+using System.Windows;
+
+namespace AlleleFrequencySim
+{
+	/// <summary>
+	/// Interaction logic for MainWindow.xaml
+	/// </summary>
+	public partial class MainWindow : Window
+	{
+		public MainWindow()
+		{
+			InitializeComponent();
+		}
+
+		private void ExitOnClick(object sender, RoutedEventArgs routedEventArgs)
+		{
+			Application.Current.Shutdown(0);
+		}
+
+		private void ExternPopClick(object sender, RoutedEventArgs routedEventArgs)
+		{
+			App.externPopForm.Visibility = Visibility.Visible;
+			App.externPopForm.Focus();
+		}
+
+		private void AboutClick(object sender, RoutedEventArgs routedEventArgs)
+		{
+			MessageBox.Show("Allele Frequency Sim\n\nCopyright © 2005\n\nCreated by:\nBrenna Hutton\nMatthew Klump\nJordan Welsh", "About Allele Frequency Sim");
+		}
+
+		private void GoButtonOnClick(object sender, RoutedEventArgs routedEventArgs)
+		{
+			graphPanel1.DrawGraph();
+		}
+
+		private void MainWindowOnClosing(object sender, CancelEventArgs e)
+		{
+			Application.Current.Shutdown(0);
+		}
+	}
+}

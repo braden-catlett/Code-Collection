@@ -1,0 +1,30 @@
+﻿Build started 9/26/2010 9:57:23 PM.
+     1>Project "C:\Users\Kent\Desktop\GDI_Asteroids\GDI_Asteroids\GDI_Asteroids.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Touching "Debug\GDI_Asteroids.unsuccessfulbuild".
+       ClCompile:
+         All outputs are up-to-date.
+         All outputs are up-to-date.
+       ResourceCompile:
+         All outputs are up-to-date.
+       ManifestResourceCompile:
+         All outputs are up-to-date.
+       Link:
+         c:\Program Files\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Kent\Desktop\GDI_Asteroids\Debug\GDI_Asteroids.exe" /INCREMENTAL /NOLOGO gdiplus.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\GDI_Asteroids.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\Kent\Desktop\GDI_Asteroids\Debug\GDI_Asteroids.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Kent\Desktop\GDI_Asteroids\Debug\GDI_Asteroids.lib" /MACHINE:X86 Debug\GDI_Asteroids.res
+         Debug\GDI_Asteroids.exe.embed.manifest.res
+         Debug\GDI_Asteroids.obj
+         Debug\stdafx.obj
+       Manifest:
+         c:\Program Files\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:"Debug\GDI_Asteroids.exe.embed.manifest" /manifest Debug\GDI_Asteroids.exe.intermediate.manifest
+         All outputs are up-to-date.
+       LinkEmbedManifest:
+         All outputs are up-to-date.
+         GDI_Asteroids.vcxproj -> C:\Users\Kent\Desktop\GDI_Asteroids\Debug\GDI_Asteroids.exe
+       FinalizeBuildStatus:
+         Deleting file "Debug\GDI_Asteroids.unsuccessfulbuild".
+         Touching "Debug\GDI_Asteroids.lastbuildstate".
+     1>Done Building Project "C:\Users\Kent\Desktop\GDI_Asteroids\GDI_Asteroids\GDI_Asteroids.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.98

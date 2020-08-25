@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="AlleleFrequencySim.GraphPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+			 xmlns:allele="clr-namespace:AlleleFrequencySim"
+			 xmlns:zedgraph="clr-namespace:ZedGraph"
+             mc:Ignorable="d" Initialized="GraphPanelOnInitialized" >
+	<Border BorderBrush="Gray" BorderThickness="1">
+		<StackPanel>
+			<StackPanel Orientation="Horizontal">
+				<allele:SlideText x:Name="fitnessAA" Conversion="1000" IsInt="False" Minimum="0" Maximum="1000" Text="Fitness AA" TickFrequency="100" />
+
+				<allele:SlideText x:Name="fitnessAa" Conversion="1000" IsInt="False" Minimum="0" Maximum="1000" Text="Fitness Aa" TickFrequency="100" />
+
+				<allele:SlideText x:Name="fitnessaa" Conversion="1000" IsInt="False" Minimum="0" Maximum="1000" Text="Fitness aa" TickFrequency="100" />
+
+				<allele:SlideText x:Name="mutationRateFromA" Minimum="-9" Maximum="-2" IsReadOnly="True" Text="A to a Mutn. Rate" />
+
+				<allele:SlideText x:Name="mutationRateToA" Minimum="-9" Maximum="-2" IsReadOnly="True" Text="a to A Mutn. Rate" />
+
+				<allele:SlideText x:Name="initAlleleFrequency" Conversion="1000" IsInt="False" Minimum="0" Maximum="1000" Text="Init. Allele Freq." TickFrequency="100" />
+
+				<allele:SlideText x:Name="popSize" Minimum="10" Maximum="5000" StartValue="500" Text="Pop. Size" TickFrequency="500" />
+
+				<allele:SlideText x:Name="generation" Minimum="100" Maximum="1000" Text="Gen. Number" TickFrequency="90" />
+			</StackPanel>
+			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition />
+					<ColumnDefinition />
+				</Grid.ColumnDefinitions>
+				<CheckBox Grid.Column="0" Name="noMutationFromA" HorizontalAlignment="Right">0 MR</CheckBox>
+				<CheckBox Grid.Column="1" Name="noMutationToA" HorizontalAlignment="Left" Margin="5 0 0 0">0 MR</CheckBox>
+			</Grid>
+			<WindowsFormsHost Width="600" Height="350">
+				<zedgraph:ZedGraphControl x:Name="graphControl" Width="600" Height="350" />
+			</WindowsFormsHost>
+		</StackPanel>
+	</Border>
+</UserControl>

@@ -1,0 +1,35 @@
+﻿Build started 12/15/2012 1:15:16 AM.
+     1>Project "C:\Users\USER\Desktop\Homework\Projects\Final Project v3.22 File error check\Final Project.vcxproj" on node 2 (rebuild target(s)).
+     1>InitializeBuildStatus:
+         Creating "Debug\Final Project.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt "Final Project.cpp"
+         Final Project.cpp
+     1>c:\users\user\desktop\homework\projects\final project v3.22 file error check\megaclass.h(138): warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+     1>c:\users\user\desktop\homework\projects\final project v3.22 file error check\megaclass.h(144): warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+     1>c:\users\user\desktop\homework\projects\final project v3.22 file error check\alchemist.h(55): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
+     1>c:\users\user\desktop\homework\projects\final project v3.22 file error check\alchemist.h(64): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
+     1>c:\users\user\desktop\homework\projects\final project v3.22 file error check\mage.h(54): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
+     1>c:\users\user\desktop\homework\projects\final project v3.22 file error check\knight.h(54): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
+     1>c:\users\user\desktop\homework\projects\final project v3.22 file error check\rogue.h(54): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
+     1>c:\users\user\desktop\homework\projects\final project v3.22 file error check\rogue.h(79): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
+     1>c:\users\user\desktop\homework\projects\final project v3.22 file error check\final project.cpp(169): error C2601: 'loadGame2' : local function definitions are illegal
+                 c:\users\user\desktop\homework\projects\final project v3.22 file error check\final project.cpp(64): this line contains a '{' which has not yet been matched
+     1>c:\users\user\desktop\homework\projects\final project v3.22 file error check\final project.cpp(275): error C2601: 'roll' : local function definitions are illegal
+                 c:\users\user\desktop\homework\projects\final project v3.22 file error check\final project.cpp(64): this line contains a '{' which has not yet been matched
+     1>c:\users\user\desktop\homework\projects\final project v3.22 file error check\final project.cpp(284): error C2601: 'classDetails' : local function definitions are illegal
+                 c:\users\user\desktop\homework\projects\final project v3.22 file error check\final project.cpp(64): this line contains a '{' which has not yet been matched
+     1>c:\users\user\desktop\homework\projects\final project v3.22 file error check\final project.cpp(319): error C2601: 'logo' : local function definitions are illegal
+                 c:\users\user\desktop\homework\projects\final project v3.22 file error check\final project.cpp(64): this line contains a '{' which has not yet been matched
+     1>c:\users\user\desktop\homework\projects\final project v3.22 file error check\final project.cpp(329): error C2601: 'mainMenu' : local function definitions are illegal
+                 c:\users\user\desktop\homework\projects\final project v3.22 file error check\final project.cpp(64): this line contains a '{' which has not yet been matched
+     1>c:\users\user\desktop\homework\projects\final project v3.22 file error check\final project.cpp(367): error C2601: 'classCreation' : local function definitions are illegal
+                 c:\users\user\desktop\homework\projects\final project v3.22 file error check\final project.cpp(64): this line contains a '{' which has not yet been matched
+     1>c:\users\user\desktop\homework\projects\final project v3.22 file error check\final project.cpp(500): error C2601: 'game' : local function definitions are illegal
+                 c:\users\user\desktop\homework\projects\final project v3.22 file error check\final project.cpp(64): this line contains a '{' which has not yet been matched
+     1>c:\users\user\desktop\homework\projects\final project v3.22 file error check\final project.cpp(571): fatal error C1075: end of file found before the left brace '{' at 'c:\users\user\desktop\homework\projects\final project v3.22 file error check\final project.cpp(64)' was matched
+     1>Done Building Project "C:\Users\USER\Desktop\Homework\Projects\Final Project v3.22 File error check\Final Project.vcxproj" (rebuild target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:01.52

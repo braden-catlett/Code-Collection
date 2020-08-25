@@ -1,0 +1,248 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace AlleleFrequencySim
+{
+	/// <summary>
+	/// Interaction logic for SlideText.xaml
+	/// </summary>
+	public partial class SlideText : UserControl
+	{
+		private int conversion = 1;
+
+		private bool isInt = true;
+
+		public SlideText()
+		{
+			InitializeComponent();
+		}
+
+
+		#region Properties
+		public int Conversion
+		{
+			get
+			{
+				return conversion;
+			}
+
+			set
+			{
+				conversion = value;
+			}
+		}
+		public bool IsInt
+		{
+			get
+			{
+				return isInt;
+			}
+
+			set
+			{
+				isInt = value;
+			}
+		}
+		public bool IsReadOnly
+		{
+			get
+			{
+				return textBox.IsReadOnly;
+			}
+
+			set
+			{
+				textBox.IsReadOnly = value;
+
+				if (textBox.IsReadOnly)
+				{
+					textBox.Text = "10^" + sliderBar.Value.ToString();
+					minLabel.Content = "10^" + sliderBar.Minimum.ToString();
+					maxLabel.Content = "10^" + sliderBar.Maximum.ToString();
+				}
+			}
+		}
+		/// <summary>
+		/// Sets and gets the maximum value of the slider bar
+		/// </summary>
+		public int Maximum
+		{
+			get
+			{
+				return (int) sliderBar.Maximum;
+			}
+
+			set
+			{
+				sliderBar.Maximum = value;
+				sliderBar.Value = (sliderBar.Maximum + sliderBar.Minimum) / 2;
+				maxLabel.Content = (value / conversion).ToString();
+			}
+		}
+		/// <summary>
+		/// Sets and gets the minimum value of the slider bar
+		/// </summary>
+		public int Minimum
+		{
+			get
+			{
+				return (int) sliderBar.Minimum;
+			}
+
+			set
+			{
+				sliderBar.Minimum = value;
+				sliderBar.Value = (sliderBar.Maximum + sliderBar.Minimum) / 2;
+				minLabel.Content = (value / conversion).ToString();
+			}
+		}
+		/// <summary>
+		/// Gets and sets the text of the control
+		/// </summary>
+		public string Text
+		{
+			get
+			{
+				return nameLabel.Text;
+			}
+
+			set
+			{
+				nameLabel.Text = value;
+			}
+		}
+		/// <summary>
+		/// Sets and gets the TickFrequency of a slider bar
+		/// </summary>
+		public int TickFrequency
+		{
+			get
+			{
+				return (int) sliderBar.TickFrequency;
+			}
+
+			set
+			{
+				sliderBar.TickFrequency = value;
+			}
+		}
+		/// <summary>
+		/// Overrides the default starting location of the slider bar.
+		/// Default is (Min + Max)/2
+		/// </summary>
+		public int StartValue
+		{
+			set
+			{
+				sliderBar.Value = value;
+				textBox.Text = value.ToString();
+			}
+		}
+
+		public double Value
+		{
+			get
+			{
+				if (textBox.IsReadOnly)
+				{
+					return Convert.ToDouble(Math.Pow(10, sliderBar.Value));
+				}
+				else
+				{
+					return Convert.ToDouble(textBox.Text);
+				}
+			}
+		}
+		#endregion
+
+		#region Events
+		/// <summary>
+		/// Changes the information in the textbox when the slider bar changes
+		/// </summary>
+		/// <param name="o"></param>
+		/// <param name="e"></param>
+		private void SliderBarValueChanged(object sender, RoutedPropertyChangedEventArgs<double> routedPropertyChangedEventArgs)
+		{
+			if (textBox.IsReadOnly)
+			{
+				textBox.Text = "10^" + sliderBar.Value;
+			}
+			else
+			{
+				textBox.Text = (((double)sliderBar.Value) / ((double)conversion)).ToString();
+			}
+		}
+		/// <summary>
+		/// Changes the information in the slider bar when the textbox changes
+		/// </summary>
+		/// <param name="o"></param>
+		/// <param name="e"></param>
+		private void TextBoxChanged(object o, EventArgs e)
+		{
+			sliderBar.IsEnabled = false;
+
+			double newValue = 0;
+
+			try
+			{
+				newValue = Convert.ToDouble(textBox.Text);
+			}
+			catch (Exception excep)
+			{
+				newValue = (sliderBar.Maximum + sliderBar.Minimum) / 2;
+				newValue = newValue / conversion;
+			}
+
+			if (isInt)
+			{
+				newValue = (int)newValue;
+			}
+			else
+			{
+				int temp = (int)(newValue * conversion);
+				newValue = ((double)temp) / conversion;
+			}
+
+			if (textBox.IsReadOnly)
+			{
+				textBox.Text = "10^" + newValue.ToString();
+			}
+			else
+			{
+				textBox.Text = newValue.ToString();
+			}
+
+			try
+			{
+				sliderBar.Value = (int)(newValue * conversion);
+			}
+			catch (ArgumentException Argxcep)
+			{
+				if (newValue > sliderBar.Maximum)
+				{
+					sliderBar.Value = (int)sliderBar.Maximum * conversion;
+					textBox.Text = sliderBar.Maximum.ToString();
+				}
+				else
+				{
+					sliderBar.Value = (int)sliderBar.Minimum * conversion;
+					textBox.Text = sliderBar.Minimum.ToString();
+				}
+			}
+
+			sliderBar.IsEnabled = true;
+		}
+		#endregion
+	}
+}

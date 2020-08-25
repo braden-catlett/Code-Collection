@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="AlleleFrequencySim.SlideText"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="160" d:DesignWidth="71" MinWidth="71" MaxWidth="71" Margin="2">
+	<StackPanel>
+        <DockPanel>
+			<Slider DockPanel.Dock="Left" Name="sliderBar" ValueChanged="SliderBarValueChanged" Orientation="Vertical" MinHeight="75" />
+	        <Label DockPanel.Dock="Top" Name="maxLabel" />
+	        <Label DockPanel.Dock="Bottom" Name="minLabel" VerticalAlignment="Bottom" />
+        </DockPanel>
+		<TextBox Name="textBox" TextChanged="TextBoxChanged" />
+		<TextBlock Name="nameLabel" TextWrapping="Wrap" MinWidth="70" />
+	</StackPanel>
+</UserControl>

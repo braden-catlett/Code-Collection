@@ -1,0 +1,9 @@
+C:\Users\USER\Desktop\FormsToying\FormsToying\bin\Debug\FormsToying.exe
+C:\Users\USER\Desktop\FormsToying\FormsToying\bin\Debug\FormsToying.pdb
+C:\Users\USER\Desktop\FormsToying\FormsToying\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\USER\Desktop\FormsToying\FormsToying\obj\x86\Debug\FormsToying.Form1.resources
+C:\Users\USER\Desktop\FormsToying\FormsToying\obj\x86\Debug\FormsToying.Properties.Resources.resources
+C:\Users\USER\Desktop\FormsToying\FormsToying\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\USER\Desktop\FormsToying\FormsToying\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\USER\Desktop\FormsToying\FormsToying\obj\x86\Debug\FormsToying.exe
+C:\Users\USER\Desktop\FormsToying\FormsToying\obj\x86\Debug\FormsToying.pdb

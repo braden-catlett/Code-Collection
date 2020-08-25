@@ -1,0 +1,12 @@
+F:\Robot\Robot\bin\Debug\Robot.exe
+F:\Robot\Robot\bin\Debug\Robot.pdb
+F:\Robot\Robot\bin\Debug\NKH.MindSqualls.dll
+F:\Robot\Robot\bin\Debug\WinUsbWrapper.dll
+F:\Robot\Robot\obj\x86\Debug\ResolveAssemblyReference.cache
+F:\Robot\Robot\obj\x86\Debug\Robot.exe
+F:\Robot\Robot\obj\x86\Debug\Robot.pdb
+G:\Robot\Robot\bin\Debug\Robot.exe
+G:\Robot\Robot\bin\Debug\Robot.pdb
+G:\Robot\Robot\obj\x86\Debug\ResolveAssemblyReference.cache
+G:\Robot\Robot\obj\x86\Debug\Robot.exe
+G:\Robot\Robot\obj\x86\Debug\Robot.pdb

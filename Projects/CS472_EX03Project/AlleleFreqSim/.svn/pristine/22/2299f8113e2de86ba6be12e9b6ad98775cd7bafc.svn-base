@@ -1,0 +1,30 @@
+﻿<Window x:Class="AlleleFrequencySim.ExternPopForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:allele="clr-namespace:AlleleFrequencySim"
+        Title="External Population Form" SizeToContent="WidthAndHeight" Visibility="Collapsed" Closing="ExternPopForm_OnClosing"
+		Padding="15">
+	<DockPanel>
+		<StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
+			<Label>Enable the use of these external population settings:</Label>
+			<CheckBox Name="EnableExternPop" VerticalAlignment="Center" />
+		</StackPanel>
+		<StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom">
+			<allele:SlideText x:Name="AADistribution" IsInt="False" Minimum="0" Maximum="1" Text="AA Distribution" TickFrequency="0.001" />
+
+			<allele:SlideText x:Name="AaDistribution" IsInt="False" Minimum="0" Maximum="1" Text="Aa Distribution" TickFrequency="0.001" />
+
+			<allele:SlideText x:Name="aaDistribution" IsInt="False" Minimum="0" Maximum="1" Text="aa Distribution" TickFrequency="0.001" />
+
+			<allele:SlideText x:Name="ExposureBegin" Minimum="1" Maximum="550" Text="Exposure Begin" TickFrequency="1" />
+
+			<!-- TODO: bind the maximum property of this slider so that it is equal to 550 - ExposureBegin.Value
+					the following expression might be helpful: Maximum="{Binding ElementName=ExposureBegin, Path=Value, Converter={StaticResource ExposureDurationConverter}}"-->
+			<allele:SlideText x:Name="ExposureDuration" Minimum="1" Maximum="550" Text="Exposure Duration" TickFrequency="1" />
+
+			<allele:SlideText x:Name="ExposureChance" IsInt="False" Minimum="0" Maximum="1" Text="Exposure Chance" TickFrequency="0.001" />
+
+			<allele:SlideText x:Name="MigrationSize" IsInt="False" Minimum="0" Maximum="1" Text="Migration Size" TickFrequency="0.001" />
+		</StackPanel>
+	</DockPanel>
+</Window>

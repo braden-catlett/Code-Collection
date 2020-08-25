@@ -1,0 +1,581 @@
+using System;
+using System.Drawing;
+using System.Windows.Forms;
+
+namespace AlleleFrequencySim
+{
+	/// <summary>
+	/// A control that holds the graph and all the controls for the graph
+	/// </summary>
+	public class GraphPanel : System.Windows.Forms.UserControl
+	{
+		private static Random rand = new Random();
+		private static Random randnum = new Random();
+        enum allele { AA, Aa, aa };
+
+		ZedGraph.GraphPane myPane;
+
+		#region Variables
+        ExternPopForm externPopSettings;
+        /// <summary>
+        /// The check box that causes mutation rate to be ignored
+        /// </summary>
+        public CheckBox noMutationFromA;
+        /// <summary>
+        /// The check box that causes mutation rate to be ignored
+        /// </summary>
+        public CheckBox noMutationToA;
+		/// <summary>
+		/// The slide-text hybride that goes with Fitness AA
+		/// </summary>
+		public AlleleFrequencySim.SlideText fitnessAA;
+		/// <summary>
+		/// The slide-text hybride that goes with Fitness Aa
+		/// </summary>
+		public AlleleFrequencySim.SlideText fitnessAa;
+		/// <summary>
+		/// The slide-text hybride that goes with Fitness aa
+		/// </summary>
+		public AlleleFrequencySim.SlideText fitnessaa;
+		/// <summary>
+		/// The slide-text hybride that goes with Mutation Rate
+		/// </summary>
+		public AlleleFrequencySim.SlideText mutationRateFromA;
+        /// <summary>
+        /// The slide-text hybride that goes with Mutation Rate
+        /// </summary>
+        public AlleleFrequencySim.SlideText mutationRateToA;
+		/// <summary>
+		/// The slide-text hybride that goes with Initital Allele Frequency
+		/// </summary>
+		public AlleleFrequencySim.SlideText initAlleleFrequency;
+		/// <summary>
+		/// The slide-text hybride that goes with Population Size
+		/// </summary>
+		public AlleleFrequencySim.SlideText popSize;
+		/// <summary>
+		/// The slide-text hybride that goes with Generation
+		/// </summary>
+		public AlleleFrequencySim.SlideText generation;
+		/// <summary>
+		/// A border around the controls
+		/// </summary>
+		public System.Windows.Forms.GroupBox groupBox;
+        #endregion
+
+        #region Functions
+        /// <summary>
+		/// The constructor
+		/// </summary>
+		public GraphPanel()
+		{
+            
+            
+			#region fitnessAA initialization
+			fitnessAA = new AlleleFrequencySim.SlideText();
+			fitnessAA.Conversion = 1000;
+			fitnessAA.IsInt = false;
+			fitnessAA.Minimum = 0;
+			fitnessAA.Maximum = 1000;
+			fitnessAA.Text = "Fitness AA";
+			fitnessAA.TickFrequency = 100;
+			fitnessAA.Location = new System.Drawing.Point(8,15);
+			#endregion
+
+			#region fitnessAa initialization
+			fitnessAa = new AlleleFrequencySim.SlideText();
+			fitnessAa.Conversion = 1000;
+			fitnessAa.IsInt = false;
+			fitnessAa.Minimum = 0;
+			fitnessAa.Maximum = 1000;
+			fitnessAa.Text = "Fitness Aa";
+			fitnessAa.TickFrequency = 100;
+			fitnessAa.Location = new System.Drawing.Point(fitnessAA.Location.X+fitnessAA.Width+10,15);
+			#endregion
+
+			#region fitnessaa initialization
+			fitnessaa = new AlleleFrequencySim.SlideText();
+			fitnessaa.Conversion = 1000;
+			fitnessaa.IsInt = false;
+			fitnessaa.Minimum = 0;
+			fitnessaa.Maximum = 1000;
+			fitnessaa.Text = "Fitness aa";
+			fitnessaa.TickFrequency = 100;
+			fitnessaa.Location = new System.Drawing.Point(fitnessAa.Location.X+fitnessAa.Width+10, 15);
+			#endregion
+
+            #region mutationRateFromA initialization
+            mutationRateFromA = new AlleleFrequencySim.SlideText();
+            mutationRateFromA.Minimum = -9;
+            mutationRateFromA.Maximum = -2;
+            mutationRateFromA.IsReadOnly = true;
+            mutationRateFromA.Text = "A to a Mutn. Rate";
+            mutationRateFromA.Location = new System.Drawing.Point(fitnessaa.Location.X + fitnessaa.Width + 10, 15);
+            #endregion
+
+            #region mutationRateToA Initialization
+            mutationRateToA = new AlleleFrequencySim.SlideText();
+            mutationRateToA.Minimum = -9;
+            mutationRateToA.Maximum = -2;
+            mutationRateToA.IsReadOnly = true;
+            mutationRateToA.Text = "a to A Mutn. Rate";
+            mutationRateToA.Location = new System.Drawing.Point(mutationRateFromA.Location.X + mutationRateFromA.Width + 10, 15);
+            #endregion
+
+            #region noMutationFromA Initialization
+            noMutationFromA = new CheckBox();
+            noMutationFromA.Location = new System.Drawing.Point(mutationRateFromA.Location.X, mutationRateFromA.Location.Y + mutationRateFromA.Size.Height - 5);
+            noMutationFromA.Text = "0 MR";
+            noMutationFromA.Size = new Size(mutationRateFromA.Size.Width, noMutationFromA.Height);
+            #endregion
+
+            #region noMutationToA Initialization
+            noMutationToA = new CheckBox();
+            noMutationToA.Location = new System.Drawing.Point(mutationRateToA.Location.X, mutationRateToA.Location.Y + mutationRateToA.Size.Height - 5);
+            noMutationToA.Text = "0 MR";
+            noMutationToA.Size = new Size(mutationRateToA.Size.Width, noMutationToA.Height);
+            #endregion
+            
+			#region initAlleleFrequency initialization
+			initAlleleFrequency = new AlleleFrequencySim.SlideText();
+			initAlleleFrequency.Conversion = 1000;
+			initAlleleFrequency.IsInt = false;
+			initAlleleFrequency.Minimum = 0;
+			initAlleleFrequency.Maximum = 1000;
+			initAlleleFrequency.Text = "Init. Allele Freq.";
+			initAlleleFrequency.TickFrequency = 100;
+            initAlleleFrequency.Location = new System.Drawing.Point(mutationRateToA.Location.X + mutationRateToA.Width + 10, 15);
+			#endregion
+
+			#region popSize initialization
+			popSize = new AlleleFrequencySim.SlideText();
+			popSize.Minimum = 10;
+			popSize.Maximum = 5000;
+			popSize.Text = "Pop. Size";
+			popSize.TickFrequency = 500;
+			popSize.SetStartValue = 500;
+			popSize.Location = new System.Drawing.Point(initAlleleFrequency.Location.X+initAlleleFrequency.Width+10,15);
+			#endregion
+
+			#region generation initialization
+			generation = new AlleleFrequencySim.SlideText();
+			generation.Minimum = 100;
+			generation.Maximum = 1000;
+			generation.Text = "Gen. Number";
+			generation.TickFrequency = 90;
+			generation.Location = new System.Drawing.Point(popSize.Location.X+popSize.Width+10,10);
+			#endregion
+
+            #region groupBox initialization
+			groupBox = new GroupBox();
+			groupBox.Size = new System.Drawing.Size(520 + generation.Width + 10,215);
+			groupBox.Location = new Point(0,-5);
+
+            this.groupBox.Controls.Add(noMutationFromA);
+            this.groupBox.Controls.Add(noMutationToA);
+			this.groupBox.Controls.Add(fitnessAA);
+			this.groupBox.Controls.Add(fitnessAa);
+			this.groupBox.Controls.Add(fitnessaa);
+            this.groupBox.Controls.Add(mutationRateFromA);
+            this.groupBox.Controls.Add(mutationRateToA);
+			this.groupBox.Controls.Add(initAlleleFrequency);
+			this.groupBox.Controls.Add(popSize);
+			this.groupBox.Controls.Add(generation);
+            
+			#endregion
+
+			#region this initialization
+			this.Controls.Add(groupBox);
+			//TODO: allow grouBox and graphPanel to resize with window adjustment
+			this.Size = new Size(groupBox.Size.Width, groupBox.Size.Height - 5);
+			#endregion
+
+            
+		}
+
+		/// <summary>
+		/// Determines the points used to create the graphs
+		/// </summary>
+		public void CreateGraph( GraphForm g )
+		{
+            externPopSettings = ((GraphForm)this.FindForm()).externPopSettings;
+            ExternPopForm EPS = externPopSettings;
+            GraphInit();
+			//TODO: Lines drawn simultaneously
+            ZedGraph.LineItem myCurve = myPane.AddCurve("1",
+                new ZedGraph.PointPairList(), Color.Red, ZedGraph.SymbolType.None);
+
+            ZedGraph.LineItem myCurve2 = myPane.AddCurve("2",
+                new ZedGraph.PointPairList(), Color.Blue, ZedGraph.SymbolType.None);
+
+            ZedGraph.LineItem myCurve3 = myPane.AddCurve("3",
+                new ZedGraph.PointPairList(), Color.LimeGreen, ZedGraph.SymbolType.None);
+
+            ZedGraph.LineItem myCurve4 = myPane.AddCurve("4",
+                new ZedGraph.PointPairList(), Color.Black, ZedGraph.SymbolType.None);
+
+			double p = 0;
+			double q = 0;
+			double AA = 0;
+			double Aa = 0;
+			double aa = 0;
+			int AAcount = 0;
+			int Aacount = 0;
+			int aacount = 0;
+			int AAnext = 0;
+			int Aanext = 0;
+			int aanext = 0;
+            //double offset = 0;
+            //double A_COUNT = 0;
+            //double a_COUNT = 0;
+			int psize = 0;
+			int times = 1;
+
+            p = mutationModifier(initAlleleFrequency.Value);
+            
+			q = 1 - p;
+
+			AA = Math.Pow(p,2) * popSize.Value * fitnessAA.Value;
+			Aa = 2*p*q * popSize.Value * fitnessAa.Value;
+			aa = Math.Pow(q,2)* popSize.Value * fitnessaa.Value;
+
+			//Console.WriteLine(((Math.Pow(p,2))+(Math.Pow(q,2))+(2*p*q)).ToString());
+			/*Console.WriteLine((Math.Pow(q,2)).ToString());
+			Console.WriteLine((2*p*q).ToString());*/
+
+			AAcount = (int)Math.Round(AA);
+			Aacount = (int)Math.Round(Aa);
+			aacount = (int)Math.Round(aa);
+
+			/*Console.WriteLine(AA.ToString());
+			Console.WriteLine(Aa.ToString());
+			Console.WriteLine(aa.ToString());
+			Console.WriteLine(AAcount.ToString());
+			Console.WriteLine(Aacount.ToString());
+			Console.WriteLine(aacount.ToString());*/
+
+			//offset = Math.Pow(p,2)*AA*this.fitnessAA.Value + Math.Pow(q,2)*aa*this.fitnessaa.Value + 2*p*q*Aa*this.fitnessAa.Value;
+	
+			//AA = ((Math.Pow(p,2)))/offset;
+			//Aa = (2*p*q)/offset;
+			//aa = ((Math.Pow(q,2)))/offset;
+			
+			//Console.WriteLine(Convert.ToString(AA)+" HERE");
+			//Console.WriteLine(Convert.ToString(Aa));
+			//Console.WriteLine(Convert.ToString(aa));
+
+			//list1.Add( 0, p);
+			//list2.Add( 0, p);
+			//list3.Add( 0, p);
+			//list4.Add( 0, p);
+			//list5.Add( 0, p);
+
+            myPane.CurveList[0].Points.Add(0, p);
+            myPane.CurveList[1].Points.Add(0, p);
+            myPane.CurveList[2].Points.Add(0, p);
+            myPane.CurveList[3].Points.Add(0, p);
+
+			while(times<5)
+			{
+                p = mutationModifier(initAlleleFrequency.Value);
+				q = 1 - p;
+
+				AA = Math.Pow(p,2) * popSize.Value * fitnessAA.Value;
+				Aa = 2*p*q * popSize.Value * fitnessAa.Value;
+				aa = Math.Pow(q,2)* popSize.Value * fitnessaa.Value;
+
+				//Console.WriteLine(((Math.Pow(p,2))+(Math.Pow(q,2))+(2*p*q)).ToString());
+				/*Console.WriteLine((Math.Pow(q,2)).ToString());
+				Console.WriteLine((2*p*q).ToString());*/
+
+				AAcount = (int)Math.Round(AA);
+				Aacount = (int)Math.Round(Aa);
+				aacount = (int)Math.Round(aa);
+
+				//AA = ((Math.Pow(p,2)));
+				//Aa = (2*p*q);
+				//aa = ((Math.Pow(q,2)));
+
+				for(int i = 1; i < generation.Value; i++)
+				{
+					psize = AAcount + Aacount + aacount;
+					AAnext = 0;
+					Aanext = 0;
+					aanext = 0;
+
+                    #region Generate New Population
+                    for (int k = 0; k < this.popSize.Value; k++)
+                    {
+                        int r = rand.Next(psize);
+
+                        //Console.WriteLine((psize+1).ToString());
+                        //Console.WriteLine(r.ToString());
+
+                        allele first;
+                        allele second;
+
+                        if (r < AAcount)
+                        {
+                            first = allele.AA;
+                        }
+                        else if (AAcount <= r && r < AAcount + Aacount)
+                        {
+                            first = allele.Aa;
+                        }
+                        else
+                        {
+                            first = allele.aa;
+                        }
+
+                        r = rand.Next(psize);
+
+                        if (0 <= r && r < AAcount)
+                        {
+                            second = allele.AA;
+                        }
+                        else if (AAcount <= r && r < AAcount + Aacount)
+                        {
+                            second = allele.Aa;
+                        }
+                        else
+                        {
+                            second = allele.aa;
+                        }
+
+                        if (first == allele.AA)
+                        {
+                            switch (second)
+                            {
+                                case allele.AA:
+                                    AAnext++;
+                                    break;
+                                case allele.Aa:
+                                    if (rand.Next(2) == 0)
+                                    {
+                                        AAnext++;
+                                    }
+                                    else
+                                    {
+                                        Aanext++;
+                                    }
+                                    break;
+                                case allele.aa:
+                                    Aanext++;
+                                    break;
+                            }
+                        }
+                        else if (first == allele.Aa)
+                        {
+                            switch (second)
+                            {
+                                case allele.AA:
+                                    if (rand.Next(2) == 0)
+                                    {
+                                        AAnext++;
+                                    }
+                                    else
+                                    {
+                                        Aanext++;
+                                    }
+                                    break;
+                                case allele.Aa:
+                                    switch (rand.Next(4))
+                                    {
+                                        case 0:
+                                            AAnext++;
+                                            break;
+                                        case 1:
+                                            aanext++;
+                                            break;
+                                        default:
+                                            Aanext++;
+                                            break;
+                                    }
+                                    break;
+                                case allele.aa:
+                                    if (rand.Next(2) == 0)
+                                    {
+                                        Aanext++;
+                                    }
+                                    else
+                                    {
+                                        aanext++;
+                                    }
+                                    break;
+                            }
+                        }
+                        else
+                        {
+                            switch (second)
+                            {
+                                case allele.AA:
+                                    Aanext++;
+                                    break;
+                                case allele.Aa:
+                                    if (rand.Next(2) == 0)
+                                    {
+                                        aanext++;
+                                    }
+                                    else
+                                    {
+                                        Aanext++;
+                                    }
+                                    break;
+                                case allele.aa:
+                                    aanext++;
+                                    break;
+                            }
+                        }
+                    }
+                    #endregion
+
+					/*AAnext *= 2;
+					Aanext *= 2;
+					aanext *= 2;*/
+                    if (EPS.enable && (i>=EPS.ExposureBegin.Value) && (i<=(EPS.ExposureBegin.Value+EPS.ExposureDuration.Value)) && (randnum.NextDouble() < EPS.ExposureChance.Value))
+                    {
+                        double tot = EPS.AADistribution.Value + EPS.AaDistribution.Value + EPS.aaDistribution.Value;
+                        double ExternAA = (EPS.AADistribution.Value / tot);
+                        double ExternAa = (EPS.AaDistribution.Value / tot);
+                        double Externaa = (EPS.aaDistribution.Value / tot);
+                        int totnext = AAnext + Aanext + aanext;
+                        int totAA = (int)(ExternAA * totnext * EPS.MigrationSize.Value + (AAnext) * (1 - EPS.MigrationSize.Value));
+                        int totAa = (int)(ExternAa * totnext * EPS.MigrationSize.Value + (Aanext) * (1 - EPS.MigrationSize.Value));
+                        int totaa = (int)(Externaa * totnext * EPS.MigrationSize.Value + (aanext) * (1 - EPS.MigrationSize.Value));
+                        int skewedtot = totAA + totAa + totaa;
+                        if (skewedtot < totnext)
+                        {
+                            totAa += (totnext - skewedtot);
+                        }
+                        AAnext = totAA; Aanext=totAa; aanext=totaa;
+                    }
+					if(AAnext + Aanext + aanext != popSize.Value)
+					{
+                        throw new Exception("You calculated wrong, stupid.");
+						//Console.WriteLine("Broken");
+					}
+
+					p = (2*AAnext+Aanext)/(2*popSize.Value);
+
+                    myPane.CurveList[times-1].Points.Add(i, p);
+
+                    p = mutationModifier(p);
+					q = 1 - p;
+
+					AA = Math.Pow(p,2) * popSize.Value * fitnessAA.Value;
+					Aa = 2*p*q * popSize.Value * fitnessAa.Value;
+					aa = Math.Pow(q,2)* popSize.Value * fitnessaa.Value;
+
+					AAcount = (int)Math.Round(AA);
+					Aacount = (int)Math.Round(Aa);
+					aacount = (int)Math.Round(aa);
+
+					//offset = Math.Pow(p,2)*AA*this.fitnessAA.Value + Math.Pow(q,2)*aa*this.fitnessaa.Value + 2*p*q*Aa*this.fitnessAa.Value;
+	
+					//AA = ((Math.Pow(p,2)))/offset;
+					//Aa = (2*p*q)/offset;
+					//aa = ((Math.Pow(q,2)))/offset;
+
+					/*while(AAcount+Aacount+aacount < this.popSize.Value)
+					{
+                        double r = rand.Next((int)this.popSize.Value);
+						
+						if(0 <= r && r < AAcount)
+						{
+							AAcount++;
+						}
+						else if(AAcount <= r && r < AAcount+Aacount)
+						{
+							Aacount++;
+						}
+						else
+						{
+							aacount++;
+						}
+					}*/
+
+					if(AAcount +Aacount + aacount != popSize.Value)
+					{
+						//Console.WriteLine((AAcount+Aacount+aacount).ToString());
+					}
+
+				}
+
+                // draw the graph, line-by-line (will redraw 4 times)
+                //myPane.Draw(g.CreateGraphics());
+
+				times++;
+			}
+			//draw the graph, all lines together
+			myPane.Draw(g.CreateGraphics());
+		}
+
+        // returns change to frequency based on active mutation rate values
+        public double mutationModifier(double lastFrequency)
+        {
+            double saveLastFrequency = lastFrequency;
+            if (noMutationFromA.Checked && noMutationToA.Checked)
+                return lastFrequency;
+            else if(noMutationFromA.Checked) {
+                // apply mutationRateToA
+                return lastFrequency + (mutationRateToA.Value * (1 - lastFrequency));
+            }
+            else if (noMutationToA.Checked) {
+                // apply mutationRateFromA
+                return lastFrequency - (mutationRateFromA.Value * lastFrequency);
+            }
+            else {
+                // apply mutationRateFromA and mutationRateToA
+                double increase = mutationRateToA.Value * (1 - lastFrequency);
+                double decrease = mutationRateFromA.Value * lastFrequency;
+                return lastFrequency + increase - decrease;
+            }
+        }
+
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// Gets the image of the graph
+		/// </summary>
+		public Image Image
+		{
+			get
+			{
+				return this.myPane.Image;
+			}
+		}
+		#endregion
+
+		#region Events
+
+        public void GraphInit()
+        {
+            // Create a new graph with topLeft at (40,40) and size 600x400
+			//TODO: Allow graph to change size when widow is adjusted
+            myPane = new ZedGraph.GraphPane(new Rectangle(this.Location.X, this.Location.Y + 210, 520 + generation.Width + 10, 325),
+                "Allele Frequency\n",
+                "Generations",
+                "Frequency of A");
+
+            myPane.XAxis.Max = generation.Value;
+            myPane.XAxis.Min = 0;
+
+            myPane.YAxis.Max = 1;
+            myPane.YAxis.Min = 0;
+
+            myPane.AxisChange(CreateGraphics());
+        }
+
+		/// <summary>
+		/// Draws the graph to the form
+		/// </summary>
+		/// <param name="o"></param>
+		/// <param name="e"></param>
+		public void PaintGraph(object o, PaintEventArgs e)
+		{	
+            myPane.Draw(e.Graphics);
+		}
+		#endregion
+	}
+}

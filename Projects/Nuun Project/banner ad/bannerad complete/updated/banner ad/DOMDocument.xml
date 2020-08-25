@@ -1,0 +1,500 @@
+<DOMDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" currentTimeline="1" xflVersion="2.0" creatorInfo="Adobe Flash Professional CS5.5" platform="Windows" versionInfo="Saved by Adobe Flash Windows 11.5 build 349" majorVersion="11" minorVersion="5" buildNumber="349" objectsSnapTo="false" nextSceneIdentifier="2" playOptionsPlayLoop="false" playOptionsPlayPages="false" playOptionsPlayFrameActions="false">
+     <folders>
+          <DOMFolderItem name="gatorades.psd Assets" itemID="4f1a0dd4-000001ec" isExpanded="true"/>
+          <DOMFolderItem name="gatorades.psd Assets 1" itemID="4f1a1022-00000202" isExpanded="true"/>
+          <DOMFolderItem name="gatorades.psd Assets 1/Group 1" itemID="4f1a1022-00000203" isExpanded="true"/>
+          <DOMFolderItem name="gatorades.psd Assets 2" itemID="4f1a119b-000001f7" isExpanded="true"/>
+          <DOMFolderItem name="gatorades.psd Assets 2/Group 1" itemID="4f1a119b-00000207"/>
+          <DOMFolderItem name="gatorades.psd Assets 3" itemID="4f1a11b4-00000212"/>
+          <DOMFolderItem name="gatorades.psd Assets 3/Group 1" itemID="4f1a11b4-00000216"/>
+          <DOMFolderItem name="gatorades.psd Assets 4" itemID="4f1a11c3-00000220"/>
+          <DOMFolderItem name="gatorades.psd Assets 4/Group 1" itemID="4f1a11c3-00000224"/>
+          <DOMFolderItem name="gatorades.psd Assets 5" itemID="4f1a11cd-0000022d"/>
+          <DOMFolderItem name="gatorades.psd Assets 5/Group 1" itemID="4f1a11cd-00000231"/>
+          <DOMFolderItem name="gatorades.psd Assets 6" itemID="4f1a11d8-0000023a" isExpanded="true"/>
+          <DOMFolderItem name="gatorades.psd Assets 6/Group 1" itemID="4f1a11d8-0000023e"/>
+          <DOMFolderItem name="gatorades.psd Assets/Group 1" itemID="4f1a0dd4-000001ed" isExpanded="true"/>
+     </folders>
+     <media>
+          <DOMBitmapItem name="gatorades.psd Assets 1/Group 1/1" itemID="4f1a1022-00000206" sourceExternalFilepath="./LIBRARY/gatorades.psd Assets 1/Group 1/1" sourceLastImported="1327108130" originalCompressionType="lossless" quality="90" href="gatorades.psd Assets 1/Group 1/1" bitmapDataHRef="M 6 1327108130.dat" frameRight="5240" frameBottom="200"/>
+          <DOMBitmapItem name="gatorades.psd Assets 1/Group 1/10" itemID="4f1a1022-00000224" sourceExternalFilepath="./LIBRARY/gatorades.psd Assets 1/Group 1/10" sourceLastImported="1327108130" originalCompressionType="lossless" quality="90" href="gatorades.psd Assets 1/Group 1/10" bitmapDataHRef="M 16 1327108130.dat" frameRight="8900" frameBottom="4580"/>
+          <DOMBitmapItem name="gatorades.psd Assets 1/Group 1/11" itemID="4f1a1022-0000022a" sourceExternalFilepath="./LIBRARY/gatorades.psd Assets 1/Group 1/11" sourceLastImported="1327108130" originalCompressionType="lossless" quality="90" href="gatorades.psd Assets 1/Group 1/11" bitmapDataHRef="M 18 1327108130.dat" frameRight="10200" frameBottom="5620"/>
+          <DOMBitmapItem name="gatorades.psd Assets 2/Group 1/11" itemID="4f1a119b-0000020a" sourceExternalFilepath="./LIBRARY/gatorades.psd Assets 2/Group 1/11" sourceLastImported="1327108507" originalCompressionType="lossless" quality="90" href="gatorades.psd Assets 2/Group 1/11" bitmapDataHRef="M 25 1327108507.dat" frameRight="10200" frameBottom="5620"/>
+          <DOMBitmapItem name="gatorades.psd Assets 3/Group 1/11" itemID="4f1a11b4-00000219" sourceExternalFilepath="./LIBRARY/gatorades.psd Assets 3/Group 1/11" sourceLastImported="1327108532" originalCompressionType="lossless" quality="90" href="gatorades.psd Assets 3/Group 1/11" bitmapDataHRef="M 28 1327108532.dat" frameRight="10200" frameBottom="5620"/>
+          <DOMBitmapItem name="gatorades.psd Assets 4/Group 1/11" itemID="4f1a11c3-00000227" sourceExternalFilepath="./LIBRARY/gatorades.psd Assets 4/Group 1/11" sourceLastImported="1327108547" originalCompressionType="lossless" quality="90" href="gatorades.psd Assets 4/Group 1/11" bitmapDataHRef="M 31 1327108547.dat" frameRight="10200" frameBottom="5620"/>
+          <DOMBitmapItem name="gatorades.psd Assets 5/Group 1/11" itemID="4f1a11cd-00000234" sourceExternalFilepath="./LIBRARY/gatorades.psd Assets 5/Group 1/11" sourceLastImported="1327108557" originalCompressionType="lossless" quality="90" href="gatorades.psd Assets 5/Group 1/11" bitmapDataHRef="M 34 1327108557.dat" frameRight="10200" frameBottom="5620"/>
+          <DOMBitmapItem name="gatorades.psd Assets 6/Group 1/11" itemID="4f1a11d8-00000241" sourceExternalFilepath="./LIBRARY/gatorades.psd Assets 6/Group 1/11" sourceLastImported="1327108568" originalCompressionType="lossless" quality="90" href="gatorades.psd Assets 6/Group 1/11" bitmapDataHRef="M 37 1327108568.dat" frameRight="10200" frameBottom="5620"/>
+          <DOMBitmapItem name="gatorades.psd Assets 1/Group 1/2" itemID="4f1a1022-00000209" sourceExternalFilepath="./LIBRARY/gatorades.psd Assets 1/Group 1/2" sourceLastImported="1327108130" originalCompressionType="lossless" quality="90" href="gatorades.psd Assets 1/Group 1/2" bitmapDataHRef="M 7 1327108130.dat" frameRight="10200" frameBottom="5600"/>
+          <DOMBitmapItem name="gatorades.psd Assets 1/Group 1/3" itemID="4f1a1022-0000020c" sourceExternalFilepath="./LIBRARY/gatorades.psd Assets 1/Group 1/3" sourceLastImported="1327108130" originalCompressionType="lossless" quality="90" href="gatorades.psd Assets 1/Group 1/3" bitmapDataHRef="M 8 1327108130.dat" frameRight="10200" frameBottom="5620"/>
+          <DOMBitmapItem name="gatorades.psd Assets 1/Group 1/4" itemID="4f1a1022-0000020f" sourceExternalFilepath="./LIBRARY/gatorades.psd Assets 1/Group 1/4" sourceLastImported="1327108130" originalCompressionType="lossless" quality="90" href="gatorades.psd Assets 1/Group 1/4" bitmapDataHRef="M 9 1327108130.dat" frameRight="10200" frameBottom="5620"/>
+          <DOMBitmapItem name="gatorades.psd Assets 1/Group 1/5" itemID="4f1a1022-00000212" sourceExternalFilepath="./LIBRARY/gatorades.psd Assets 1/Group 1/5" sourceLastImported="1327108130" originalCompressionType="lossless" quality="90" href="gatorades.psd Assets 1/Group 1/5" bitmapDataHRef="M 10 1327108130.dat" frameRight="12660" frameBottom="7200"/>
+          <DOMBitmapItem name="gatorades.psd Assets 1/Group 1/6" itemID="4f1a1022-00000215" sourceExternalFilepath="./LIBRARY/gatorades.psd Assets 1/Group 1/6" sourceLastImported="1327108130" originalCompressionType="lossless" quality="90" href="gatorades.psd Assets 1/Group 1/6" bitmapDataHRef="M 11 1327108130.dat" frameRight="10200" frameBottom="5620"/>
+          <DOMBitmapItem name="gatorades.psd Assets 1/Group 1/7" itemID="4f1a1022-00000218" sourceExternalFilepath="./LIBRARY/gatorades.psd Assets 1/Group 1/7" sourceLastImported="1327108130" originalCompressionType="lossless" quality="90" href="gatorades.psd Assets 1/Group 1/7" bitmapDataHRef="M 12 1327108130.dat" frameRight="9520" frameBottom="5220"/>
+          <DOMBitmapItem name="gatorades.psd Assets/Group 1/8" itemID="4f1a0dd4-000001f0" sourceExternalFilepath="./LIBRARY/gatorades.psd Assets/Group 1/8" sourceLastImported="1327107540" originalCompressionType="lossless" quality="90" href="gatorades.psd Assets/Group 1/8" bitmapDataHRef="M 4 1327107540.dat" frameRight="6360" frameBottom="3040"/>
+          <DOMBitmapItem name="gatorades.psd Assets 1/Group 1/8" itemID="4f1a1022-0000021e" sourceExternalFilepath="./LIBRARY/gatorades.psd Assets 1/Group 1/8" sourceLastImported="1327108130" originalCompressionType="lossless" quality="90" href="gatorades.psd Assets 1/Group 1/8" bitmapDataHRef="M 14 1327108130.dat" frameRight="7180" frameBottom="3840"/>
+          <DOMBitmapItem name="Bitmap 1" itemID="4f18f01b-000001d5" sourceExternalFilepath="./LIBRARY/Bitmap 1" sourceLastImported="1327034395" originalCompressionType="lossless" quality="50" href="Bitmap 1./LIBRARY/Bitmap 1" bitmapDataHRef="M 1 1327034395.dat" frameRight="6000" frameBottom="5220"/>
+          <DOMBitmapItem name="Bitmap 2" itemID="4f18f134-000001eb" sourceExternalFilepath="./LIBRARY/Bitmap 2" sourceLastImported="1327034676" originalCompressionType="lossless" quality="50" href="Bitmap 2./LIBRARY/Bitmap 2" bitmapDataHRef="M 2 1327034676.dat" frameRight="6400" frameBottom="6400"/>
+          <DOMBitmapItem name="Bitmap 4" itemID="4f18f1f8-000001f3" sourceExternalFilepath="./LIBRARY/Bitmap 4" sourceLastImported="1327034872" originalCompressionType="lossless" quality="50" href="Bitmap 4./LIBRARY/Bitmap 4" bitmapDataHRef="M 4 1327034872.dat" frameRight="27320" frameBottom="14560"/>
+          <DOMBitmapItem name="gatorades.psd Assets 3/Layer 18" itemID="4f1a11b4-00000215" sourceExternalFilepath="./LIBRARY/gatorades.psd Assets 3/Layer 18" sourceLastImported="1327108532" originalCompressionType="lossless" quality="90" href="gatorades.psd Assets 3/Layer 18" bitmapDataHRef="M 27 1327108532.dat" frameRight="1800" frameBottom="5480"/>
+          <DOMBitmapItem name="gatorades.psd Assets 2/Layer 18" itemID="4f1a119b-00000206" sourceExternalFilepath="./LIBRARY/gatorades.psd Assets 2/Layer 18" sourceLastImported="1327108507" originalCompressionType="lossless" quality="90" href="gatorades.psd Assets 2/Layer 18" bitmapDataHRef="M 24 1327108507.dat" frameRight="1800" frameBottom="5480"/>
+          <DOMBitmapItem name="gatorades.psd Assets 1/Group 1/Layer 22" itemID="4f1a1022-0000021b" sourceExternalFilepath="./LIBRARY/gatorades.psd Assets 1/Group 1/Layer 22" sourceLastImported="1327108130" originalCompressionType="lossless" quality="90" href="gatorades.psd Assets 1/Group 1/Layer 22" bitmapDataHRef="M 13 1327108130.dat" frameRight="1780" frameBottom="1060"/>
+          <DOMBitmapItem name="gatorades.psd Assets 1/Group 1/Layer 23" itemID="4f1a1022-00000221" sourceExternalFilepath="./LIBRARY/gatorades.psd Assets 1/Group 1/Layer 23" sourceLastImported="1327108130" originalCompressionType="lossless" quality="90" href="gatorades.psd Assets 1/Group 1/Layer 23" bitmapDataHRef="M 15 1327108130.dat" frameRight="2040" frameBottom="1160"/>
+          <DOMBitmapItem name="gatorades.psd Assets/Group 1/Layer 23" itemID="4f1a0dd4-000001f3" sourceExternalFilepath="./LIBRARY/gatorades.psd Assets/Group 1/Layer 23" sourceLastImported="1327107540" originalCompressionType="lossless" quality="90" href="gatorades.psd Assets/Group 1/Layer 23" bitmapDataHRef="M 5 1327107540.dat" frameRight="2040" frameBottom="1160"/>
+          <DOMBitmapItem name="gatorades.psd Assets 1/Group 1/Layer 24" itemID="4f1a1022-00000227" sourceExternalFilepath="./LIBRARY/gatorades.psd Assets 1/Group 1/Layer 24" sourceLastImported="1327108130" originalCompressionType="lossless" quality="90" href="gatorades.psd Assets 1/Group 1/Layer 24" bitmapDataHRef="M 17 1327108130.dat" frameRight="2240" frameBottom="1200"/>
+          <DOMBitmapItem name="gatorades.psd Assets 6/Group 1/Layer 25" itemID="4f1a11d8-00000244" sourceExternalFilepath="./LIBRARY/gatorades.psd Assets 6/Group 1/Layer 25" sourceLastImported="1327108568" originalCompressionType="lossless" quality="90" href="gatorades.psd Assets 6/Group 1/Layer 25" bitmapDataHRef="M 38 1327108568.dat" frameRight="1660" frameBottom="1600"/>
+          <DOMBitmapItem name="gatorades.psd Assets 5/Group 1/Layer 25" itemID="4f1a11cd-00000237" sourceExternalFilepath="./LIBRARY/gatorades.psd Assets 5/Group 1/Layer 25" sourceLastImported="1327108557" originalCompressionType="lossless" quality="90" href="gatorades.psd Assets 5/Group 1/Layer 25" bitmapDataHRef="M 35 1327108557.dat" frameRight="1660" frameBottom="1600"/>
+          <DOMBitmapItem name="gatorades.psd Assets 4/Group 1/Layer 25" itemID="4f1a11c3-0000022a" sourceExternalFilepath="./LIBRARY/gatorades.psd Assets 4/Group 1/Layer 25" sourceLastImported="1327108547" originalCompressionType="lossless" quality="90" href="gatorades.psd Assets 4/Group 1/Layer 25" bitmapDataHRef="M 32 1327108547.dat" frameRight="1660" frameBottom="1600"/>
+          <DOMBitmapItem name="gatorades.psd Assets 3/Group 1/Layer 25" itemID="4f1a11b4-0000021c" sourceExternalFilepath="./LIBRARY/gatorades.psd Assets 3/Group 1/Layer 25" sourceLastImported="1327108532" originalCompressionType="lossless" quality="90" href="gatorades.psd Assets 3/Group 1/Layer 25" bitmapDataHRef="M 29 1327108532.dat" frameRight="1660" frameBottom="1600"/>
+          <DOMBitmapItem name="gatorades.psd Assets 2/Group 1/Layer 25" itemID="4f1a119b-0000020d" sourceExternalFilepath="./LIBRARY/gatorades.psd Assets 2/Group 1/Layer 25" sourceLastImported="1327108507" originalCompressionType="lossless" quality="90" href="gatorades.psd Assets 2/Group 1/Layer 25" bitmapDataHRef="M 26 1327108507.dat" frameRight="1660" frameBottom="1600"/>
+          <DOMBitmapItem name="gatorades.psd Assets 1/Group 1/Layer 25" itemID="4f1a1023-0000022d" sourceExternalFilepath="./LIBRARY/gatorades.psd Assets 1/Group 1/Layer 25" sourceLastImported="1327108131" originalCompressionType="lossless" quality="90" href="gatorades.psd Assets 1/Group 1/Layer 25" bitmapDataHRef="M 19 1327108131.dat" frameRight="1660" frameBottom="1600"/>
+          <DOMBitmapItem name="gatorades.psd Assets 2/Layer 6" itemID="4f1a119b-000001fa" sourceExternalFilepath="./LIBRARY/gatorades.psd Assets 2/Layer 6" sourceLastImported="1327108507" originalCompressionType="lossless" quality="90" href="gatorades.psd Assets 2/Layer 6" bitmapDataHRef="M 20 1327108507.dat" frameRight="1880" frameBottom="5060"/>
+          <DOMBitmapItem name="gatorades.psd Assets 6/Layer 7" itemID="4f1a11d8-0000023d" sourceExternalFilepath="./LIBRARY/gatorades.psd Assets 6/Layer 7" sourceLastImported="1327108568" originalCompressionType="lossless" quality="90" href="gatorades.psd Assets 6/Layer 7" bitmapDataHRef="M 36 1327108568.dat" frameRight="1880" frameBottom="5040"/>
+          <DOMBitmapItem name="gatorades.psd Assets 2/Layer 7" itemID="4f1a119b-000001fd" sourceExternalFilepath="./LIBRARY/gatorades.psd Assets 2/Layer 7" sourceLastImported="1327108507" originalCompressionType="lossless" quality="90" href="gatorades.psd Assets 2/Layer 7" bitmapDataHRef="M 21 1327108507.dat" frameRight="1880" frameBottom="5040"/>
+          <DOMBitmapItem name="gatorades.psd Assets 5/Layer 8" itemID="4f1a11cd-00000230" sourceExternalFilepath="./LIBRARY/gatorades.psd Assets 5/Layer 8" sourceLastImported="1327108557" originalCompressionType="lossless" quality="90" href="gatorades.psd Assets 5/Layer 8" bitmapDataHRef="M 33 1327108557.dat" frameRight="1880" frameBottom="5040"/>
+          <DOMBitmapItem name="gatorades.psd Assets 2/Layer 8" itemID="4f1a119b-00000200" sourceExternalFilepath="./LIBRARY/gatorades.psd Assets 2/Layer 8" sourceLastImported="1327108507" originalCompressionType="lossless" quality="90" href="gatorades.psd Assets 2/Layer 8" bitmapDataHRef="M 22 1327108507.dat" frameRight="1880" frameBottom="5040"/>
+          <DOMBitmapItem name="gatorades.psd Assets 4/Layer 9" itemID="4f1a11c3-00000223" sourceExternalFilepath="./LIBRARY/gatorades.psd Assets 4/Layer 9" sourceLastImported="1327108547" originalCompressionType="lossless" quality="90" href="gatorades.psd Assets 4/Layer 9" bitmapDataHRef="M 30 1327108547.dat" frameRight="1440" frameBottom="3840"/>
+          <DOMBitmapItem name="gatorades.psd Assets 2/Layer 9" itemID="4f1a119b-00000203" sourceExternalFilepath="./LIBRARY/gatorades.psd Assets 2/Layer 9" sourceLastImported="1327108507" originalCompressionType="lossless" quality="90" href="gatorades.psd Assets 2/Layer 9" bitmapDataHRef="M 23 1327108507.dat" frameRight="1440" frameBottom="3840"/>
+     </media>
+     <symbols>
+          <Include href="1 gatorade.xml" itemIcon="1" loadImmediate="false"/>
+          <Include href="coupon.xml" loadImmediate="false"/>
+          <Include href="gatorade.xml" itemIcon="1" loadImmediate="false"/>
+          <Include href="gatorades.psd.xml" itemIcon="1" loadImmediate="false"/>
+          <Include href="gatorades.psd copy.xml" itemIcon="1" loadImmediate="false"/>
+          <Include href="nuun1.xml" itemIcon="1" loadImmediate="false"/>
+          <Include href="Symbol 1.xml" loadImmediate="false"/>
+          <Include href="Symbol 2.xml" loadImmediate="false"/>
+          <Include href="Symbol 3.xml" loadImmediate="false"/>
+          <Include href="Symbol 4.xml" loadImmediate="false"/>
+          <Include href="Symbol 5.xml" loadImmediate="false"/>
+          <Include href="Symbol 6.xml" loadImmediate="false"/>
+     </symbols>
+     <timelines>
+          <DOMTimeline name="Scene 1" currentFrame="3">
+               <layers>
+                    <DOMLayer name="mask" color="#808080" locked="true" autoNamed="false" layerType="mask" animationType="motion object">
+                         <frames>
+                              <DOMFrame index="0" duration="24" tweenType="motion object" motionTweenRotate="none" motionTweenScale="false" isMotionObject="true" visibleAnimationKeyframes="2097151" keyMode="8195">
+                                   <motionObjectXML><AnimationCore TimeScale="24000" Version="1" duration="24000"><TimeMap strength="0" type="Quadratic"/><metadata><names><name langID="en_US" value=""/></names><Settings orientToPath="0" xformPtXOffsetPct="0.5" xformPtYOffsetPct="0.5" xformPtZOffsetPixels="0"/></metadata><PropertyContainer id="headContainer"><PropertyContainer id="Basic_Motion"><Property enabled="1" id="Motion_X" ignoreTimeMap="0" readonly="0" visible="1"><Keyframe anchor="0,0" next="0,0" previous="0,0" roving="0" timevalue="0"/><Keyframe anchor="0,42.36" next="0,42.36" previous="0,42.36" roving="0" timevalue="2000"/><Keyframe anchor="0,90.9" next="0,90.9" previous="0,90.9" roving="0" timevalue="5000"/><Keyframe anchor="0,177.45" next="0,177.45" previous="0,177.45" roving="0" timevalue="23000"/></Property><Property enabled="1" id="Motion_Y" ignoreTimeMap="0" readonly="0" visible="1"><Keyframe anchor="0,0" next="0,0" previous="0,0" roving="0" timevalue="0"/><Keyframe anchor="0,95.8" next="0,95.8" previous="0,95.8" roving="0" timevalue="2000"/><Keyframe anchor="0,57" next="0,57" previous="0,57" roving="0" timevalue="5000"/><Keyframe anchor="0,178" next="0,178" previous="0,178" roving="0" timevalue="23000"/></Property><Property enabled="1" id="Rotation_Z" ignoreTimeMap="0" readonly="0" visible="1"><Keyframe anchor="0,0" next="0,0" previous="0,0" roving="0" timevalue="0"/><Keyframe anchor="0,-1.58112e-007" next="0,-1.58112e-007" previous="0,-1.58112e-007" roving="0" timevalue="4000"/><Keyframe anchor="0,0" next="0,0" previous="0,0" roving="0" timevalue="5000"/><Keyframe anchor="0,-1.28607e-007" next="0,-1.28607e-007" previous="0,-1.28607e-007" roving="0" timevalue="23000"/></Property></PropertyContainer><PropertyContainer id="Transformation"><Property enabled="1" id="Skew_X" ignoreTimeMap="0" readonly="0" visible="1"><Keyframe anchor="0,0" next="0,0" previous="0,0" roving="0" timevalue="0"/><Keyframe anchor="0,-1.7375" next="0,-1.7375" previous="0,-1.7375" roving="0" timevalue="4000"/></Property><Property enabled="1" id="Skew_Y" ignoreTimeMap="0" readonly="0" visible="1"><Keyframe anchor="0,0" next="0,0" previous="0,0" roving="0" timevalue="0"/><Keyframe anchor="0,0.000869751" next="0,0.000869751" previous="0,0.000869751" roving="0" timevalue="4000"/></Property><Property enabled="1" id="Scale_X" ignoreTimeMap="0" readonly="0" visible="1"><Keyframe anchor="0,100" next="0,100" previous="0,100" roving="0" timevalue="0"/><Keyframe anchor="0,99.9893" next="0,99.9893" previous="0,99.9893" roving="0" timevalue="4000"/></Property><Property enabled="1" id="Scale_Y" ignoreTimeMap="0" readonly="0" visible="1"><Keyframe anchor="0,100" next="0,100" previous="0,100" roving="0" timevalue="0"/><Keyframe anchor="0,100.04" next="0,100.04" previous="0,100.04" roving="0" timevalue="4000"/></Property></PropertyContainer><PropertyContainer id="Colors"/><PropertyContainer id="Filters"/></PropertyContainer></AnimationCore></motionObjectXML>
+                                   <elements>
+                                        <DOMSymbolInstance libraryItemName="Symbol 5">
+                                             <matrix>
+                                                  <Matrix tx="52.6" ty="43.75"/>
+                                             </matrix>
+                                             <transformationPoint>
+                                                  <Point x="219.85" y="219.85"/>
+                                             </transformationPoint>
+                                        </DOMSymbolInstance>
+                                   </elements>
+                              </DOMFrame>
+                         </frames>
+                    </DOMLayer>
+                    <DOMLayer name="reverse" color="#4FFFFF" parentLayerIndex="0" locked="true" autoNamed="false" animationType="motion object">
+                         <frames>
+                              <DOMFrame index="0" duration="24" tweenType="motion object" motionTweenRotate="none" motionTweenScale="false" isMotionObject="true" visibleAnimationKeyframes="2097151" keyMode="8195">
+                                   <motionObjectXML><AnimationCore TimeScale="24000" Version="1" duration="24000"><TimeMap strength="0" type="Quadratic"/><metadata><names><name langID="en_US" value=""/></names><Settings orientToPath="0" xformPtXOffsetPct="0.502416" xformPtYOffsetPct="0.500824" xformPtZOffsetPixels="0"/></metadata><PropertyContainer id="headContainer"><PropertyContainer id="Basic_Motion"><Property enabled="1" id="Motion_X" ignoreTimeMap="0" readonly="0" visible="1"><Keyframe anchor="0,0" next="0,0" previous="0,0" roving="0" timevalue="0"/><Keyframe anchor="0,29.3435" next="0,29.3435" previous="0,29.3435" roving="0" timevalue="1000"/><Keyframe anchor="0,71.537" next="0,71.537" previous="0,71.537" roving="0" timevalue="2000"/><Keyframe anchor="0,101.647" next="0,101.647" previous="0,101.647" roving="0" timevalue="3000"/><Keyframe anchor="0,120.957" next="0,120.957" previous="0,120.957" roving="0" timevalue="4000"/><Keyframe anchor="0,146.867" next="0,146.867" previous="0,146.867" roving="0" timevalue="5000"/><Keyframe anchor="0,403.55" next="0,403.55" previous="0,403.55" roving="0" timevalue="23000"/></Property><Property enabled="1" id="Motion_Y" ignoreTimeMap="0" readonly="0" visible="1"><Keyframe anchor="0,0" next="0,0" previous="0,0" roving="0" timevalue="0"/><Keyframe anchor="0,14.5" next="0,14.5" previous="0,14.5" roving="0" timevalue="1000"/><Keyframe anchor="0,103" next="0,103" previous="0,103" roving="0" timevalue="2000"/><Keyframe anchor="0,45.3667" next="0,45.3667" previous="0,45.3667" roving="0" timevalue="3000"/><Keyframe anchor="0,90.4833" next="0,90.4833" previous="0,90.4833" roving="0" timevalue="4000"/><Keyframe anchor="0,172.5" next="0,172.5" previous="0,172.5" roving="0" timevalue="5000"/><Keyframe anchor="0,340" next="0,340" previous="0,340" roving="0" timevalue="23000"/></Property><Property enabled="1" id="Rotation_Z" ignoreTimeMap="0" readonly="0" visible="1"><Keyframe anchor="0,68.1251" next="0,68.1251" previous="0,68.1251" roving="0" timevalue="0"/><Keyframe anchor="0,68.1251" next="0,68.1251" previous="0,68.1251" roving="0" timevalue="1000"/><Keyframe anchor="0,69.896" next="0,69.896" previous="0,69.896" roving="0" timevalue="2000"/><Keyframe anchor="0,74.9089" next="0,74.9089" previous="0,74.9089" roving="0" timevalue="3000"/><Keyframe anchor="0,74.1958" next="0,74.1958" previous="0,74.1958" roving="0" timevalue="4000"/></Property></PropertyContainer><PropertyContainer id="Transformation"><Property enabled="1" id="Skew_X" ignoreTimeMap="0" readonly="0" visible="1"><Keyframe anchor="0,0" next="0,0" previous="0,0" roving="0" timevalue="0"/></Property><Property enabled="1" id="Skew_Y" ignoreTimeMap="0" readonly="0" visible="1"><Keyframe anchor="0,0" next="0,0" previous="0,0" roving="0" timevalue="0"/></Property><Property enabled="1" id="Scale_X" ignoreTimeMap="0" readonly="0" visible="1"><Keyframe anchor="0,-98.9563" next="0,-98.9563" previous="0,-98.9563" roving="0" timevalue="0"/></Property><Property enabled="1" id="Scale_Y" ignoreTimeMap="0" readonly="0" visible="1"><Keyframe anchor="0,99.8367" next="0,99.8367" previous="0,99.8367" roving="0" timevalue="0"/></Property></PropertyContainer><PropertyContainer id="Colors"><PropertyContainer id="Tint_ColorXform"><Property enabled="1" id="Tint_Color" ignoreTimeMap="0" readonly="0" visible="1"><Keyframe roving="0" timevalue="0" value="0xffffffff"/></Property><Property enabled="1" id="Tint_Amount" ignoreTimeMap="0" readonly="0" visible="1"><Keyframe anchor="0,90" next="0,90" previous="0,90" roving="0" timevalue="0"/></Property></PropertyContainer></PropertyContainer><PropertyContainer id="Filters"/></PropertyContainer></AnimationCore></motionObjectXML>
+                                   <elements>
+                                        <DOMSymbolInstance libraryItemName="coupon" centerPoint3DX="55.45" centerPoint3DY="83.6">
+                                             <matrix>
+                                                  <Matrix a="-0.367202758789063" b="-0.917709350585938" c="-0.925857543945313" d="0.370468139648438" tx="55.95" ty="84.6"/>
+                                             </matrix>
+                                             <transformationPoint>
+                                                  <Point x="1.1" y="0.55"/>
+                                             </transformationPoint>
+                                             <color>
+                                                  <Color tintMultiplier="0.9" tintColor="#FFFFFF"/>
+                                             </color>
+                                        </DOMSymbolInstance>
+                                   </elements>
+                              </DOMFrame>
+                         </frames>
+                    </DOMLayer>
+                    <DOMLayer name="sticker" color="#FF800A" parentLayerIndex="0" locked="true" autoNamed="false" animationType="motion object">
+                         <frames>
+                              <DOMFrame index="0" duration="24" tweenType="motion object" motionTweenRotate="none" motionTweenScale="false" isMotionObject="true" visibleAnimationKeyframes="2097151" keyMode="8195">
+                                   <motionObjectXML><AnimationCore TimeScale="24000" Version="1" duration="24000"><TimeMap strength="0" type="Quadratic"/><metadata><names><name langID="en_US" value=""/></names><Settings orientToPath="0" xformPtXOffsetPct="0.499895" xformPtYOffsetPct="0.5" xformPtZOffsetPixels="0"/></metadata><PropertyContainer id="headContainer"><PropertyContainer id="Basic_Motion"><Property enabled="1" id="Motion_X" ignoreTimeMap="0" readonly="0" visible="1"><Keyframe anchor="0,0" next="0,0" previous="0,0" roving="0" timevalue="0"/><Keyframe anchor="0,6" next="0,6" previous="0,6" roving="0" timevalue="2000"/></Property><Property enabled="1" id="Motion_Y" ignoreTimeMap="0" readonly="0" visible="1"><Keyframe anchor="0,0" next="0,0" previous="0,0" roving="0" timevalue="0"/><Keyframe anchor="0,73" next="0,73" previous="0,73" roving="0" timevalue="2000"/></Property><Property enabled="1" id="Rotation_Z" ignoreTimeMap="0" readonly="0" visible="1"><Keyframe anchor="0,0" next="0,0" previous="0,0" roving="0" timevalue="0"/></Property></PropertyContainer><PropertyContainer id="Transformation"><Property enabled="1" id="Skew_X" ignoreTimeMap="0" readonly="0" visible="1"><Keyframe anchor="0,0" next="0,0" previous="0,0" roving="0" timevalue="0"/></Property><Property enabled="1" id="Skew_Y" ignoreTimeMap="0" readonly="0" visible="1"><Keyframe anchor="0,0" next="0,0" previous="0,0" roving="0" timevalue="0"/></Property><Property enabled="1" id="Scale_X" ignoreTimeMap="0" readonly="0" visible="1"><Keyframe anchor="0,100" next="0,100" previous="0,100" roving="0" timevalue="0"/></Property><Property enabled="1" id="Scale_Y" ignoreTimeMap="0" readonly="0" visible="1"><Keyframe anchor="0,100" next="0,100" previous="0,100" roving="0" timevalue="0"/></Property></PropertyContainer><PropertyContainer id="Colors"/><PropertyContainer id="Filters"/></PropertyContainer></AnimationCore></motionObjectXML>
+                                   <elements>
+                                        <DOMSymbolInstance libraryItemName="Symbol 3">
+                                             <matrix>
+                                                  <Matrix tx="143.5" ty="164.15"/>
+                                             </matrix>
+                                             <transformationPoint>
+                                                  <Point x="118.95" y="60.65"/>
+                                             </transformationPoint>
+                                        </DOMSymbolInstance>
+                                   </elements>
+                              </DOMFrame>
+                         </frames>
+                    </DOMLayer>
+                    <DOMLayer name="Layer 1" color="#4FFF4F" locked="true" current="true" isSelected="true">
+                         <frames>
+                              <DOMFrame index="0" duration="24" keyMode="9728">
+                                   <elements>
+                                        <DOMShape>
+                                             <fills>
+                                                  <FillStyle index="1">
+                                                       <SolidColor color="#CDE297"/>
+                                                  </FillStyle>
+                                             </fills>
+                                             <strokes>
+                                                  <StrokeStyle index="1">
+                                                       <SolidStroke scaleMode="normal">
+                                                            <fill>
+                                                                 <SolidColor color="#393130"/>
+                                                            </fill>
+                                                       </SolidStroke>
+                                                  </StrokeStyle>
+                                             </strokes>
+                                             <edges>
+                                                  <Edge fillStyle1="1" strokeStyle="1" edges="!12159 8259|-200 8259!-200 8259|-200 -100!-200 -100|12159 -100!12159 -100|12159 8259"/>
+                                             </edges>
+                                        </DOMShape>
+                                        <DOMSymbolInstance libraryItemName="gatorade" symbolType="graphic" loop="loop">
+                                             <matrix>
+                                                  <Matrix a="-0.451705932617188" d="0.448272705078125" tx="75.7" ty="286.8"/>
+                                             </matrix>
+                                             <transformationPoint>
+                                                  <Point x="0.45" y="0.45"/>
+                                             </transformationPoint>
+                                        </DOMSymbolInstance>
+                                        <DOMSymbolInstance libraryItemName="gatorade" symbolType="graphic" loop="loop">
+                                             <matrix>
+                                                  <Matrix a="0.448272705078125" d="0.448272705078125" tx="82.8" ty="315.8"/>
+                                             </matrix>
+                                             <transformationPoint>
+                                                  <Point x="0.45" y="0.45"/>
+                                             </transformationPoint>
+                                        </DOMSymbolInstance>
+                                        <DOMSymbolInstance libraryItemName="nuun1" symbolType="graphic" loop="loop">
+                                             <matrix>
+                                                  <Matrix a="0.199813842773438" d="0.199813842773438" tx="472.25" ty="334.2"/>
+                                             </matrix>
+                                             <transformationPoint>
+                                                  <Point x="0.5" y="0.5"/>
+                                             </transformationPoint>
+                                        </DOMSymbolInstance>
+                                        <DOMStaticText width="285.95" height="52.3" isSelectable="false">
+                                             <matrix>
+                                                  <Matrix tx="176" ty="121.5"/>
+                                             </matrix>
+                                             <textRuns>
+                                                  <DOMTextRun>
+                                                       <characters>For Here or To Go?</characters>
+                                                       <textAttrs>
+                                                            <DOMTextAttrs aliasText="false" size="27" bitmapSize="540" face="DokChampa" fillColor="#07375C"/>
+                                                       </textAttrs>
+                                                  </DOMTextRun>
+                                             </textRuns>
+                                        </DOMStaticText>
+                                   </elements>
+                              </DOMFrame>
+                         </frames>
+                    </DOMLayer>
+               </layers>
+          </DOMTimeline>
+     </timelines>
+     <swatchLists>
+          <swatchList>
+               <swatches>
+                    <SolidSwatchItem/>
+                    <SolidSwatchItem/>
+                    <SolidSwatchItem/>
+                    <SolidSwatchItem/>
+                    <SolidSwatchItem color="#003300" hue="80" saturation="239" brightness="24"/>
+                    <SolidSwatchItem color="#006600" hue="80" saturation="239" brightness="48"/>
+                    <SolidSwatchItem color="#009900" hue="80" saturation="239" brightness="72"/>
+                    <SolidSwatchItem color="#00CC00" hue="80" saturation="239" brightness="96"/>
+                    <SolidSwatchItem color="#00FF00" hue="80" saturation="239" brightness="120"/>
+                    <SolidSwatchItem color="#330000" saturation="239" brightness="24"/>
+                    <SolidSwatchItem color="#333300" hue="40" saturation="239" brightness="24"/>
+                    <SolidSwatchItem color="#336600" hue="60" saturation="239" brightness="48"/>
+                    <SolidSwatchItem color="#339900" hue="67" saturation="239" brightness="72"/>
+                    <SolidSwatchItem color="#33CC00" hue="70" saturation="239" brightness="96"/>
+                    <SolidSwatchItem color="#33FF00" hue="72" saturation="239" brightness="120"/>
+                    <SolidSwatchItem color="#660000" saturation="239" brightness="48"/>
+                    <SolidSwatchItem color="#663300" hue="20" saturation="239" brightness="48"/>
+                    <SolidSwatchItem color="#666600" hue="40" saturation="239" brightness="48"/>
+                    <SolidSwatchItem color="#669900" hue="53" saturation="239" brightness="72"/>
+                    <SolidSwatchItem color="#66CC00" hue="60" saturation="239" brightness="96"/>
+                    <SolidSwatchItem color="#66FF00" hue="64" saturation="239" brightness="120"/>
+                    <SolidSwatchItem/>
+                    <SolidSwatchItem color="#333333" brightness="48"/>
+                    <SolidSwatchItem/>
+                    <SolidSwatchItem color="#000033" hue="160" saturation="239" brightness="24"/>
+                    <SolidSwatchItem color="#003333" hue="120" saturation="239" brightness="24"/>
+                    <SolidSwatchItem color="#006633" hue="100" saturation="239" brightness="48"/>
+                    <SolidSwatchItem color="#009933" hue="93" saturation="239" brightness="72"/>
+                    <SolidSwatchItem color="#00CC33" hue="90" saturation="239" brightness="96"/>
+                    <SolidSwatchItem color="#00FF33" hue="88" saturation="239" brightness="120"/>
+                    <SolidSwatchItem color="#330033" hue="200" saturation="239" brightness="24"/>
+                    <SolidSwatchItem color="#333333" brightness="48"/>
+                    <SolidSwatchItem color="#336633" hue="80" saturation="80" brightness="72"/>
+                    <SolidSwatchItem color="#339933" hue="80" saturation="120" brightness="96"/>
+                    <SolidSwatchItem color="#33CC33" hue="80" saturation="144" brightness="120"/>
+                    <SolidSwatchItem color="#33FF33" hue="80" saturation="239" brightness="144"/>
+                    <SolidSwatchItem color="#660033" hue="220" saturation="239" brightness="48"/>
+                    <SolidSwatchItem color="#663333" saturation="80" brightness="72"/>
+                    <SolidSwatchItem color="#666633" hue="40" saturation="80" brightness="72"/>
+                    <SolidSwatchItem color="#669933" hue="60" saturation="120" brightness="96"/>
+                    <SolidSwatchItem color="#66CC33" hue="67" saturation="144" brightness="120"/>
+                    <SolidSwatchItem color="#66FF33" hue="70" saturation="239" brightness="144"/>
+                    <SolidSwatchItem/>
+                    <SolidSwatchItem color="#666666" brightness="96"/>
+                    <SolidSwatchItem/>
+                    <SolidSwatchItem color="#000066" hue="160" saturation="239" brightness="48"/>
+                    <SolidSwatchItem color="#003366" hue="140" saturation="239" brightness="48"/>
+                    <SolidSwatchItem color="#006666" hue="120" saturation="239" brightness="48"/>
+                    <SolidSwatchItem color="#009966" hue="107" saturation="239" brightness="72"/>
+                    <SolidSwatchItem color="#00CC66" hue="100" saturation="239" brightness="96"/>
+                    <SolidSwatchItem color="#00FF66" hue="96" saturation="239" brightness="120"/>
+                    <SolidSwatchItem color="#330066" hue="180" saturation="239" brightness="48"/>
+                    <SolidSwatchItem color="#333366" hue="160" saturation="80" brightness="72"/>
+                    <SolidSwatchItem color="#336666" hue="120" saturation="80" brightness="72"/>
+                    <SolidSwatchItem color="#339966" hue="100" saturation="120" brightness="96"/>
+                    <SolidSwatchItem color="#33CC66" hue="93" saturation="144" brightness="120"/>
+                    <SolidSwatchItem color="#33FF66" hue="90" saturation="239" brightness="144"/>
+                    <SolidSwatchItem color="#660066" hue="200" saturation="239" brightness="48"/>
+                    <SolidSwatchItem color="#663366" hue="200" saturation="80" brightness="72"/>
+                    <SolidSwatchItem color="#666666" brightness="96"/>
+                    <SolidSwatchItem color="#669966" hue="80" saturation="48" brightness="120"/>
+                    <SolidSwatchItem color="#66CC66" hue="80" saturation="120" brightness="144"/>
+                    <SolidSwatchItem color="#66FF66" hue="80" saturation="239" brightness="168"/>
+                    <SolidSwatchItem/>
+                    <SolidSwatchItem color="#999999" brightness="144"/>
+                    <SolidSwatchItem/>
+                    <SolidSwatchItem color="#000099" hue="160" saturation="239" brightness="72"/>
+                    <SolidSwatchItem color="#003399" hue="147" saturation="239" brightness="72"/>
+                    <SolidSwatchItem color="#006699" hue="133" saturation="239" brightness="72"/>
+                    <SolidSwatchItem color="#009999" hue="120" saturation="239" brightness="72"/>
+                    <SolidSwatchItem color="#00CC99" hue="110" saturation="239" brightness="96"/>
+                    <SolidSwatchItem color="#00FF99" hue="104" saturation="239" brightness="120"/>
+                    <SolidSwatchItem color="#330099" hue="173" saturation="239" brightness="72"/>
+                    <SolidSwatchItem color="#333399" hue="160" saturation="120" brightness="96"/>
+                    <SolidSwatchItem color="#336699" hue="140" saturation="120" brightness="96"/>
+                    <SolidSwatchItem color="#339999" hue="120" saturation="120" brightness="96"/>
+                    <SolidSwatchItem color="#33CC99" hue="107" saturation="144" brightness="120"/>
+                    <SolidSwatchItem color="#33FF99" hue="100" saturation="239" brightness="144"/>
+                    <SolidSwatchItem color="#660099" hue="187" saturation="239" brightness="72"/>
+                    <SolidSwatchItem color="#663399" hue="180" saturation="120" brightness="96"/>
+                    <SolidSwatchItem color="#666699" hue="160" saturation="48" brightness="120"/>
+                    <SolidSwatchItem color="#669999" hue="120" saturation="48" brightness="120"/>
+                    <SolidSwatchItem color="#66CC99" hue="100" saturation="120" brightness="144"/>
+                    <SolidSwatchItem color="#66FF99" hue="93" saturation="239" brightness="168"/>
+                    <SolidSwatchItem/>
+                    <SolidSwatchItem color="#CCCCCC" brightness="192"/>
+                    <SolidSwatchItem/>
+                    <SolidSwatchItem color="#0000CC" hue="160" saturation="239" brightness="96"/>
+                    <SolidSwatchItem color="#0033CC" hue="150" saturation="239" brightness="96"/>
+                    <SolidSwatchItem color="#0066CC" hue="140" saturation="239" brightness="96"/>
+                    <SolidSwatchItem color="#0099CC" hue="130" saturation="239" brightness="96"/>
+                    <SolidSwatchItem color="#00CCCC" hue="120" saturation="239" brightness="96"/>
+                    <SolidSwatchItem color="#00FFCC" hue="112" saturation="239" brightness="120"/>
+                    <SolidSwatchItem color="#3300CC" hue="170" saturation="239" brightness="96"/>
+                    <SolidSwatchItem color="#3333CC" hue="160" saturation="144" brightness="120"/>
+                    <SolidSwatchItem color="#3366CC" hue="147" saturation="144" brightness="120"/>
+                    <SolidSwatchItem color="#3399CC" hue="133" saturation="144" brightness="120"/>
+                    <SolidSwatchItem color="#33CCCC" hue="120" saturation="144" brightness="120"/>
+                    <SolidSwatchItem color="#33FFCC" hue="110" saturation="239" brightness="144"/>
+                    <SolidSwatchItem color="#6600CC" hue="180" saturation="239" brightness="96"/>
+                    <SolidSwatchItem color="#6633CC" hue="173" saturation="144" brightness="120"/>
+                    <SolidSwatchItem color="#6666CC" hue="160" saturation="120" brightness="144"/>
+                    <SolidSwatchItem color="#6699CC" hue="140" saturation="120" brightness="144"/>
+                    <SolidSwatchItem color="#66CCCC" hue="120" saturation="120" brightness="144"/>
+                    <SolidSwatchItem color="#66FFCC" hue="107" saturation="239" brightness="168"/>
+                    <SolidSwatchItem/>
+                    <SolidSwatchItem color="#FFFFFF" brightness="240"/>
+                    <SolidSwatchItem/>
+                    <SolidSwatchItem color="#0000FF" hue="160" saturation="239" brightness="120"/>
+                    <SolidSwatchItem color="#0033FF" hue="152" saturation="239" brightness="120"/>
+                    <SolidSwatchItem color="#0066FF" hue="144" saturation="239" brightness="120"/>
+                    <SolidSwatchItem color="#0099FF" hue="136" saturation="239" brightness="120"/>
+                    <SolidSwatchItem color="#00CCFF" hue="128" saturation="239" brightness="120"/>
+                    <SolidSwatchItem color="#00FFFF" hue="120" saturation="239" brightness="120"/>
+                    <SolidSwatchItem color="#3300FF" hue="168" saturation="239" brightness="120"/>
+                    <SolidSwatchItem color="#3333FF" hue="160" saturation="239" brightness="144"/>
+                    <SolidSwatchItem color="#3366FF" hue="150" saturation="239" brightness="144"/>
+                    <SolidSwatchItem color="#3399FF" hue="140" saturation="239" brightness="144"/>
+                    <SolidSwatchItem color="#33CCFF" hue="130" saturation="239" brightness="144"/>
+                    <SolidSwatchItem color="#33FFFF" hue="120" saturation="239" brightness="144"/>
+                    <SolidSwatchItem color="#6600FF" hue="176" saturation="239" brightness="120"/>
+                    <SolidSwatchItem color="#6633FF" hue="170" saturation="239" brightness="144"/>
+                    <SolidSwatchItem color="#6666FF" hue="160" saturation="239" brightness="168"/>
+                    <SolidSwatchItem color="#6699FF" hue="147" saturation="239" brightness="168"/>
+                    <SolidSwatchItem color="#66CCFF" hue="133" saturation="239" brightness="168"/>
+                    <SolidSwatchItem color="#66FFFF" hue="120" saturation="239" brightness="168"/>
+                    <SolidSwatchItem/>
+                    <SolidSwatchItem color="#FF0000" saturation="239" brightness="120"/>
+                    <SolidSwatchItem/>
+                    <SolidSwatchItem color="#990000" saturation="239" brightness="72"/>
+                    <SolidSwatchItem color="#993300" hue="13" saturation="239" brightness="72"/>
+                    <SolidSwatchItem color="#996600" hue="27" saturation="239" brightness="72"/>
+                    <SolidSwatchItem color="#999900" hue="40" saturation="239" brightness="72"/>
+                    <SolidSwatchItem color="#99CC00" hue="50" saturation="239" brightness="96"/>
+                    <SolidSwatchItem color="#99FF00" hue="56" saturation="239" brightness="120"/>
+                    <SolidSwatchItem color="#CC0000" saturation="239" brightness="96"/>
+                    <SolidSwatchItem color="#CC3300" hue="10" saturation="239" brightness="96"/>
+                    <SolidSwatchItem color="#CC6600" hue="20" saturation="239" brightness="96"/>
+                    <SolidSwatchItem color="#CC9900" hue="30" saturation="239" brightness="96"/>
+                    <SolidSwatchItem color="#CCCC00" hue="40" saturation="239" brightness="96"/>
+                    <SolidSwatchItem color="#CCFF00" hue="48" saturation="239" brightness="120"/>
+                    <SolidSwatchItem color="#FF0000" saturation="239" brightness="120"/>
+                    <SolidSwatchItem color="#FF3300" hue="8" saturation="239" brightness="120"/>
+                    <SolidSwatchItem color="#FF6600" hue="16" saturation="239" brightness="120"/>
+                    <SolidSwatchItem color="#FF9900" hue="24" saturation="239" brightness="120"/>
+                    <SolidSwatchItem color="#FFCC00" hue="32" saturation="239" brightness="120"/>
+                    <SolidSwatchItem color="#FFFF00" hue="40" saturation="239" brightness="120"/>
+                    <SolidSwatchItem/>
+                    <SolidSwatchItem color="#00FF00" hue="80" saturation="239" brightness="120"/>
+                    <SolidSwatchItem/>
+                    <SolidSwatchItem color="#990033" hue="227" saturation="239" brightness="72"/>
+                    <SolidSwatchItem color="#993333" saturation="120" brightness="96"/>
+                    <SolidSwatchItem color="#996633" hue="20" saturation="120" brightness="96"/>
+                    <SolidSwatchItem color="#999933" hue="40" saturation="120" brightness="96"/>
+                    <SolidSwatchItem color="#99CC33" hue="53" saturation="144" brightness="120"/>
+                    <SolidSwatchItem color="#99FF33" hue="60" saturation="239" brightness="144"/>
+                    <SolidSwatchItem color="#CC0033" hue="230" saturation="239" brightness="96"/>
+                    <SolidSwatchItem color="#CC3333" saturation="144" brightness="120"/>
+                    <SolidSwatchItem color="#CC6633" hue="13" saturation="144" brightness="120"/>
+                    <SolidSwatchItem color="#CC9933" hue="27" saturation="144" brightness="120"/>
+                    <SolidSwatchItem color="#CCCC33" hue="40" saturation="144" brightness="120"/>
+                    <SolidSwatchItem color="#CCFF33" hue="50" saturation="239" brightness="144"/>
+                    <SolidSwatchItem color="#FF0033" hue="232" saturation="239" brightness="120"/>
+                    <SolidSwatchItem color="#FF3333" saturation="239" brightness="144"/>
+                    <SolidSwatchItem color="#FF6633" hue="10" saturation="239" brightness="144"/>
+                    <SolidSwatchItem color="#FF9933" hue="20" saturation="239" brightness="144"/>
+                    <SolidSwatchItem color="#FFCC33" hue="30" saturation="239" brightness="144"/>
+                    <SolidSwatchItem color="#FFFF33" hue="40" saturation="239" brightness="144"/>
+                    <SolidSwatchItem/>
+                    <SolidSwatchItem color="#0000FF" hue="160" saturation="239" brightness="120"/>
+                    <SolidSwatchItem/>
+                    <SolidSwatchItem color="#990066" hue="213" saturation="239" brightness="72"/>
+                    <SolidSwatchItem color="#993366" hue="220" saturation="120" brightness="96"/>
+                    <SolidSwatchItem color="#996666" saturation="48" brightness="120"/>
+                    <SolidSwatchItem color="#999966" hue="40" saturation="48" brightness="120"/>
+                    <SolidSwatchItem color="#99CC66" hue="60" saturation="120" brightness="144"/>
+                    <SolidSwatchItem color="#99FF66" hue="67" saturation="239" brightness="168"/>
+                    <SolidSwatchItem color="#CC0066" hue="220" saturation="239" brightness="96"/>
+                    <SolidSwatchItem color="#CC3366" hue="227" saturation="144" brightness="120"/>
+                    <SolidSwatchItem color="#CC6666" saturation="120" brightness="144"/>
+                    <SolidSwatchItem color="#CC9966" hue="20" saturation="120" brightness="144"/>
+                    <SolidSwatchItem color="#CCCC66" hue="40" saturation="120" brightness="144"/>
+                    <SolidSwatchItem color="#CCFF66" hue="53" saturation="239" brightness="168"/>
+                    <SolidSwatchItem color="#FF0066" hue="224" saturation="239" brightness="120"/>
+                    <SolidSwatchItem color="#FF3366" hue="230" saturation="239" brightness="144"/>
+                    <SolidSwatchItem color="#FF6666" saturation="239" brightness="168"/>
+                    <SolidSwatchItem color="#FF9966" hue="13" saturation="239" brightness="168"/>
+                    <SolidSwatchItem color="#FFCC66" hue="27" saturation="239" brightness="168"/>
+                    <SolidSwatchItem color="#FFFF66" hue="40" saturation="239" brightness="168"/>
+                    <SolidSwatchItem/>
+                    <SolidSwatchItem color="#FFFF00" hue="40" saturation="239" brightness="120"/>
+                    <SolidSwatchItem/>
+                    <SolidSwatchItem color="#990099" hue="200" saturation="239" brightness="72"/>
+                    <SolidSwatchItem color="#993399" hue="200" saturation="120" brightness="96"/>
+                    <SolidSwatchItem color="#996699" hue="200" saturation="48" brightness="120"/>
+                    <SolidSwatchItem color="#999999" brightness="144"/>
+                    <SolidSwatchItem color="#99CC99" hue="80" saturation="80" brightness="168"/>
+                    <SolidSwatchItem color="#99FF99" hue="80" saturation="239" brightness="192"/>
+                    <SolidSwatchItem color="#CC0099" hue="210" saturation="239" brightness="96"/>
+                    <SolidSwatchItem color="#CC3399" hue="213" saturation="144" brightness="120"/>
+                    <SolidSwatchItem color="#CC6699" hue="220" saturation="120" brightness="144"/>
+                    <SolidSwatchItem color="#CC9999" saturation="80" brightness="168"/>
+                    <SolidSwatchItem color="#CCCC99" hue="40" saturation="80" brightness="168"/>
+                    <SolidSwatchItem color="#CCFF99" hue="60" saturation="239" brightness="192"/>
+                    <SolidSwatchItem color="#FF0099" hue="216" saturation="239" brightness="120"/>
+                    <SolidSwatchItem color="#FF3399" hue="220" saturation="239" brightness="144"/>
+                    <SolidSwatchItem color="#FF6699" hue="227" saturation="239" brightness="168"/>
+                    <SolidSwatchItem color="#FF9999" saturation="239" brightness="192"/>
+                    <SolidSwatchItem color="#FFCC99" hue="20" saturation="239" brightness="192"/>
+                    <SolidSwatchItem color="#FFFF99" hue="40" saturation="239" brightness="192"/>
+                    <SolidSwatchItem/>
+                    <SolidSwatchItem color="#00FFFF" hue="120" saturation="239" brightness="120"/>
+                    <SolidSwatchItem/>
+                    <SolidSwatchItem color="#9900CC" hue="190" saturation="239" brightness="96"/>
+                    <SolidSwatchItem color="#9933CC" hue="187" saturation="144" brightness="120"/>
+                    <SolidSwatchItem color="#9966CC" hue="180" saturation="120" brightness="144"/>
+                    <SolidSwatchItem color="#9999CC" hue="160" saturation="80" brightness="168"/>
+                    <SolidSwatchItem color="#99CCCC" hue="120" saturation="80" brightness="168"/>
+                    <SolidSwatchItem color="#99FFCC" hue="100" saturation="239" brightness="192"/>
+                    <SolidSwatchItem color="#CC00CC" hue="200" saturation="239" brightness="96"/>
+                    <SolidSwatchItem color="#CC33CC" hue="200" saturation="144" brightness="120"/>
+                    <SolidSwatchItem color="#CC66CC" hue="200" saturation="120" brightness="144"/>
+                    <SolidSwatchItem color="#CC99CC" hue="200" saturation="80" brightness="168"/>
+                    <SolidSwatchItem color="#CCCCCC" brightness="192"/>
+                    <SolidSwatchItem color="#CCFFCC" hue="80" saturation="239" brightness="216"/>
+                    <SolidSwatchItem color="#FF00CC" hue="208" saturation="239" brightness="120"/>
+                    <SolidSwatchItem color="#FF33CC" hue="210" saturation="239" brightness="144"/>
+                    <SolidSwatchItem color="#FF66CC" hue="213" saturation="239" brightness="168"/>
+                    <SolidSwatchItem color="#FF99CC" hue="220" saturation="239" brightness="192"/>
+                    <SolidSwatchItem color="#FFCCCC" saturation="239" brightness="216"/>
+                    <SolidSwatchItem color="#FFFFCC" hue="40" saturation="239" brightness="216"/>
+                    <SolidSwatchItem/>
+                    <SolidSwatchItem color="#FF00FF" hue="200" saturation="239" brightness="120"/>
+                    <SolidSwatchItem/>
+                    <SolidSwatchItem color="#9900FF" hue="184" saturation="239" brightness="120"/>
+                    <SolidSwatchItem color="#9933FF" hue="180" saturation="239" brightness="144"/>
+                    <SolidSwatchItem color="#9966FF" hue="173" saturation="239" brightness="168"/>
+                    <SolidSwatchItem color="#9999FF" hue="160" saturation="239" brightness="192"/>
+                    <SolidSwatchItem color="#99CCFF" hue="140" saturation="239" brightness="192"/>
+                    <SolidSwatchItem color="#99FFFF" hue="120" saturation="239" brightness="192"/>
+                    <SolidSwatchItem color="#CC00FF" hue="192" saturation="239" brightness="120"/>
+                    <SolidSwatchItem color="#CC33FF" hue="190" saturation="239" brightness="144"/>
+                    <SolidSwatchItem color="#CC66FF" hue="187" saturation="239" brightness="168"/>
+                    <SolidSwatchItem color="#CC99FF" hue="180" saturation="239" brightness="192"/>
+                    <SolidSwatchItem color="#CCCCFF" hue="160" saturation="239" brightness="216"/>
+                    <SolidSwatchItem color="#CCFFFF" hue="120" saturation="239" brightness="216"/>
+                    <SolidSwatchItem color="#FF00FF" hue="200" saturation="239" brightness="120"/>
+                    <SolidSwatchItem color="#FF33FF" hue="200" saturation="239" brightness="144"/>
+                    <SolidSwatchItem color="#FF66FF" hue="200" saturation="239" brightness="168"/>
+                    <SolidSwatchItem color="#FF99FF" hue="200" saturation="239" brightness="192"/>
+                    <SolidSwatchItem color="#FFCCFF" hue="200" saturation="239" brightness="216"/>
+                    <SolidSwatchItem color="#FFFFFF" brightness="240"/>
+                    <SolidSwatchItem color="#CDE297" hue="51" saturation="136" brightness="178"/>
+               </swatches>
+          </swatchList>
+     </swatchLists>
+     <extendedSwatchLists>
+          <swatchList>
+               <swatches>
+                    <LinearGradientSwatchItem>
+                         <GradientEntry color="#FFFFFF" ratio="0"/>
+                         <GradientEntry ratio="1"/>
+                    </LinearGradientSwatchItem>
+                    <RadialGradientSwatchItem>
+                         <GradientEntry color="#FFFFFF" ratio="0"/>
+                         <GradientEntry ratio="1"/>
+                    </RadialGradientSwatchItem>
+                    <RadialGradientSwatchItem>
+                         <GradientEntry color="#FF0000" ratio="0"/>
+                         <GradientEntry ratio="1"/>
+                    </RadialGradientSwatchItem>
+                    <RadialGradientSwatchItem>
+                         <GradientEntry color="#00FF00" ratio="0"/>
+                         <GradientEntry ratio="1"/>
+                    </RadialGradientSwatchItem>
+                    <RadialGradientSwatchItem>
+                         <GradientEntry color="#0000FF" ratio="0"/>
+                         <GradientEntry ratio="1"/>
+                    </RadialGradientSwatchItem>
+                    <LinearGradientSwatchItem>
+                         <GradientEntry color="#0066FD" ratio="0"/>
+                         <GradientEntry color="#FFFFFF" ratio="0.376470588235294"/>
+                         <GradientEntry color="#FFFFFF" ratio="0.47843137254902"/>
+                         <GradientEntry color="#996600" ratio="0.501960784313725"/>
+                         <GradientEntry color="#FFCC00" ratio="0.666666666666667"/>
+                         <GradientEntry color="#FFFFFF" ratio="1"/>
+                    </LinearGradientSwatchItem>
+                    <LinearGradientSwatchItem>
+                         <GradientEntry color="#FF0000" ratio="0"/>
+                         <GradientEntry color="#FFFF00" ratio="0.164705882352941"/>
+                         <GradientEntry color="#00FF00" ratio="0.364705882352941"/>
+                         <GradientEntry color="#00FFFF" ratio="0.498039215686275"/>
+                         <GradientEntry color="#0000FF" ratio="0.666666666666667"/>
+                         <GradientEntry color="#FF00FF" ratio="0.831372549019608"/>
+                         <GradientEntry color="#FF0000" ratio="1"/>
+                    </LinearGradientSwatchItem>
+               </swatches>
+          </swatchList>
+     </extendedSwatchLists>
+     <PrinterSettings/>
+     <publishHistory/>
+</DOMDocument>

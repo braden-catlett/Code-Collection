@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="GraphPanelControl">
+</Property><Property Name="Solution File" Value="C:\Users\ptucker\Desktop\Dr. Chaney Version\GraphPanelControl.sln">
+</Property><Property Name="User Options File" Value="C:\Users\ptucker\Desktop\Dr. Chaney Version\GraphPanelControl.suo">
+</Property><Property Name="Date" Value="Tuesday, February 22, 2011">
+</Property><Property Name="Time" Value="13:15 PM">
+</Property></Properties><Event ErrorLevel="0" Project="" Source="GraphPanelControl.sln" Description="File successfully backed up as C:\Users\ptucker\Desktop\Dr. Chaney Version\Backup\GraphPanelControl.sln">
+</Event><Event ErrorLevel="0" Project="" Source="GraphPanelControl.suo" Description="File successfully backed up as C:\Users\ptucker\Desktop\Dr. Chaney Version\Backup\GraphPanelControl.suo">
+</Event><Event ErrorLevel="0" Project="GraphPanelControl" Source="GraphPanelControl.csproj" Description="Project file successfully backed up as C:\Users\ptucker\Desktop\Dr. Chaney Version\Backup\GraphPanelControl.csproj">
+</Event><Event ErrorLevel="0" Project="GraphPanelControl" Source="GraphPanelControl.csproj.user" Description="Project user file successfully backed up as C:\Users\ptucker\Desktop\Dr. Chaney Version\Backup\GraphPanelControl.csproj.user">
+</Event><Event ErrorLevel="0" Project="GraphPanelControl" Source="ArrowItem.cs" Description="File successfully backed up as C:\Users\ptucker\Desktop\Dr. Chaney Version\Backup\ArrowItem.cs">
+</Event><Event ErrorLevel="0" Project="GraphPanelControl" Source="AssemblyInfo.cs" Description="File successfully backed up as C:\Users\ptucker\Desktop\Dr. Chaney Version\Backup\AssemblyInfo.cs">
+</Event><Event ErrorLevel="0" Project="GraphPanelControl" Source="Axis.cs" Description="File successfully backed up as C:\Users\ptucker\Desktop\Dr. Chaney Version\Backup\Axis.cs">
+</Event><Event ErrorLevel="0" Project="GraphPanelControl" Source="Bar.cs" Description="File successfully backed up as C:\Users\ptucker\Desktop\Dr. Chaney Version\Backup\Bar.cs">
+</Event><Event ErrorLevel="0" Project="GraphPanelControl" Source="BarItem.cs" Description="File successfully backed up as C:\Users\ptucker\Desktop\Dr. Chaney Version\Backup\BarItem.cs">
+</Event><Event ErrorLevel="0" Project="GraphPanelControl" Source="Border.cs" Description="File successfully backed up as C:\Users\ptucker\Desktop\Dr. Chaney Version\Backup\Border.cs">
+</Event><Event ErrorLevel="0" Project="GraphPanelControl" Source="BoxItem.cs" Description="File successfully backed up as C:\Users\ptucker\Desktop\Dr. Chaney Version\Backup\BoxItem.cs">
+</Event><Event ErrorLevel="0" Project="GraphPanelControl" Source="CollectionPlus.cs" Description="File successfully backed up as C:\Users\ptucker\Desktop\Dr. Chaney Version\Backup\CollectionPlus.cs">
+</Event><Event ErrorLevel="0" Project="GraphPanelControl" Source="ColorSymbolRotator.cs" Description="File successfully backed up as C:\Users\ptucker\Desktop\Dr. Chaney Version\Backup\ColorSymbolRotator.cs">
+</Event><Event ErrorLevel="0" Project="GraphPanelControl" Source="CurveItem.cs" Description="File successfully backed up as C:\Users\ptucker\Desktop\Dr. Chaney Version\Backup\CurveItem.cs">
+</Event><Event ErrorLevel="0" Project="GraphPanelControl" Source="CurveList.cs" Description="File successfully backed up as C:\Users\ptucker\Desktop\Dr. Chaney Version\Backup\CurveList.cs">
+</Event><Event ErrorLevel="0" Project="GraphPanelControl" Source="EllipseItem.cs" Description="File successfully backed up as C:\Users\ptucker\Desktop\Dr. Chaney Version\Backup\EllipseItem.cs">
+</Event><Event ErrorLevel="0" Project="GraphPanelControl" Source="ErrorBar.cs" Description="File successfully backed up as C:\Users\ptucker\Desktop\Dr. Chaney Version\Backup\ErrorBar.cs">
+</Event><Event ErrorLevel="0" Project="GraphPanelControl" Source="ErrorBarItem.cs" Description="File successfully backed up as C:\Users\ptucker\Desktop\Dr. Chaney Version\Backup\ErrorBarItem.cs">
+</Event><Event ErrorLevel="0" Project="GraphPanelControl" Source="Fill.cs" Description="File successfully backed up as C:\Users\ptucker\Desktop\Dr. Chaney Version\Backup\Fill.cs">
+</Event><Event ErrorLevel="0" Project="GraphPanelControl" Source="FontSpec.cs" Description="File successfully backed up as C:\Users\ptucker\Desktop\Dr. Chaney Version\Backup\FontSpec.cs">
+</Event><Event ErrorLevel="0" Project="GraphPanelControl" Source="GraphForm.cs" Description="File successfully backed up as C:\Users\ptucker\Desktop\Dr. Chaney Version\Backup\GraphForm.cs">
+</Event><Event ErrorLevel="0" Project="GraphPanelControl" Source="GraphItem.cs" Description="File successfully backed up as C:\Users\ptucker\Desktop\Dr. Chaney Version\Backup\GraphItem.cs">
+</Event><Event ErrorLevel="0" Project="GraphPanelControl" Source="GraphItemList.cs" Description="File successfully backed up as C:\Users\ptucker\Desktop\Dr. Chaney Version\Backup\GraphItemList.cs">
+</Event><Event ErrorLevel="0" Project="GraphPanelControl" Source="GraphPane.cs" Description="File successfully backed up as C:\Users\ptucker\Desktop\Dr. Chaney Version\Backup\GraphPane.cs">
+</Event><Event ErrorLevel="0" Project="GraphPanelControl" Source="GraphPanel.cs" Description="File successfully backed up as C:\Users\ptucker\Desktop\Dr. Chaney Version\Backup\GraphPanel.cs">
+</Event><Event ErrorLevel="0" Project="GraphPanelControl" Source="HiLowBar.cs" Description="File successfully backed up as C:\Users\ptucker\Desktop\Dr. Chaney Version\Backup\HiLowBar.cs">
+</Event><Event ErrorLevel="0" Project="GraphPanelControl" Source="HiLowBarItem.cs" Description="File successfully backed up as C:\Users\ptucker\Desktop\Dr. Chaney Version\Backup\HiLowBarItem.cs">
+</Event><Event ErrorLevel="0" Project="GraphPanelControl" Source="ImageItem.cs" Description="File successfully backed up as C:\Users\ptucker\Desktop\Dr. Chaney Version\Backup\ImageItem.cs">
+</Event><Event ErrorLevel="0" Project="GraphPanelControl" Source="Legend.cs" Description="File successfully backed up as C:\Users\ptucker\Desktop\Dr. Chaney Version\Backup\Legend.cs">
+</Event><Event ErrorLevel="0" Project="GraphPanelControl" Source="Line.cs" Description="File successfully backed up as C:\Users\ptucker\Desktop\Dr. Chaney Version\Backup\Line.cs">
+</Event><Event ErrorLevel="0" Project="GraphPanelControl" Source="LineItem.cs" Description="File successfully backed up as C:\Users\ptucker\Desktop\Dr. Chaney Version\Backup\LineItem.cs">
+</Event><Event ErrorLevel="0" Project="GraphPanelControl" Source="Location.cs" Description="File successfully backed up as C:\Users\ptucker\Desktop\Dr. Chaney Version\Backup\Location.cs">
+</Event><Event ErrorLevel="0" Project="GraphPanelControl" Source="Main.cs" Description="File successfully backed up as C:\Users\ptucker\Desktop\Dr. Chaney Version\Backup\Main.cs">
+</Event><Event ErrorLevel="0" Project="GraphPanelControl" Source="MasterPane.cs" Description="File successfully backed up as C:\Users\ptucker\Desktop\Dr. Chaney Version\Backup\MasterPane.cs">
+</Event><Event ErrorLevel="0" Project="GraphPanelControl" Source="PaneBase.cs" Description="File successfully backed up as C:\Users\ptucker\Desktop\Dr. Chaney Version\Backup\PaneBase.cs">
+</Event><Event ErrorLevel="0" Project="GraphPanelControl" Source="PaneList.cs" Description="File successfully backed up as C:\Users\ptucker\Desktop\Dr. Chaney Version\Backup\PaneList.cs">
+</Event><Event ErrorLevel="0" Project="GraphPanelControl" Source="PieItem.cs" Description="File successfully backed up as C:\Users\ptucker\Desktop\Dr. Chaney Version\Backup\PieItem.cs">
+</Event><Event ErrorLevel="0" Project="GraphPanelControl" Source="PointPair.cs" Description="File successfully backed up as C:\Users\ptucker\Desktop\Dr. Chaney Version\Backup\PointPair.cs">
+</Event><Event ErrorLevel="0" Project="GraphPanelControl" Source="PointPairList.cs" Description="File successfully backed up as C:\Users\ptucker\Desktop\Dr. Chaney Version\Backup\PointPairList.cs">
+</Event><Event ErrorLevel="0" Project="GraphPanelControl" Source="SlideText.cs" Description="File successfully backed up as C:\Users\ptucker\Desktop\Dr. Chaney Version\Backup\SlideText.cs">
+</Event><Event ErrorLevel="0" Project="GraphPanelControl" Source="Symbol.cs" Description="File successfully backed up as C:\Users\ptucker\Desktop\Dr. Chaney Version\Backup\Symbol.cs">
+</Event><Event ErrorLevel="0" Project="GraphPanelControl" Source="TextItem.cs" Description="File successfully backed up as C:\Users\ptucker\Desktop\Dr. Chaney Version\Backup\TextItem.cs">
+</Event><Event ErrorLevel="0" Project="GraphPanelControl" Source="Types.cs" Description="File successfully backed up as C:\Users\ptucker\Desktop\Dr. Chaney Version\Backup\Types.cs">
+</Event><Event ErrorLevel="0" Project="GraphPanelControl" Source="ValueHandler.cs" Description="File successfully backed up as C:\Users\ptucker\Desktop\Dr. Chaney Version\Backup\ValueHandler.cs">
+</Event><Event ErrorLevel="0" Project="GraphPanelControl" Source="XAxis.cs" Description="File successfully backed up as C:\Users\ptucker\Desktop\Dr. Chaney Version\Backup\XAxis.cs">
+</Event><Event ErrorLevel="0" Project="GraphPanelControl" Source="XDate.cs" Description="File successfully backed up as C:\Users\ptucker\Desktop\Dr. Chaney Version\Backup\XDate.cs">
+</Event><Event ErrorLevel="0" Project="GraphPanelControl" Source="Y2Axis.cs" Description="File successfully backed up as C:\Users\ptucker\Desktop\Dr. Chaney Version\Backup\Y2Axis.cs">
+</Event><Event ErrorLevel="0" Project="GraphPanelControl" Source="YAxis.cs" Description="File successfully backed up as C:\Users\ptucker\Desktop\Dr. Chaney Version\Backup\YAxis.cs">
+</Event><Event ErrorLevel="0" Project="GraphPanelControl" Source="ZedGraphControl.cs" Description="File successfully backed up as C:\Users\ptucker\Desktop\Dr. Chaney Version\Backup\ZedGraphControl.cs">
+</Event><Event ErrorLevel="0" Project="GraphPanelControl" Source="ZedGraphException.cs" Description="File successfully backed up as C:\Users\ptucker\Desktop\Dr. Chaney Version\Backup\ZedGraphException.cs">
+</Event><Event ErrorLevel="0" Project="GraphPanelControl" Source="ZoomState.cs" Description="File successfully backed up as C:\Users\ptucker\Desktop\Dr. Chaney Version\Backup\ZoomState.cs">
+</Event><Event ErrorLevel="0" Project="GraphPanelControl" Source="GraphPanel.resx" Description="File successfully backed up as C:\Users\ptucker\Desktop\Dr. Chaney Version\Backup\GraphPanel.resx">
+</Event><Event ErrorLevel="0" Project="GraphPanelControl" Source="Main.resx" Description="File successfully backed up as C:\Users\ptucker\Desktop\Dr. Chaney Version\Backup\Main.resx">
+</Event><Event ErrorLevel="0" Project="GraphPanelControl" Source="SlideText.resx" Description="File successfully backed up as C:\Users\ptucker\Desktop\Dr. Chaney Version\Backup\SlideText.resx">
+</Event><Event ErrorLevel="0" Project="GraphPanelControl" Source="ZedGraphControl.resx" Description="File successfully backed up as C:\Users\ptucker\Desktop\Dr. Chaney Version\Backup\ZedGraphControl.resx">
+</Event><Event ErrorLevel="1" Project="GraphPanelControl" Source="GraphPanelControl.csproj" Description="Your project is targeting .NET Framework 2.0 or 3.0. If your project uses assemblies requiring a newer .NET Framework, your project will fail to build. You can change the .NET Framework version by clicking Properties on the project menu and then selecting a new version in the '.NET Framework' dropdown box. (In Visual Basic, this is located on the Compile tab by clicking the 'Advanced Compiler Options...' button.)">
+</Event><Event ErrorLevel="0" Project="GraphPanelControl" Source="GraphPanelControl.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="GraphPanelControl" Source="GraphPanelControl.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="GraphPanelControl.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="GraphPanelControl.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="GraphPanelControl" Source="GraphPanelControl.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event></UpgradeLog>
