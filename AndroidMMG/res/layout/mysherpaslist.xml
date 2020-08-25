@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/guidemain"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#000000"
+    android:orientation="horizontal" >
+
+    <LinearLayout
+        android:id="@+id/logobar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/grettings"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#000000"
+            android:paddingRight="20dp"
+            android:text="@string/greetings"
+            android:textColor="#FFFFFF"
+            android:textSize="22sp" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="top"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/logo" >
+    </ImageView>
+
+    <TextView
+        android:id="@+id/mysherpas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/logobar"
+        android:text="@string/myysherpas"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textStyle="italic|bold" />
+
+    <ScrollView
+        android:id="@+id/defaultprofilescrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/mysherpas"
+        android:fillViewport="true" >
+
+        <LinearLayout
+            android:id="@+id/defaultprofile_ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="15dp" >
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

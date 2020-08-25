@@ -1,0 +1,160 @@
+package net.sherpin.mediaviewer.handlers;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import net.sherpin.mediaviewer.classes.ProfileItem;
+
+import org.xml.sax.Attributes;
+import org.xml.sax.SAXException;
+import org.xml.sax.helpers.DefaultHandler;
+
+public class ProfileListHandler extends DefaultHandler
+{
+	private final String tagProfList = "ProfList";
+	private final String tagProf = "Prof";
+	private final String tagProfName = "name";
+	private final String tagProfDescription = "desc";
+	private final String tagProfID = "pid";
+	private final String tagIcon = "icon";
+
+	private ProfileItem profile = null;
+	private String stProfDesc = null;
+	private String stProfName = null;
+	private String stProfID = null;
+	private String stIcon = null;
+	private List<ProfileItem> lstProfiles = null;
+	private int iCurr = -1;
+
+	private boolean inProfile = false;
+	private boolean inProfDesc = false;
+	private boolean inProfName = false;
+	private boolean inProfID = false;
+	private boolean inIcon = false;
+
+	public int size()
+	{
+		return lstProfiles.size();
+	}
+
+	public String[] getStrings()
+	{
+		String[] ret = new String[size()];
+
+		for (int i = 0; i < size(); i++)
+			ret[i] = lstProfiles.get(i).toString();
+
+		return ret;
+	}
+
+	public void clearItems()
+	{
+		if (lstProfiles != null)
+			lstProfiles.clear();
+	}
+
+	public ProfileItem getCurrProfile()
+	{
+		return (lstProfiles != null && iCurr < size() && iCurr >= 0) ? lstProfiles.get(iCurr) : null;
+	}
+
+	public void moveFirst()
+	{
+		iCurr = 0;
+	}
+
+	public boolean moveNext()
+	{
+		iCurr++;
+		return hasMore();
+	}
+
+	public boolean hasMore()
+	{
+		return (iCurr < size() && iCurr >= 0);
+	}
+
+	@Override
+	public void startElement(String namespaceURI, String localName, String qName, Attributes atts) throws SAXException
+	{
+		if (localName.equalsIgnoreCase(tagProfList))
+		{
+			iCurr = 0;
+			lstProfiles = new ArrayList<ProfileItem>();
+		}
+		else if (localName.equalsIgnoreCase(tagProf))
+		{
+			profile = new ProfileItem();
+			inProfile = true;
+		}
+		else if (localName.equalsIgnoreCase(tagProfDescription))
+		{
+			inProfDesc = true;
+			stProfDesc = new String();
+		}
+		else if (localName.equalsIgnoreCase(tagProfID))
+		{
+			inProfID = true;
+			stProfID = new String();
+		}
+		else if (localName.equalsIgnoreCase(tagProfName))
+		{
+			inProfName = true;
+			stProfName = new String();
+		}
+		else if (localName.equalsIgnoreCase(tagProfDescription))
+		{
+			inProfDesc = true;
+			stProfDesc = new String();
+		}
+		else if (localName.equalsIgnoreCase(tagIcon))
+		{
+			inIcon = true;
+			stIcon = new String();
+		}
+	}
+
+	@Override
+	public void endElement(String namespaceURI, String localName, String qName) throws SAXException
+	{
+		if (localName.equalsIgnoreCase(tagProfList))
+		{
+			;
+		}
+		else if (inProfile && localName.equalsIgnoreCase(tagProf))
+			lstProfiles.add(profile);
+		else if (inProfDesc && localName.equalsIgnoreCase(tagProfDescription))
+		{
+			profile.desc = stProfDesc;
+			inProfDesc = false;
+		}
+		else if (inProfName && localName.equalsIgnoreCase(tagProfName))
+		{
+			profile.name = stProfName;
+			inProfName = false;
+		}
+		else if (inProfID && localName.equalsIgnoreCase(tagProfID))
+		{
+			profile.pid = stProfID;
+			inProfID = false;
+		}
+		else if (inIcon && localName.equalsIgnoreCase(tagIcon))
+		{
+			profile.Icon = stIcon;
+			inIcon = false;
+		}
+	}
+
+	@Override
+	public void characters(char ch[], int start, int length)
+	{
+		if (inProfName)
+			stProfName += new String(ch, start, length).trim();
+		else if (inProfDesc)
+			stProfDesc += new String(ch, start, length).trim();
+		else if (inProfID)
+			stProfID += new String(ch, start, length).trim();
+		else if (inIcon)
+			stIcon += new String(ch, start, length).trim();
+	}
+}

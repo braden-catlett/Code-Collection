@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/medialayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/backgroundalt" >
+
+    <WebView
+        android:id="@+id/videowebview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent"
+        android:focusable="false"
+        android:visibility="visible" />
+
+    <RelativeLayout
+        android:id="@+id/profilelayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:minHeight="30dp" >
+
+        <net.sherpin.mediaviewer.views.SherpinHorizontalScrollView
+            android:id="@+id/profilescroll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none" >
+
+            <LinearLayout
+                android:id="@+id/profilelist"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="#dbdbdb"
+                android:orientation="horizontal" />
+        </net.sherpin.mediaviewer.views.SherpinHorizontalScrollView>
+
+        <ProgressBar
+            android:id="@+id/profileprogress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:indeterminate="true"
+            android:visibility="invisible" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/videolayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:minHeight="50dp" >
+
+        <net.sherpin.mediaviewer.views.SherpinHorizontalScrollView
+            android:id="@+id/videoscroll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none" >
+
+            <LinearLayout
+                android:id="@+id/videolist"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal" />
+        </net.sherpin.mediaviewer.views.SherpinHorizontalScrollView>
+
+        <ProgressBar
+            android:id="@+id/videoprogress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:indeterminate="true"
+            android:visibility="invisible" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/shownewvideos_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/videolayout"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/allvideos_icon"
+        android:contentDescription="@string/s_new"
+        android:maxHeight="10dp"
+        android:maxWidth="10dp" />
+
+</RelativeLayout>

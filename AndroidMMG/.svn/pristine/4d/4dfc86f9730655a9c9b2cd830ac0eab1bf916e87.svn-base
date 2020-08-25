@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Sherpin</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="cancel">Cancel</string>
+    <string name="greetings">Greetings</string>
+    <string name="email">Email</string>
+    <string name="myysherpas">My Sherpas: </string>
+    <string name="back_to_videos">Back To Video List</string>
+    <string name="register">Register</string>
+    <string name="register_fail">Register Failed!</string>
+    <string name="username_taken">Username taken</string>
+    <string name="reg_noemail">You must enter an email address</string>
+    <string name="reg_nousername">You must enter a username</string>
+    <string name="reg_nopassword">You must enter a password</string>
+    <string name="reg_nomismatchpassword">Your passwords do not match</string>
+    <string name="username">User Name</string>
+    <string name="pwd">Password</string>
+    <string name="login">Log In</string>
+    <string name="loggingin">Logging In</string>
+    <string name="btn_sherpas">Sherpas</string>
+    <string name="logout">Logout</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="submit">Submit</string>
+    <string name="Details">Details</string>
+    <string name="Dislike">Dislike</string>
+    <string name="loading_video">Loading video</string>
+    <string name="name">Name</string>
+    <string name="s_new">New</string>
+    <string name="description">Description</string>
+    <string name="edit_sherpa">Edit Sherpa</string>
+    <string name="create_sherpa">Create New Sherpa</string>
+    <string name="deletesherpa">Delete Sherpa</string>
+    <string name="deletesherpa_message">Are you sure you want to delete this sherpa?</string>
+    <string name="createsherpa_error">Unable to create sherpa</string>
+    <string name="done">Done</string>
+    <string name="keywords">Keywords</string>
+    <string name="icons">Icons</string>
+    <string name="channels">Channels</string>
+    <string name="genres">Genres</string>
+    <string name="edit">Edit</string>
+    <string name="videoicon">Video Icon</string>
+    <string name="favicon">Favicon</string>
+    <string name="videosearch">Quick Search</string>
+    <string name="guest">Guest</string>
+    
+    <string name="app_id">326133152009</string>
+    <string name="acra_notification_text">ARCA: Sherpin has crashed which has been reported</string>
+
+</resources>

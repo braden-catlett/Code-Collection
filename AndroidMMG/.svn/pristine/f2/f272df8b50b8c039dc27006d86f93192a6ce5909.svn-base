@@ -1,0 +1,210 @@
+package net.sherpin.mediaviewer.classes;
+
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.HttpsURLConnection;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.conn.scheme.Scheme;
+import org.apache.http.conn.scheme.SchemeRegistry;
+import org.apache.http.conn.ssl.SSLSocketFactory;
+import org.apache.http.conn.ssl.X509HostnameVerifier;
+import org.apache.http.cookie.Cookie;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.conn.tsccm.ThreadSafeClientConnManager;
+import org.apache.http.impl.cookie.BasicClientCookie;
+import org.apache.http.params.HttpParams;
+
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.text.TextUtils;
+import android.util.Log;
+
+public class WebUtil
+{
+	public static DefaultHttpClient client = null;
+
+	public static HttpResponse GetResponse(String url, Context context)
+	{
+		if (client == null)
+		{
+			initializeHttpClient();
+		}
+
+		HttpGet get = new HttpGet(url);
+		HttpResponse response = null;
+		try
+		{
+			response = client.execute(get);
+		}
+		catch (Exception e)
+		{
+			Log.e("WebUtil", "Error during Get: " + e.getLocalizedMessage());
+		}
+		return response;
+	}
+
+	public static HttpResponse PostResponse(String url, Context context)
+	{
+		if (client == null)
+		{
+			initializeHttpClient();
+		}
+
+		HttpPost httpPost = new HttpPost(url);
+		HttpResponse response = null;
+		try
+		{
+			response = client.execute(httpPost);
+		}
+		catch (Exception e)
+		{
+			Log.e("WebUtil", "Error during Post: " + e.getLocalizedMessage());
+		}
+		return response;
+	}
+
+	public static HttpResponse PostResponse(String url, String xml, Context context)
+	{
+		if (client == null)
+		{
+			initializeHttpClient();
+		}
+
+		HttpPost httpPost = new HttpPost(url);
+		HttpResponse response = null;
+		try
+		{
+			httpPost.setEntity(new StringEntity(xml));
+			response = client.execute(httpPost);
+		}
+		catch (Exception e)
+		{
+			Log.e("WebUtil", "Error during Post(xml): " + e.getLocalizedMessage());
+		}
+		return response;
+	}
+
+	public static HttpResponse PostResponse(String url, UrlEncodedFormEntity xml, Context context)
+	{
+		if (client == null)
+		{
+			initializeHttpClient();
+		}
+
+		HttpPost httpPost = new HttpPost(url);
+		HttpResponse response = null;
+		try
+		{
+			httpPost.setEntity(xml);
+			response = client.execute(httpPost);
+		}
+		catch (Exception e)
+		{
+			Log.e("WebUtil", "Error during Post(URLEncodedForm): " + e.getLocalizedMessage());
+		}
+		return response;
+	}
+
+	public static HttpResponse PostResponse(String url, String xml, String contentType, Context context)
+	{
+		if (client == null)
+		{
+			initializeHttpClient();
+		}
+
+		HttpPost httpPost = new HttpPost(url);
+		httpPost.setHeader("Content-type", contentType);
+		HttpResponse response = null;
+		try
+		{
+			if (!TextUtils.isEmpty(xml))
+				httpPost.setEntity(new StringEntity(xml));
+
+			response = client.execute(httpPost);
+		}
+		catch (Exception e)
+		{
+			Log.e("WebUtil", "Error during Post(xml contenttype): " + e.getLocalizedMessage());
+		}
+		return response;
+	}
+
+	public static HttpResponse PostResponse(String url, HttpParams params, Context context)
+	{
+		if (client == null)
+		{
+			initializeHttpClient();
+		}
+
+		client.setParams(params);
+
+		HttpPost httpPost = new HttpPost(url);
+		HttpResponse response = null;
+		try
+		{
+			response = client.execute(httpPost);
+		}
+		catch (Exception e)
+		{
+			Log.e("WebUtil", "Error during Post(params): " + e.getLocalizedMessage());
+		}
+		return response;
+	}
+
+	private static void initializeHttpClient()
+	{
+		client = new DefaultHttpClient();
+		
+		HostnameVerifier hostnameVerifier = org.apache.http.conn.ssl.SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER;
+		HttpsURLConnection.setDefaultHostnameVerifier(hostnameVerifier);
+		
+		SSLSocketFactory socketFactory = SSLSocketFactory.getSocketFactory();
+		socketFactory.setHostnameVerifier((X509HostnameVerifier) hostnameVerifier);
+
+		SchemeRegistry registry = new SchemeRegistry();
+		registry.register(new Scheme("https", socketFactory, 443));
+		
+		ThreadSafeClientConnManager mgr = new ThreadSafeClientConnManager(client.getParams(), registry);
+		
+		client = new DefaultHttpClient(mgr, client.getParams());
+	}
+
+	public static void storeCookies(SharedPreferences prefs)
+	{
+		if (client == null)
+		{
+			initializeHttpClient();
+		}
+		
+		String cookiesJSON = "";
+		for (Cookie c : client.getCookieStore().getCookies())
+		{
+			cookiesJSON += c.getName() + ":" + c.getValue() + "~";
+		}
+		prefs.edit().putString(Global.prefCookies, cookiesJSON);
+	}
+
+	public static void loadCookies(SharedPreferences prefs)
+	{
+		if (client == null)
+		{
+			initializeHttpClient();
+		}
+
+		String[] cookies = prefs.getString(Global.prefCookies, "~").split("~");
+
+		for (String cookie : cookies)
+		{
+			if (cookie.contains(":"))
+			{
+				String[] cookieparts = cookie.split(":");
+				client.getCookieStore().addCookie(new BasicClientCookie(cookieparts[0], cookieparts[1]));
+			}
+		}
+
+	}
+}

@@ -1,0 +1,36 @@
+package net.sherpin.mediaviewer.classes;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+
+import android.os.AsyncTask;
+
+class HttpResponseTask extends AsyncTask<String, Integer, HttpResponse>
+{
+	@Override
+	protected HttpResponse doInBackground(String... param)
+	{
+		HttpResponse resp = null;
+		DefaultHttpClient client = new DefaultHttpClient();
+		try
+		{
+			String urlLogin = param[0];
+			HttpGet hg = new HttpGet(urlLogin);
+			resp = client.execute(hg);
+		} catch (Exception ex)
+		{
+			return resp;
+		}
+		return resp;
+	}
+
+	@Override
+	protected void onProgressUpdate(Integer... progress)
+	{
+	}
+
+	protected void onPostExecute(Long result)
+	{
+	}
+}

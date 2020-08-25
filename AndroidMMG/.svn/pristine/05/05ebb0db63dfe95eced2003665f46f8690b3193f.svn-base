@@ -1,0 +1,36 @@
+package net.sherpin.mediaviewer.classes;
+
+public class VideoItem
+{
+	public String ID;
+	public String Title;
+	public String favicon;
+	public boolean isNew;
+	public boolean pinned;
+	public String URL;
+	public String ProfID;
+	public String Desc;
+	public String Description;
+	public String Thumbnail;
+
+	public VideoItem()
+	{
+		ID = "";
+		Title = "";
+		favicon = "";
+		URL = "";
+		ProfID = "";
+		Desc = "";
+		Description = "";
+		Thumbnail = "";
+		isNew = false;
+		pinned = false;
+
+	}
+
+	@Override
+	public String toString()
+	{
+		return Title;
+	}
+}

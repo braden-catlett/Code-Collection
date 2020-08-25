@@ -1,0 +1,12 @@
+C:\Users\rossenb\Desktop\dynamic\dynamic\bin\Debug\dynamic.exe
+C:\Users\rossenb\Desktop\dynamic\dynamic\bin\Debug\dynamic.pdb
+C:\Users\rossenb\Desktop\dynamic\dynamic\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\rossenb\Desktop\dynamic\dynamic\obj\x86\Debug\dynamic.exe
+C:\Users\rossenb\Desktop\dynamic\dynamic\obj\x86\Debug\dynamic.pdb
+C:\Users\Brad\Desktop\Software_Development_Material\dynamic\dynamic\obj\x86\Debug\dynamic.exe
+C:\Users\Brad\Desktop\Software_Development_Material\dynamic\dynamic\obj\x86\Debug\dynamic.pdb
+C:\Users\Brad\Desktop\Software_Development_Material\dynamic\dynamic\bin\Debug\dynamic.exe
+C:\Users\Brad\Desktop\Software_Development_Material\dynamic\dynamic\bin\Debug\dynamic.pdb
+C:\Users\Brad\Desktop\Software_Development_Material\dynamic\dynamic\obj\x86\Debug\dynamic.csprojResolveAssemblyReference.cache
+C:\Users\Brad\Desktop\Software_Development_Material\DynamicProgrammingProblems\dynamic\obj\x86\Debug\dynamic.exe
+C:\Users\Brad\Desktop\Software_Development_Material\DynamicProgrammingProblems\dynamic\obj\x86\Debug\dynamic.pdb

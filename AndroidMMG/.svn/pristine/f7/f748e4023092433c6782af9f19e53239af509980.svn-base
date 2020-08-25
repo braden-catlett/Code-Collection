@@ -1,0 +1,11 @@
+package net.sherpin.mediaviewer.classes;
+
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
+
+public class MediaViewerWebViewClient extends WebViewClient {
+	@Override
+	public boolean shouldOverrideUrlLoading(WebView view, String url) {
+		return true;
+	}
+}

@@ -1,0 +1,1 @@
+keytool -importcert -v -trustcacerts -file "c:\SSLCertDownloader\SSLCertDownloader\sherpincertificate.cer" -alias IntermediateCA -keystore "C:\Users\Brad\Desktop\Software\AndroidMMG\res\raw\SherpinKeystore.bks" -provider org.bouncycastle.jce.provider.BouncyCastleProvider -providerpath "c:\BouncyCastleProvider\bcprov-jdk15on-151.jar" -storetype BKS -storepass mymediaguide

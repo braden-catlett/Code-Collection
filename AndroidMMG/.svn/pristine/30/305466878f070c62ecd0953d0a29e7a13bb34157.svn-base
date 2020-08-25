@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/backgroundalt" >
+
+    <RelativeLayout
+        android:id="@+id/videotoolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#3b5998" >
+
+        <Button
+            android:id="@+id/VideoDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="35dp"
+            android:background="@drawable/detailsbutton"
+            android:text="@string/Details" />
+
+        <Button
+            android:id="@+id/pin"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignBaseline="@+id/VideoDetail"
+            android:layout_alignBottom="@+id/VideoDetail"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="24dp"
+            android:background="@drawable/pinned"
+            android:gravity="center" />
+    </RelativeLayout>
+
+    <WebView
+        android:id="@+id/videowebview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="15dip"
+        android:layout_marginRight="15dip"
+        android:layout_marginBottom="15dip"
+        android:background="@android:color/transparent"
+        android:layout_above="@id/videotoolbar" />
+
+    <FrameLayout
+        android:id="@+id/video_fragmentlayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</RelativeLayout>

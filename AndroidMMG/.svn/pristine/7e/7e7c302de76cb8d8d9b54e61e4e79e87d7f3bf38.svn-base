@@ -1,0 +1,150 @@
+package net.sherpin.mediaviewer.classes;
+
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import net.sherpin.mediaviewer.R;
+import net.sherpin.mediaviewer.utility.WebUtil;
+import net.sherpin.mediaviewer.views.SeparatorView;
+
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+
+import android.app.Activity;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+public class FoundVideoAdapter extends ArrayAdapter<VideoItem>
+{
+	private Activity context;
+	private int resourceId;
+	private ArrayList<VideoItem> videos;
+	private HashMap<String, Drawable> map = new HashMap<String, Drawable>();
+
+	public FoundVideoAdapter(Activity context, int textViewResourceId, ArrayList<VideoItem> objects)
+	{
+		super(context, textViewResourceId, objects);
+		this.context = context;
+		this.resourceId = textViewResourceId;
+		this.videos = objects;
+	}
+
+	@Override
+	public View getView(int position, View convertView, ViewGroup parent)
+	{
+		final VideoItem item = videos.get(position);
+		LinearLayout videoview;
+		if(convertView != null)
+		{
+			videoview = (LinearLayout) convertView;
+		}
+		else
+		{
+			LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			videoview = (LinearLayout) inflater.inflate(this.resourceId, null);
+		}
+		
+		ImageView del = (ImageView) videoview.findViewById(R.id.list_item_remove);
+		del.setTag(item);
+		del.setOnClickListener(new OnClickListener()
+		{
+			public void onClick(final View v)
+			{
+				Thread t = new Thread(new Runnable()
+				{
+					public void run()
+					{
+						try
+						{
+							final VideoItem video = (VideoItem) v.getTag();
+							HttpResponse resp = WebUtil.GetResponse("https://www.sherpin.com/xml/xml_excludeuservideo.php?VideoID=" + video.ID, context);
+							Log.e("EXCLUDEUSERVIDEO", "Response status: " + resp.getStatusLine());
+							HttpEntity entity = resp.getEntity();
+							entity.consumeContent();
+							
+							context.runOnUiThread(new Runnable()
+							{
+								public void run()
+								{
+									videos.remove(video);
+									FoundVideoAdapter.this.notifyDataSetChanged();
+								}
+							});
+						}
+						catch (Exception ex)
+						{
+							Log.e("DELETESHERPA", "delete sherpa: " + ex.getMessage());
+						}
+					}
+				});
+				t.start();
+			}
+		});
+
+		TextView text = (TextView) videoview.findViewById(R.id.list_item_text);
+		text.setText(item.Title);
+
+		final ImageView icon = (ImageView) videoview.findViewById(R.id.list_item_icon);
+		if (map.containsKey(item.Thumbnail))
+		{
+			icon.setImageDrawable(map.get(item.Thumbnail));
+		}
+		else
+		{
+			Thread t = new Thread(new Runnable()
+			{
+				public void run()
+				{
+					InputStream is = null;
+					try
+					{
+						is = (InputStream) new java.net.URL(item.Thumbnail).getContent();
+					}
+					catch (Exception e)
+					{
+						context.runOnUiThread(new Runnable()
+						{
+							public void run()
+							{
+								icon.setImageResource(R.drawable.sherpin_logo_transparent);
+							}
+						});
+					}
+
+					if (is != null)
+					{
+						final Drawable d = Drawable.createFromStream(is, "Sherpa");
+						map.put(item.Thumbnail, d);
+						context.runOnUiThread(new Runnable()
+						{
+							public void run()
+							{
+								if (d != null)
+								{
+									icon.setImageDrawable(d);
+								}
+								else
+								{
+									icon.setImageResource(R.drawable.sherpin_logo_transparent);
+								}
+							}
+						});
+					}
+				}
+			});
+			t.start();
+		}
+		videoview.addView(new SeparatorView(context));
+		return videoview;
+	}
+}

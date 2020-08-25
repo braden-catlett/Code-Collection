@@ -1,0 +1,11 @@
+package net.sherpin.mediaviewer.classes;
+
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+
+public class IconViewHolder
+{
+
+	public ProgressBar bar;
+	public ImageView icon;
+}

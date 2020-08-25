@@ -1,0 +1,298 @@
+package net.sherpin.mediaviewer;
+
+import java.io.BufferedInputStream;
+import java.net.CookieHandler;
+import java.net.CookieManager;
+import java.util.ArrayList;
+
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+
+import net.sherpin.mediaviewer.classes.Pair;
+import net.sherpin.mediaviewer.classes.ProfileItem;
+import net.sherpin.mediaviewer.handlers.NewProfileHandler;
+import net.sherpin.mediaviewer.utility.Global;
+import net.sherpin.mediaviewer.utility.WebUtil;
+
+import org.xml.sax.InputSource;
+import org.xml.sax.XMLReader;
+
+import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.media.AudioManager;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.text.TextUtils;
+import android.util.Log;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import android.widget.Toast;
+
+import com.actionbarsherlock.app.ActionBar;
+import com.actionbarsherlock.app.SherlockFragmentActivity;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuInflater;
+import com.actionbarsherlock.view.MenuItem;
+import com.facebook.Session;
+import com.google.android.youtube.player.YouTubePlayerSupportFragment;
+
+public class HomeActivity extends SherlockFragmentActivity
+{
+	private Fragment currentFragment;
+	private Menu menu;
+
+	public ProfileItem selectedProfileItem;
+	public boolean isGuestAccount = false;
+
+	@Override
+	public void onCreate(Bundle savedInstanceState)
+	{
+		super.onCreate(savedInstanceState);
+		
+		setContentView(R.layout.home);
+		setVolumeControlStream(AudioManager.STREAM_MUSIC);
+
+		if (savedInstanceState == null)
+		{
+			// Add the fragment on initial activity setup
+			currentFragment = new MediaCaraselFragment();
+			getSupportFragmentManager().beginTransaction().add(R.id.home_fragmentlayout, currentFragment).commit();
+		}
+		else
+		{
+			// Or set the fragment from restored state info
+			currentFragment = getSupportFragmentManager().findFragmentById(R.id.home_fragmentlayout);
+			if (currentFragment instanceof YouTubePlayerSupportFragment)
+			{
+				// YouTubePlayerSupportFragment you =
+				// (YouTubePlayerSupportFragment) currentFragment;
+				getSupportFragmentManager().popBackStack();
+			}
+		}
+	}
+
+	@Override
+	protected void onResume()
+	{
+		super.onResume();
+
+		if (getIntent() != null && getIntent().hasExtra(Global.prefIsGuestAccount))
+		{
+			isGuestAccount = getIntent().getExtras().getBoolean(Global.prefIsGuestAccount);
+		}
+		ActionBar bar = getSupportActionBar();
+
+		if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE)
+		{
+			bar.hide();
+		}
+		else
+		{
+			bar.show();
+		}
+	}
+
+	@Override
+	protected void onDestroy()
+	{
+		// WebUtil.cleanUp();
+		super.onDestroy();
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(com.actionbarsherlock.view.Menu menu)
+	{
+		MenuInflater inflater = getSupportMenuInflater();
+		inflater.inflate(R.menu.menu_ultimate, menu);
+		menu.findItem(R.id.action_edit).setVisible(false);
+		this.menu = menu;
+
+		View v = menu.findItem(R.id.action_video_search).getActionView();
+
+		EditText search = (EditText) v.findViewById(R.id.search_text);
+		search.setOnEditorActionListener(new OnEditorActionListener()
+		{
+			public boolean onEditorAction(TextView v, int actionId, KeyEvent event)
+			{
+				if (!TextUtils.isEmpty(v.getText()))
+				{
+					currentFragment = new SherpaMediaListFragment();
+					Bundle i = new Bundle();
+					i.putString(Global.prefSearchQuery, v.getText().toString());
+					currentFragment.setArguments(i);
+
+					// Reset the search text and close the menu
+					v.setText("");
+					MenuItem item = HomeActivity.this.menu.findItem(R.id.action_video_search);
+					item.collapseActionView();
+
+					// Close the keyboard
+					InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+					imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+
+					getSupportFragmentManager().beginTransaction().replace(R.id.home_fragmentlayout, currentFragment).addToBackStack("SherpaMediaList").commit();
+				}
+				return false;
+			}
+		});
+		return super.onCreateOptionsMenu(menu);
+	}
+
+	@SuppressLint("InflateParams")
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item)
+	{
+		switch (item.getItemId())
+		{
+		case R.id.action_edit:
+			currentFragment = new EditSherpaFragment();
+			Bundle b = new Bundle();
+
+			b.putString(Global.prefProfileID, selectedProfileItem.pid);
+			b.putString(Global.prefProfileTitle, selectedProfileItem.name);
+			b.putString(Global.prefProfileDesc, selectedProfileItem.desc);
+			currentFragment.setArguments(b);
+
+			getSupportFragmentManager().beginTransaction().replace(R.id.home_fragmentlayout, currentFragment).addToBackStack("Edit").commit();
+			return true;
+		case R.id.action_logout:
+			Thread t = new Thread(new Runnable()
+			{
+				public void run()
+				{
+					try
+					{
+						BufferedInputStream resp = WebUtil.GetHTTPResponse("https://www.sherpin.com/xml/xml_logout.php", getApplicationContext());
+						if(resp != null) {
+							resp.close();
+							Log.e("LOGOUT", "Got Response");
+						}
+						else {
+							Log.e("LOGOUT", "No Response");
+						}
+					}
+					catch (Exception ex)
+					{
+						Log.e("LOGOUT", "Logout: " + ex.getMessage());
+					}
+					runOnUiThread(new Runnable()
+					{
+						public void run()
+						{
+							SharedPreferences settings = getSharedPreferences(Global.filePrefs, 0);
+							if (settings != null)
+							{
+								SharedPreferences.Editor e = settings.edit();
+								e.clear();
+								e.commit();
+							}
+							Session session = Session.getActiveSession();
+							if (session != null && session.isOpened())
+							{
+								session.closeAndClearTokenInformation();
+							}
+							startActivity(new Intent(HomeActivity.this, LoginActivity.class));
+							HomeActivity.this.finish();
+						}
+					});
+				}
+			});
+			t.start();
+			return true;
+		case R.id.action_addnewsherpin:
+			final View v = getLayoutInflater().inflate(R.layout.createnewsherpa_dialog, null);
+			AlertDialog.Builder build = new AlertDialog.Builder(this);
+			build.setTitle(R.string.create_sherpa);
+			build.setView(v);
+			build.setPositiveButton(R.string.create, new OnClickListener()
+			{
+				public void onClick(DialogInterface dialog, int which)
+				{
+					final String sherpaname = ((EditText) v.findViewById(R.id.sherpa_text)).getText().toString();
+					SharedPreferences settings = getSharedPreferences(Global.filePrefs, 0);
+					final String userid = settings.getString(Global.prefUserID, "");
+					Thread t = new Thread(new Runnable()
+					{
+						private NewProfileHandler handler = new NewProfileHandler();
+
+						public void run()
+						{
+							try
+							{
+								ArrayList<Pair> postParameters = new ArrayList<Pair>();
+								postParameters.add(new Pair("", userid));
+								postParameters.add(new Pair("ProfName", sherpaname));
+								
+								BufferedInputStream resp = WebUtil.GetHTTPSResponse("https://www.sherpin.com/xml/xml_addquickprofile.php", postParameters, getApplicationContext());
+								if(resp != null) {
+									SAXParserFactory spf = SAXParserFactory.newInstance();
+									SAXParser sp = spf.newSAXParser();
+
+									XMLReader rdr = sp.getXMLReader();
+									rdr.setContentHandler(handler);
+
+									rdr.parse(new InputSource(resp));
+									resp.close();
+									Log.e("CREATESHERPA", "Got Response");
+								}
+								else {
+									Log.e("CREATESHERPA", "No Response");
+								}
+							}
+							catch (Exception ex)
+							{
+								Log.e("CREATESHERPA", "creating new sherpa: " + ex.getMessage());
+							}
+							runOnUiThread(new Runnable()
+							{
+								public void run()
+								{
+									if (!TextUtils.isEmpty(handler.getID()) && handler.getID().compareTo("0") != 0)
+									{
+										currentFragment = new EditSherpaFragment();
+										Bundle b = new Bundle();
+
+										b.putString(Global.prefProfileID, handler.getID());
+										b.putString(Global.prefProfileTitle, sherpaname);
+										b.putString(Global.prefProfileDesc, "");
+										currentFragment.setArguments(b);
+
+										getSupportFragmentManager().beginTransaction().replace(R.id.home_fragmentlayout, currentFragment).addToBackStack("Edit").commit();
+									}
+									else
+									{
+										Toast.makeText(getApplicationContext(), R.string.createsherpa_error, Toast.LENGTH_LONG).show();
+									}
+								}
+							});
+						}
+					});
+					t.start();
+				}
+			});
+			build.show();
+			return true;
+		case R.id.action_feedback:
+			currentFragment = new FeedbackFragment();
+
+			getSupportFragmentManager().beginTransaction().replace(R.id.home_fragmentlayout, currentFragment).addToBackStack("Feedback").commit();
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
+	}
+
+	public Menu getOptionsMenu()
+	{
+		return menu;
+	}
+}

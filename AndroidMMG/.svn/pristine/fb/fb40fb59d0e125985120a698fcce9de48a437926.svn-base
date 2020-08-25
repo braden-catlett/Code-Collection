@@ -1,0 +1,232 @@
+package net.sherpin.mediaviewer;
+
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.ArrayList;
+
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+
+import net.sherpin.mediaviewer.handlers.UserInfo;
+import net.sherpin.mediaviewer.utility.Global;
+import net.sherpin.mediaviewer.utility.WebUtil;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.HttpStatus;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.message.BasicNameValuePair;
+import org.xml.sax.InputSource;
+import org.xml.sax.XMLReader;
+
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import com.actionbarsherlock.app.SherlockFragment;
+
+public class RegisterFragment extends SherlockFragment
+{
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+	{
+		View v = inflater.inflate(R.layout.register, container, false);
+		Button btn = (Button) v.findViewById(R.id.btnregister);
+		btn.setOnClickListener(new OnClickListener()
+		{
+			public void onClick(View arg0)
+			{
+				EditText eEmail = (EditText) getView().findViewById(R.id.email);
+				EditText eUser = (EditText) getView().findViewById(R.id.username);
+				EditText ePwd = (EditText) getView().findViewById(R.id.pwd);
+				EditText eConfirmPwd = (EditText) getView().findViewById(R.id.confirm_pwd);
+
+				final String email = eEmail.getText().toString();
+				final String user = eUser.getText().toString();
+				final String pwd = ePwd.getText().toString();
+				final String confirm = eConfirmPwd.getText().toString();
+
+				if (TextUtils.isEmpty(email))
+				{
+					// State that they need a username
+					AlertDialog.Builder b = new Builder(getSherlockActivity());
+					b.setTitle(getString(R.string.email));
+					b.setMessage(getString(R.string.reg_noemail));
+					b.create().show();
+					return;
+				}
+
+				if (TextUtils.isEmpty(user))
+				{
+					// State that they need a username
+					AlertDialog.Builder b = new Builder(getSherlockActivity());
+					b.setTitle(getString(R.string.register));
+					b.setMessage(getString(R.string.reg_nousername));
+					b.create().show();
+					return;
+				}
+
+				if (TextUtils.isEmpty(pwd))
+				{
+					// State that they need a password
+					AlertDialog.Builder b = new Builder(getSherlockActivity());
+					b.setTitle(getString(R.string.register));
+					b.setMessage(getString(R.string.reg_nopassword));
+					b.create().show();
+					return;
+				}
+
+				if (TextUtils.isEmpty(confirm) || (!TextUtils.isEmpty(confirm) && pwd.compareTo(confirm) != 0))
+				{
+					// The passwords need to match
+					AlertDialog.Builder b = new Builder(getSherlockActivity());
+					b.setTitle(getString(R.string.register));
+					b.setMessage(getString(R.string.reg_nomismatchpassword));
+					b.create().show();
+					return;
+				}
+
+				Thread t = new Thread(new Runnable()
+				{
+					public void run()
+					{
+						final UserInfo ui = new UserInfo();
+						String encodedUsername = "";
+						String encodedPassword = "";
+						String encodedEmail = "";
+						try
+						{
+							encodedUsername = URLEncoder.encode(user, "utf-8");
+							encodedPassword = URLEncoder.encode(pwd, "utf-8");
+							encodedEmail = URLEncoder.encode(email, "utf-8");
+						}
+						catch (UnsupportedEncodingException e1)
+						{
+							encodedUsername = user;
+							encodedPassword = pwd;
+							encodedEmail = email;
+							Log.e("REGISTER", "Error encoding register paramters" + e1.getLocalizedMessage());
+						}
+						String urlPrefix = "https://www.sherpin.com/xml/xml_login.php";
+
+						ArrayList<NameValuePair> postParameters = new ArrayList<NameValuePair>();
+
+						postParameters.add(new BasicNameValuePair("uname", encodedUsername));
+
+						if (!TextUtils.isEmpty(encodedPassword))
+						{
+							postParameters.add(new BasicNameValuePair("pwd", encodedPassword));
+						}
+
+						if (!TextUtils.isEmpty(encodedEmail))
+						{
+							postParameters.add(new BasicNameValuePair("email", encodedEmail));
+						}
+
+						// String urlLogin =
+						// "https://www.mymediaguide.net/facebookapp/xml_login.php?uname="
+						// + user + "&pwd=" + pwd + "&email=" + email;
+
+						try
+						{
+							UrlEncodedFormEntity formEntity = new UrlEncodedFormEntity(postParameters);
+
+							HttpResponse resp = WebUtil.PostResponse(urlPrefix, formEntity, getSherlockActivity());
+							if (resp.getStatusLine().getStatusCode() == HttpStatus.SC_OK)
+							{
+								// The data from the server is in XML, with
+								// either:
+								// <user name='joe' id='1234'/>
+								// or:
+								// <error reason='error reason'/>
+								SAXParserFactory spf = SAXParserFactory.newInstance();
+								SAXParser sp = spf.newSAXParser();
+
+								// Use the cached VideoListHandler to parse the
+								// XML
+								// into a List<VideoItem> object
+								XMLReader rdr = sp.getXMLReader();
+								rdr.setContentHandler(ui);
+
+								rdr.parse(new InputSource(resp.getEntity().getContent()));
+							}
+						}
+						catch (Exception ex)
+						{
+							Log.e("Register", "Error talking to server: " + ex.getLocalizedMessage());
+						}
+
+						getActivity().runOnUiThread(new Runnable()
+						{
+							public void run()
+							{
+								if (ui.id != null)
+								{
+									// We have this user info. Store the ID.
+									SharedPreferences settings = getActivity().getSharedPreferences(Global.filePrefs, 0);
+									SharedPreferences.Editor e = settings.edit();
+									e.putString(Global.prefUserID, ui.id);
+									e.putString(Global.prefUsername, ui.username);
+									e.putString(Global.prefEmail, email);
+									e.putString(Global.prefPassword, pwd);
+									e.commit();
+
+									startActivity(new Intent(getSherlockActivity(), HomeActivity.class));
+									getSherlockActivity().finish();
+								}
+								else
+								{
+									// error occurred
+									if(!TextUtils.isEmpty(ui.error))
+									{
+										Toast.makeText(getSherlockActivity(), getString(R.string.username_taken), Toast.LENGTH_LONG).show();
+									}
+									else
+									{
+										Toast.makeText(getSherlockActivity(), getString(R.string.register_fail), Toast.LENGTH_LONG).show();
+									}
+									Log.e("Register", "Register Failed " + ui.error);
+									// setResult(Activity.RESULT_CANCELED);
+								}
+							}
+						});
+					}
+				});
+				t.start();
+			}
+		});
+
+		return v;
+	}
+
+	@Override
+	public void onPause()
+	{
+		EditText eEmail = (EditText) getView().findViewById(R.id.email);
+		EditText eUser = (EditText) getView().findViewById(R.id.username);
+		EditText ePwd = (EditText) getView().findViewById(R.id.pwd);
+		EditText eConfirmPwd = (EditText) getView().findViewById(R.id.confirm_pwd);
+		
+		InputMethodManager imm = (InputMethodManager)getSherlockActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+		imm.hideSoftInputFromWindow(eEmail.getWindowToken(), 0);
+		imm.hideSoftInputFromWindow(eUser.getWindowToken(), 0);
+		imm.hideSoftInputFromWindow(ePwd.getWindowToken(), 0);
+		imm.hideSoftInputFromWindow(eConfirmPwd.getWindowToken(), 0);
+		super.onPause();
+	}
+	
+	
+}

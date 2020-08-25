@@ -1,0 +1,135 @@
+package net.sherpin.mediaviewer.handlers;
+
+import java.util.ArrayList;
+
+
+
+import net.sherpin.mediaviewer.classes.VideoDetail;
+
+import org.xml.sax.Attributes;
+import org.xml.sax.SAXException;
+import org.xml.sax.helpers.DefaultHandler;
+
+public class VideoDetailHandler extends DefaultHandler {
+	private final String tagProgram = "program";
+	private final String tagTitle = "title";
+	private final String tagDescription = "description";
+	private final String tagCastMembers = "castmembers";
+	private final String tagMember = "member";
+	private final String tagFName = "fname";
+	private final String tagLName = "lname";
+	private final String tagRole = "role";
+	private final String tagShowings = "showings";
+	private final String tagShowing = "showing";
+	private final String tagSource = "source";
+	private final String tagDate = "date";
+	private final String tagTime = "time";
+
+	private VideoDetail vdet = null;
+	private StringBuffer stbMember = null;
+	private StringBuffer stbShowing = null;
+
+	private boolean inTitle = false;
+	private boolean inDescription = false;
+	private boolean inFName = false;
+	private boolean inLName = false;
+	private boolean inRole = false;
+	private boolean inSource = false;
+	private boolean inDate = false;
+	private boolean inTime = false;
+
+	public VideoDetail getVideoDetail() {
+		return vdet;
+	}
+
+	@Override
+	public void startElement(String namespaceURI, String localName,
+			String qName, Attributes atts) throws SAXException {
+		if (localName.equalsIgnoreCase(tagProgram))
+			vdet = new VideoDetail();
+		else if (localName.equalsIgnoreCase(tagTitle))
+			inTitle = true;
+		else if (localName.equalsIgnoreCase(tagDescription))
+			inDescription = true;
+		else if (localName.equalsIgnoreCase(tagCastMembers))
+			vdet.CastMembers = new ArrayList<String>();
+		else if (localName.equalsIgnoreCase(tagMember))
+			stbMember = new StringBuffer();
+		else if (localName.equalsIgnoreCase(tagFName))
+			inFName = true;
+		else if (localName.equalsIgnoreCase(tagLName))
+			inLName = true;
+		else if (localName.equalsIgnoreCase(tagRole))
+			inRole = true;
+		else if (localName.equalsIgnoreCase(tagShowings))
+			vdet.Showings = new ArrayList<String>();
+		else if (localName.equalsIgnoreCase(tagShowing))
+			stbShowing = new StringBuffer();
+		else if (localName.equalsIgnoreCase(tagSource))
+			inSource = true;
+		else if (localName.equalsIgnoreCase(tagDate))
+			inDate = true;
+		else if (localName.equalsIgnoreCase(tagTime))
+			inTime = true;
+	}
+
+	@Override
+	public void endElement(String namespaceURI, String localName, String qName)
+			throws SAXException {
+		if (localName.equalsIgnoreCase(tagProgram)) {
+			;
+		} else if (inTitle && localName.equalsIgnoreCase(tagTitle))
+			inTitle = false;
+		else if (inDescription && localName.equalsIgnoreCase(tagDescription))
+			inDescription = false;
+		else if (localName.equalsIgnoreCase(tagMember))
+			vdet.CastMembers.add(stbMember.toString());
+		else if (localName.equalsIgnoreCase(tagFName))
+			inFName = false;
+		else if (localName.equalsIgnoreCase(tagLName))
+			inLName = false;
+		else if (localName.equalsIgnoreCase(tagRole))
+			inRole = false;
+		else if (localName.equalsIgnoreCase(tagShowing))
+			vdet.Showings.add(stbShowing.toString());
+		else if (localName.equalsIgnoreCase(tagSource))
+			inSource = false;
+		else if (localName.equalsIgnoreCase(tagDate))
+			inDate = false;
+		else if (localName.equalsIgnoreCase(tagTime))
+			inTime = false;
+	}
+
+	@Override
+	public void characters(char ch[], int start, int length) {
+		if (inTitle)
+			vdet.Title = new String(ch, start, length).trim();
+		else if (inDescription)
+			vdet.Description = new String(ch, start, length).trim();
+		else if (inFName) {
+			if (stbMember.length() != 0)
+				stbMember.append(" ");
+			stbMember.append(new String(ch, start, length).trim());
+		} else if (inLName) {
+			if (stbMember.length() != 0)
+				stbMember.append(" ");
+			stbMember.append(new String(ch, start, length).trim());
+		} else if (inRole) {
+			if (stbMember.length() != 0)
+				stbMember.append(" - ");
+			stbMember.append(new String(ch, start, length).trim());
+		} else if (inSource) {
+			if (stbShowing.length() != 0)
+				stbShowing.append(" ");
+			stbShowing.append(new String(ch, start, length).trim());
+		} else if (inDate) {
+			if (stbShowing.length() != 0)
+				stbShowing.append(" ");
+			stbShowing.append(new String(ch, start, length).trim());
+		} else if (inTime) {
+			if (stbShowing.length() != 0)
+				stbShowing.append(" ");
+			stbShowing.append(new String(ch, start, length).trim());
+		}
+	}
+}

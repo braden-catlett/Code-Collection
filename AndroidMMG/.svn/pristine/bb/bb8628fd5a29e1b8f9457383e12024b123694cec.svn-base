@@ -1,0 +1,7 @@
+package net.sherpin.mediaviewer.classes;
+
+public class IconItem {
+	public String Id;
+	public String Checked;
+	public String Path;
+}

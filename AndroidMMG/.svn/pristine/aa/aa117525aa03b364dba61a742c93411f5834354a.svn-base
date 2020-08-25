@@ -1,0 +1,908 @@
+package net.sherpin.mediaviewer;
+
+import java.io.BufferedInputStream;
+import java.util.ArrayList;
+
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+
+import net.sherpin.mediaviewer.classes.Pair;
+import net.sherpin.mediaviewer.classes.ProfileItem;
+import net.sherpin.mediaviewer.classes.VideoItem;
+import net.sherpin.mediaviewer.handlers.ProfileItemHandler;
+import net.sherpin.mediaviewer.handlers.VideoListHandler;
+import net.sherpin.mediaviewer.utility.Global;
+import net.sherpin.mediaviewer.utility.WebUtil;
+import net.sherpin.mediaviewer.views.OnScrollViewReachedEndListener;
+import net.sherpin.mediaviewer.views.SherpinHorizontalScrollView;
+
+import org.xml.sax.InputSource;
+import org.xml.sax.XMLReader;
+
+import com.actionbarsherlock.app.ActionBar;
+import com.actionbarsherlock.app.SherlockFragment;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuItem;
+
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.graphics.Color;
+import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.os.Handler;
+import android.text.TextUtils;
+import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+
+public class MediaCaraselFragment extends SherlockFragment implements OnScrollViewReachedEndListener
+{
+	private int trendingMediaTaskvideoEnd = 10;
+	private int trendingNewsTaskvideoEnd = 10;
+	private int backpackTaskvideoEnd = 10;
+	private int trendingMediaTaskvideoStart = 0;
+	private int trendingNewsTaskvideoStart = 0;
+	private int backpackTaskvideoStart = 0;
+	private ProfileAsyncTask profileTask;
+	private TrendingMediaAsyncTask trendingMediaTask;
+	private TrendingNewsAsyncTask trendingNewsTask;
+	private BackpackAsyncTask backpackTask;
+
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+	{
+		View v = inflater.inflate(R.layout.mediacarasel, container, false);
+
+		SherpinHorizontalScrollView media = ((SherpinHorizontalScrollView) v.findViewById(R.id.trendingmedia_scrollview));
+		media.setOnScrollViewReachedEndListener(this);
+		
+		SherpinHorizontalScrollView news = ((SherpinHorizontalScrollView) v.findViewById(R.id.trendingnews_scrollview));
+		news.setOnScrollViewReachedEndListener(this);
+		
+		SherpinHorizontalScrollView backpack = ((SherpinHorizontalScrollView) v.findViewById(R.id.backpack_scrollview));
+		backpack.setOnScrollViewReachedEndListener(this);
+
+		Log.e("SHERPIN", "onCreateView");
+		return v;
+	}
+
+	@Override
+	public void onResume()
+	{
+		super.onResume();
+
+		SharedPreferences settings = getActivity().getSharedPreferences(Global.filePrefs, 0);
+		String userid = settings.getString(Global.prefUserID, "");
+		String username = settings.getString(Global.prefUsername, "");
+		boolean isLoggedIn = !TextUtils.isEmpty(username) && !TextUtils.isEmpty(userid);
+		setGreetingWithUserInformation(username, isLoggedIn);
+
+		Log.e("SHERPIN", "onResume");
+
+		profileTask = new ProfileAsyncTask(this.getActivity());
+		profileTask.execute();
+		
+		trendingMediaTask = new TrendingMediaAsyncTask(getActivity());
+		trendingMediaTask.execute();
+		
+		trendingNewsTask = new TrendingNewsAsyncTask(getActivity());
+		trendingNewsTask.execute();
+		
+		backpackTask = new BackpackAsyncTask(getActivity());
+		backpackTask.execute();
+	}
+
+	@Override
+	public void onPause()
+	{
+		Log.e("SHERPIN", "onPause");
+
+		if (profileTask != null)
+		{
+			profileTask.cancel(true);
+			profileTask = null;
+		}
+
+		if (trendingMediaTask != null)
+		{
+			trendingMediaTask.cancel(true);
+			trendingMediaTask = null;
+		}
+
+		if (trendingNewsTask != null)
+		{
+			trendingNewsTask.cancel(true);
+			trendingNewsTask = null;
+		}
+
+		if (backpackTask != null)
+		{
+			backpackTask.cancel(true);
+			backpackTask = null;
+		}
+
+		super.onPause();
+	}
+
+	@Override
+	public void onDestroy()
+	{
+		Log.e("SHERPIN", "onDestroy");
+		super.onDestroy();
+	}
+
+	/**
+	 * If the video scrollview reaches the end of its children then this will be
+	 * triggered
+	 */
+	public void didReachEnd(View v)
+	{
+		if(v.getId() == R.id.trendingmedia_scrollview) {
+			trendingMediaTaskvideoEnd += 10;
+			trendingMediaTask = new TrendingMediaAsyncTask(getActivity());
+			trendingMediaTask.execute();
+		} else if(v.getId() == R.id.trendingnews_scrollview) {
+			trendingNewsTaskvideoEnd += 10;
+			trendingNewsTask = new TrendingNewsAsyncTask(getActivity());
+			trendingNewsTask.execute();
+		} else if(v.getId() == R.id.backpack_scrollview) {
+			backpackTaskvideoEnd += 10;
+			backpackTask = new BackpackAsyncTask(getActivity());
+			backpackTask.execute();
+		}
+	}
+
+	private void setGreetingWithUserInformation(String username, boolean isLoggedIn)
+	{
+		ActionBar bar = getSherlockActivity().getSupportActionBar();
+		if (TextUtils.isEmpty(username))
+		{
+			bar.setTitle("Greetings");
+		}
+		else
+		{
+			bar.setTitle("Greetings, " + username);
+		}
+	}
+
+	private class ProfileAsyncTask extends AsyncTask<Void, ArrayList<LinearLayout>, Void>
+	{
+		private Context context;
+
+		private OnClickListener profileClick = new OnClickListener()
+		{
+			public void onClick(View v)
+			{
+				HomeActivity home = (HomeActivity) getActivity();
+				ProfileItem selectedProfileItem = (ProfileItem) v.getTag();
+				home.selectedProfileItem = selectedProfileItem ;
+				
+				UltimateSherpinFragment frag = new UltimateSherpinFragment();
+				getFragmentManager().beginTransaction().replace(R.id.home_fragmentlayout, frag).addToBackStack("Ultimate").commit();
+				frag.launchProfile(selectedProfileItem);
+			}
+		};
+
+		public ProfileAsyncTask(Context context)
+		{
+			this.context = context;
+		}
+
+		@Override
+		protected void onPreExecute()
+		{
+			super.onPreExecute();
+			((ProgressBar) getView().findViewById(R.id.mysherpas_progress)).setVisibility(View.VISIBLE);
+		}
+
+		@SuppressWarnings("unchecked")
+		@Override
+		protected Void doInBackground(Void... params)
+		{
+			publishProgress(createSherpaList(context, getProfileItemHandler()));
+			return null;
+		}
+
+		@Override
+		protected void onProgressUpdate(ArrayList<LinearLayout>... items)
+		{
+			super.onProgressUpdate(items);
+
+			if (getActivity() != null && !getActivity().isFinishing() && getView() != null)
+			{
+				HomeActivity home = (HomeActivity) getActivity();
+				Menu m = home.getOptionsMenu();
+				MenuItem mi = m.findItem(R.id.action_edit);
+				mi.setVisible(false);
+				
+				((ProgressBar) getView().findViewById(R.id.mysherpas_progress)).setVisibility(View.INVISIBLE);
+				setupSherpaList(items[0]);
+			}
+		}
+
+		@Override
+		protected void onCancelled()
+		{
+			context = null;
+			profileTask = null;
+			super.onCancelled();
+		}
+
+		@Override
+		protected void onPostExecute(Void result)
+		{
+			context = null;
+			profileTask = null;
+			super.onPostExecute(result);
+		}
+
+		public ProfileItemHandler getProfileItemHandler()
+		{
+			ProfileItemHandler proflisthandler = null;
+			try
+			{
+				// Get the Video titles from the server
+				String urlProfileList = "https://www.sherpin.com/xml/xml_profilelist.php";
+
+				ArrayList<Pair> postParameters = new ArrayList<Pair>();
+				SharedPreferences settings = context.getSharedPreferences(Global.filePrefs, 0);
+				String userID = settings.getString(Global.prefUserID, "");
+				if (TextUtils.isEmpty(settings.getString(Global.prefFacebookID, "")))
+				{
+					postParameters.add(new Pair("UserID", userID));
+				}
+				else
+				{
+					postParameters.add(new Pair("FBID", userID));
+				}
+				
+				BufferedInputStream resp = WebUtil.GetHTTPSResponse(urlProfileList, postParameters, getActivity());
+				if(resp != null) {
+					proflisthandler = parseProfileListXML(resp);
+					Log.e("PROFILELIST", "Got Response");
+				}
+				else {
+					Log.e("PROFILELIST", "No Response");
+				}
+			}
+			catch (Exception ex)
+			{
+				Log.e("UltimateSherpinFragment getProfileItemHandler", "Error: " + ex.getMessage());
+			}
+			return proflisthandler;
+		}
+
+		private ProfileItemHandler parseProfileListXML(BufferedInputStream resp)
+		{
+			ProfileItemHandler proflisthandler = new ProfileItemHandler();
+			try
+			{
+				SAXParserFactory spf = SAXParserFactory.newInstance();
+				SAXParser sp = spf.newSAXParser();
+
+				// Use the cached ProfileListHandler to parse the XML into a
+				// List<ProfileItem> object
+				XMLReader rdr = sp.getXMLReader();
+				proflisthandler.clearItems();
+				rdr.setContentHandler(proflisthandler);
+
+				rdr.parse(new InputSource(resp));
+			}
+			catch (Exception ex)
+			{
+				Log.e("UltimateSherpinFragment", String.format("Failed to parse XML(parseProfileListXMl): %s", ex.getMessage()));
+			}
+			return proflisthandler;
+		}
+
+		private ArrayList<LinearLayout> createSherpaList(Context context, ProfileItemHandler proflisthandler)
+		{
+			ArrayList<LinearLayout> list = new ArrayList<LinearLayout>();
+
+			while (proflisthandler.hasMore())
+			{
+				LinearLayout holder = new LinearLayout(context);
+				holder.setOrientation(LinearLayout.VERTICAL);
+				holder.setTag(proflisthandler.getCurrProfile());
+				holder.setPadding(15, 5, 15, 5);
+				holder.setOnClickListener(profileClick);
+				// try
+				// {
+				// InputStream is = (InputStream) new
+				// java.net.URL(proflisthandler.getCurrProfile().Icon).getContent();
+				// Drawable d = Drawable.createFromStream(is, "Sherpa");
+				// ImageView icon = new ImageView(context);
+				// icon.setImageDrawable(d);
+				// icon.setMinimumHeight(150);
+				// icon.setMinimumWidth(150);
+				// holder.addView(icon);
+				// }
+				// catch (Exception e)
+				// {
+				// // TODO: Assign default image
+				// }
+
+				TextView tvProfile = new TextView(context);
+				tvProfile.setText(proflisthandler.getCurrProfile().name);
+				tvProfile.setTextSize(24);
+				tvProfile.setTypeface(null, Typeface.BOLD);
+				tvProfile.setGravity(Gravity.CENTER_HORIZONTAL);
+				tvProfile.setTextColor(Color.WHITE);
+				
+				LayoutParams param = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+				holder.addView(tvProfile, param);
+
+				list.add(holder);
+				proflisthandler.moveNext();
+			}
+			return list;
+		}
+
+		private void setupSherpaList(ArrayList<LinearLayout> items)
+		{
+			if(!items.isEmpty())
+			{
+				LinearLayout llProfile = (LinearLayout) getView().findViewById(R.id.mysherpas);
+				llProfile.removeAllViews();
+				
+				for (LinearLayout item : items)
+				{
+					llProfile.addView(item, new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT));
+				}
+			}
+		}
+	}
+	
+	private class TrendingMediaAsyncTask extends AsyncTask<Void, ArrayList<LinearLayout>, Void>
+	{
+		private Context context;
+
+		public TrendingMediaAsyncTask(Context context)
+		{
+			this.context = context;
+		}
+
+		@Override
+		protected void onPreExecute()
+		{
+			super.onPreExecute();
+			((ProgressBar) getView().findViewById(R.id.trendingmedia_progress)).setVisibility(View.VISIBLE);
+		}
+
+		@SuppressWarnings("unchecked")
+		@Override
+		protected Void doInBackground(Void... params)
+		{
+			publishProgress(populateVideoList());
+			return null;
+		}
+
+		@Override
+		protected void onProgressUpdate(ArrayList<LinearLayout>... items)
+		{
+			super.onProgressUpdate(items);
+			if (getActivity() != null && !getActivity().isFinishing() && getView() != null)
+			{
+				showVideoList(items[0]);
+				((ProgressBar) getView().findViewById(R.id.trendingmedia_progress)).setVisibility(View.INVISIBLE);
+			}
+		}
+
+		@Override
+		protected void onCancelled()
+		{
+			context = null;
+			trendingMediaTask = null;
+			super.onCancelled();
+		}
+
+		@Override
+		protected void onPostExecute(Void result)
+		{
+			context = null;
+			trendingMediaTask = null;
+			super.onPostExecute(result);
+		}
+
+		public ArrayList<LinearLayout> populateVideoList()
+		{
+			VideoListHandler vlhandler = new VideoListHandler();
+			ArrayList<Pair> postParameters = new ArrayList<Pair>();
+
+			String urlVideoList = "https://www.sherpin.com/xml/xml_videolist.php";
+			try
+			{
+				postParameters.add(new Pair("ProfID", "-2"));
+				postParameters.add(new Pair("Mobile", "2"));
+				postParameters.add(new Pair("StartRow", String.valueOf(trendingMediaTaskvideoStart)));
+				postParameters.add(new Pair("RowLimit", String.valueOf(trendingMediaTaskvideoEnd)));
+				
+				BufferedInputStream resp = WebUtil.GetHTTPSResponse(urlVideoList, postParameters, getActivity());
+				if(resp != null) {
+					SAXParserFactory spf = SAXParserFactory.newInstance();
+					SAXParser sp = spf.newSAXParser();
+
+					XMLReader rdr = sp.getXMLReader();
+					vlhandler.clearItems();
+					rdr.setContentHandler(vlhandler);
+
+					rdr.parse(new InputSource(resp));
+					resp.close();
+					Log.e("TRENDING MEDIA", "Got Response");
+				}
+				else {
+					Log.e("TRENDING MEDIA", "No Response");
+				}
+			}
+			catch (Exception ex)
+			{
+				Log.e("SHERPIN VIDEOS", "Getting video list: " + ex.getMessage());
+			}
+
+			ArrayList<LinearLayout> list = new ArrayList<LinearLayout>();
+
+			for (int i = 0; i < vlhandler.getVideos().size(); i++)
+			{
+				VideoItem v = vlhandler.getVideo(i);
+
+				LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+				LinearLayout holder = (LinearLayout) inflater.inflate(R.layout.videolist_verticalitem, null);
+				holder.setTag(v);
+				holder.setOnClickListener(new OnClickListener()
+				{
+					public void onClick(View v)
+					{
+						VideoItem vi = ((VideoItem) v.getTag());
+						Intent intent = null;
+						intent = new Intent(getSherlockActivity(), VideoViewerActivity.class);
+						intent.putExtra(Global.currentVideoItem, vi.stringify());
+						startActivity(intent);
+					}
+				});
+
+				ImageView icon = (ImageView) holder.findViewById(R.id.list_item_icon);
+				try
+				{
+					BufferedInputStream is = WebUtil.GetHTTPResponse(v.Thumbnail, getSherlockActivity());
+					if(is != null) {
+						Drawable d = Drawable.createFromStream(is, "Sherpa");
+						if (d != null)
+							icon.setBackgroundDrawable(d);
+						else
+							icon.setBackgroundResource(R.drawable.tvstatic);
+					}
+					else {
+						icon.setBackgroundResource(R.drawable.tvstatic);
+					}
+					is.close();
+				}
+				catch (Exception e)
+				{
+					// Assign default image
+					icon.setBackgroundResource(R.drawable.tvstatic);
+				}
+
+				TextView tvProfile = (TextView) holder.findViewById(R.id.list_item_text);
+				tvProfile.setText(v.Title.substring(0, v.Title.length() < 50 ? v.Title.length() : 50));
+
+				ImageView favicon = (ImageView) holder.findViewById(R.id.list_item_favicon);
+				favicon.setVisibility(View.VISIBLE);
+
+				try
+				{
+					BufferedInputStream is = WebUtil.GetHTTPSResponse(v.favicon.replace("http", "https"), getSherlockActivity());
+					if(is != null) {
+						Drawable d = Drawable.createFromStream(is, "Sherpa");
+						if (d != null)
+							favicon.setImageDrawable(d);
+						else
+							favicon.setImageResource(R.drawable.sherpin_logo_transparent);
+					}
+					else {
+						favicon.setImageResource(R.drawable.sherpin_logo_transparent);
+					}
+					is.close();
+				}
+				catch (Exception e)
+				{
+					// Assign default image
+					favicon.setImageResource(R.drawable.sherpin_logo_transparent);
+				}
+
+				list.add(holder);
+			}
+			return list;
+		}
+
+		private void showVideoList(ArrayList<LinearLayout> items)
+		{
+			if (getView() != null)
+			{
+				LinearLayout llVideo = (LinearLayout) getView().findViewById(R.id.trendingmedia);
+				llVideo.removeAllViews();
+
+				LinearLayout.LayoutParams p = new android.widget.LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT);
+				p.leftMargin = 10;
+				p.rightMargin = 10;
+
+				for (LinearLayout item : items)
+				{
+					llVideo.addView(item, p);
+				}
+			}
+		}
+	}
+	
+	private class TrendingNewsAsyncTask extends AsyncTask<Void, ArrayList<LinearLayout>, Void>
+	{
+		private Context context;
+
+		public TrendingNewsAsyncTask(Context context)
+		{
+			this.context = context;
+		}
+
+		@Override
+		protected void onPreExecute()
+		{
+			super.onPreExecute();
+			((ProgressBar) getView().findViewById(R.id.trendingnews_progress)).setVisibility(View.VISIBLE);
+		}
+
+		@SuppressWarnings("unchecked")
+		@Override
+		protected Void doInBackground(Void... params)
+		{
+			publishProgress(populateVideoList());
+			return null;
+		}
+
+		@Override
+		protected void onProgressUpdate(ArrayList<LinearLayout>... items)
+		{
+			super.onProgressUpdate(items);
+			if (getActivity() != null && !getActivity().isFinishing() && getView() != null)
+			{
+				showVideoList(items[0]);
+				((ProgressBar) getView().findViewById(R.id.trendingnews_progress)).setVisibility(View.INVISIBLE);
+			}
+		}
+
+		@Override
+		protected void onCancelled()
+		{
+			context = null;
+			trendingNewsTask = null;
+			super.onCancelled();
+		}
+
+		@Override
+		protected void onPostExecute(Void result)
+		{
+			context = null;
+			trendingNewsTask = null;
+			super.onPostExecute(result);
+		}
+
+		public ArrayList<LinearLayout> populateVideoList()
+		{
+			VideoListHandler vlhandler = new VideoListHandler();
+			ArrayList<Pair> postParameters = new ArrayList<Pair>();
+
+			String urlVideoList = "https://www.sherpin.com/xml/xml_videolist.php";
+			try
+			{
+				postParameters.add(new Pair("ProfID", "-6"));
+				postParameters.add(new Pair("Mobile", "2"));
+				postParameters.add(new Pair("StartRow", String.valueOf(trendingNewsTaskvideoStart)));
+				postParameters.add(new Pair("RowLimit", String.valueOf(trendingNewsTaskvideoEnd)));
+				
+				BufferedInputStream resp = WebUtil.GetHTTPSResponse(urlVideoList, postParameters, getActivity());
+				if(resp != null) {
+					SAXParserFactory spf = SAXParserFactory.newInstance();
+					SAXParser sp = spf.newSAXParser();
+
+					XMLReader rdr = sp.getXMLReader();
+					vlhandler.clearItems();
+					rdr.setContentHandler(vlhandler);
+
+					rdr.parse(new InputSource(resp));
+					resp.close();
+					Log.e("TRENDING NEWS", "Got Response");
+				}
+				else {
+					Log.e("TRENDING NEWS", "No Response");
+				}
+			}
+			catch (Exception ex)
+			{
+				Log.e("SHERPIN VIDEOS", "Getting video list: " + ex.getMessage());
+			}
+
+			ArrayList<LinearLayout> list = new ArrayList<LinearLayout>();
+
+			for (int i = 0; i < vlhandler.getVideos().size(); i++)
+			{
+				VideoItem v = vlhandler.getVideo(i);
+
+				LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+				LinearLayout holder = (LinearLayout) inflater.inflate(R.layout.videolist_verticalitem, null);
+				holder.setTag(v);
+				holder.setOnClickListener(new OnClickListener()
+				{
+					public void onClick(View v)
+					{
+						VideoItem vi = ((VideoItem) v.getTag());
+						Intent intent = null;
+						intent = new Intent(getSherlockActivity(), VideoViewerActivity.class);
+						intent.putExtra(Global.currentVideoItem, vi.stringify());
+						startActivity(intent);
+					}
+				});
+
+				ImageView icon = (ImageView) holder.findViewById(R.id.list_item_icon);
+				try
+				{
+					BufferedInputStream is = WebUtil.GetHTTPResponse(v.Thumbnail, getSherlockActivity());
+					if(is != null) {
+						Drawable d = Drawable.createFromStream(is, "Sherpa");
+						if (d != null)
+							icon.setBackgroundDrawable(d);
+						else
+							icon.setBackgroundResource(R.drawable.tvstatic);
+					}
+					else {
+						icon.setBackgroundResource(R.drawable.tvstatic);
+					}
+					is.close();
+				}
+				catch (Exception e)
+				{
+					// Assign default image
+					icon.setBackgroundResource(R.drawable.tvstatic);
+				}
+
+				TextView tvProfile = (TextView) holder.findViewById(R.id.list_item_text);
+				tvProfile.setText(v.Title.substring(0, v.Title.length() < 50 ? v.Title.length() : 50));
+
+				ImageView favicon = (ImageView) holder.findViewById(R.id.list_item_favicon);
+				favicon.setVisibility(View.VISIBLE);
+
+				try
+				{
+					BufferedInputStream is = WebUtil.GetHTTPSResponse(v.favicon.replace("http", "https"), getSherlockActivity());
+					if(is != null) {
+						Drawable d = Drawable.createFromStream(is, "Sherpa");
+						if (d != null)
+							favicon.setImageDrawable(d);
+						else
+							favicon.setImageResource(R.drawable.sherpin_logo_transparent);
+					}
+					else {
+						favicon.setImageResource(R.drawable.sherpin_logo_transparent);
+					}
+					is.close();
+				}
+				catch (Exception e)
+				{
+					// Assign default image
+					favicon.setImageResource(R.drawable.sherpin_logo_transparent);
+				}
+
+				list.add(holder);
+			}
+			return list;
+		}
+
+		private void showVideoList(ArrayList<LinearLayout> items)
+		{
+			if (getView() != null)
+			{
+				LinearLayout llVideo = (LinearLayout) getView().findViewById(R.id.trendingnews);
+				llVideo.removeAllViews();
+
+				LinearLayout.LayoutParams p = new android.widget.LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT);
+				p.leftMargin = 10;
+				p.rightMargin = 10;
+
+				for (LinearLayout item : items)
+				{
+					llVideo.addView(item, p);
+				}
+			}
+		}
+	}
+	
+	private class BackpackAsyncTask extends AsyncTask<Void, ArrayList<LinearLayout>, Void>
+	{
+		private Context context;
+
+		public BackpackAsyncTask(Context context)
+		{
+			this.context = context;
+		}
+
+		@Override
+		protected void onPreExecute()
+		{
+			super.onPreExecute();
+			((ProgressBar) getView().findViewById(R.id.backpack_progress)).setVisibility(View.VISIBLE);
+		}
+
+		@SuppressWarnings("unchecked")
+		@Override
+		protected Void doInBackground(Void... params)
+		{
+			publishProgress(populateVideoList());
+			return null;
+		}
+
+		@Override
+		protected void onProgressUpdate(ArrayList<LinearLayout>... items)
+		{
+			super.onProgressUpdate(items);
+			if (getActivity() != null && !getActivity().isFinishing() && getView() != null)
+			{
+				showVideoList(items[0]);
+				((ProgressBar) getView().findViewById(R.id.backpack_progress)).setVisibility(View.INVISIBLE);
+			}
+		}
+
+		@Override
+		protected void onCancelled()
+		{
+			context = null;
+			backpackTask = null;
+			super.onCancelled();
+		}
+
+		@Override
+		protected void onPostExecute(Void result)
+		{
+			context = null;
+			backpackTask = null;
+			super.onPostExecute(result);
+		}
+
+		public ArrayList<LinearLayout> populateVideoList()
+		{
+			VideoListHandler vlhandler = new VideoListHandler();
+			ArrayList<Pair> postParameters = new ArrayList<Pair>();
+
+			String urlVideoList = "https://www.sherpin.com/xml/xml_videolist.php";
+			try
+			{
+				postParameters.add(new Pair("ProfID", "-1"));
+				postParameters.add(new Pair("Mobile", "2"));
+				postParameters.add(new Pair("StartRow", String.valueOf(backpackTaskvideoStart)));
+				postParameters.add(new Pair("RowLimit", String.valueOf(backpackTaskvideoEnd)));
+				
+				BufferedInputStream resp = WebUtil.GetHTTPSResponse(urlVideoList, postParameters, getActivity());
+				if(resp != null) {
+					SAXParserFactory spf = SAXParserFactory.newInstance();
+					SAXParser sp = spf.newSAXParser();
+
+					XMLReader rdr = sp.getXMLReader();
+					vlhandler.clearItems();
+					rdr.setContentHandler(vlhandler);
+
+					rdr.parse(new InputSource(resp));
+					resp.close();
+					Log.e("BACKPACK", "Got Response");
+				}
+				else {
+					Log.e("BACKPACK", "No Response");
+				}
+			}
+			catch (Exception ex)
+			{
+				Log.e("SHERPIN VIDEOS", "Getting video list: " + ex.getMessage());
+			}
+
+			ArrayList<LinearLayout> list = new ArrayList<LinearLayout>();
+
+			for (int i = 0; i < vlhandler.getVideos().size(); i++)
+			{
+				VideoItem v = vlhandler.getVideo(i);
+
+				LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+				LinearLayout holder = (LinearLayout) inflater.inflate(R.layout.videolist_verticalitem, null);
+				holder.setTag(v);
+				holder.setOnClickListener(new OnClickListener()
+				{
+					public void onClick(View v)
+					{
+						VideoItem vi = ((VideoItem) v.getTag());
+						Intent intent = null;
+						intent = new Intent(getSherlockActivity(), VideoViewerActivity.class);
+						intent.putExtra(Global.currentVideoItem, vi.stringify());
+						startActivity(intent);
+					}
+				});
+
+				ImageView icon = (ImageView) holder.findViewById(R.id.list_item_icon);
+				try
+				{
+					BufferedInputStream is = WebUtil.GetHTTPResponse(v.Thumbnail, getSherlockActivity());
+					if(is != null) {
+						Drawable d = Drawable.createFromStream(is, "Sherpa");
+						if (d != null)
+							icon.setBackgroundDrawable(d);
+						else
+							icon.setBackgroundResource(R.drawable.tvstatic);
+					}
+					else {
+						icon.setBackgroundResource(R.drawable.tvstatic);
+					}
+					is.close();
+				}
+				catch (Exception e)
+				{
+					// Assign default image
+					icon.setBackgroundResource(R.drawable.tvstatic);
+				}
+
+				TextView tvProfile = (TextView) holder.findViewById(R.id.list_item_text);
+				tvProfile.setText(v.Title.substring(0, v.Title.length() < 50 ? v.Title.length() : 50));
+
+				ImageView favicon = (ImageView) holder.findViewById(R.id.list_item_favicon);
+				favicon.setVisibility(View.VISIBLE);
+
+				try
+				{
+					BufferedInputStream is = WebUtil.GetHTTPSResponse(v.favicon.replace("http", "https"), getSherlockActivity());
+					if(is != null) {
+						Drawable d = Drawable.createFromStream(is, "Sherpa");
+						if (d != null)
+							favicon.setImageDrawable(d);
+						else
+							favicon.setImageResource(R.drawable.sherpin_logo_transparent);
+					}
+					else {
+						favicon.setImageResource(R.drawable.sherpin_logo_transparent);
+					}
+					is.close();
+				}
+				catch (Exception e)
+				{
+					// Assign default image
+					favicon.setImageResource(R.drawable.sherpin_logo_transparent);
+				}
+
+				list.add(holder);
+			}
+			return list;
+		}
+
+		private void showVideoList(ArrayList<LinearLayout> items)
+		{
+			if (getView() != null)
+			{
+				LinearLayout llVideo = (LinearLayout) getView().findViewById(R.id.backpack);
+				llVideo.removeAllViews();
+
+				LinearLayout.LayoutParams p = new android.widget.LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT);
+				p.leftMargin = 10;
+				p.rightMargin = 10;
+
+				for (LinearLayout item : items)
+				{
+					llVideo.addView(item, p);
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,60 @@
+package net.sherpin.mediaviewer.handlers;
+
+import org.xml.sax.Attributes;
+import org.xml.sax.SAXException;
+import org.xml.sax.helpers.DefaultHandler;
+
+public class ProfileNameHandler extends DefaultHandler
+{
+	private final String tagName = "Name";
+	private final String tagDesc = "Desc";
+
+	private boolean inName = false;
+	private boolean inDesc = false;
+
+	private String valDesc;
+	private String valName;
+
+	public void clearItems()
+	{
+		valDesc = null;
+		valName = null;
+	}
+
+	public String getName()
+	{
+		return valName;
+	}
+
+	public String getDesc()
+	{
+		return valDesc;
+	}
+
+	@Override
+	public void startElement(String namespaceURI, String localName, String qName, Attributes atts) throws SAXException
+	{
+		if (localName.equalsIgnoreCase(tagName))
+			inName = true;
+		else if (localName.equalsIgnoreCase(tagDesc))
+			inDesc = true;
+	}
+
+	@Override
+	public void endElement(String namespaceURI, String localName, String qName) throws SAXException
+	{
+		if (inName && localName.equalsIgnoreCase(tagName))
+			inName = false;
+		else if (inDesc && localName.equalsIgnoreCase(tagDesc))
+			inDesc = false;
+	}
+
+	@Override
+	public void characters(char ch[], int start, int length)
+	{
+		if (inName)
+			valName = new String(ch, start, length).trim();
+		else if (inDesc)
+			valDesc = new String(ch, start, length).trim();
+	}
+}

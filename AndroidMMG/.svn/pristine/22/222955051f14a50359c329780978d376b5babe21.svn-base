@@ -1,0 +1,1 @@
+keytool -importcert -v -trustcacerts -file "c:\SSLCertDownloader\SSLCertDownloader\sherpincert" -alias IntermediateCA -keystore "C:\Users\Brad\Desktop\Software\AndroidMMG\res\raw\myKeystore.bks" -provider org.bouncycastle.jce.provider.BouncyCastleProvider -providerpath "c:\BouncyCastle Provider\bcprov-jdk16-145.jar" -storetype BKS -storepass mysecret

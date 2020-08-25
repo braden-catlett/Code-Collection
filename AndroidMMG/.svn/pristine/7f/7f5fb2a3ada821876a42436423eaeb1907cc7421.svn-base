@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000" >
+
+    <RelativeLayout
+        android:id="@+id/RelativeLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#3b5998" >
+
+        <Button
+            android:id="@+id/VideoDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="35dp"
+            android:background="@drawable/detailsbutton"
+            android:height="40sp"
+            android:text="@string/Details" />
+
+        <CheckBox
+            android:id="@+id/dislike"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/VideoDetail"
+            android:layout_alignBottom="@+id/VideoDetail"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="24dp"
+            android:background="@android:color/transparent"
+            android:gravity="right|center"
+            android:text="@string/Dislike"
+            android:width="90dp" />
+    </RelativeLayout>
+
+    <WebView
+        android:id="@+id/videowebview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/RelativeLayout1" />
+    
+    <FrameLayout
+        android:id="@+id/video_fragmentlayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</RelativeLayout>

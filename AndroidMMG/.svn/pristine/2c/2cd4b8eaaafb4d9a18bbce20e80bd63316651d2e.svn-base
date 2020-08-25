@@ -1,0 +1,22 @@
+package net.sherpin.mediaviewer;
+
+import org.acra.ACRA;
+import org.acra.ReportingInteractionMode;
+import org.acra.annotation.ReportsCrashes;
+
+import android.app.Application;
+
+@ReportsCrashes(formKey = "", 
+				mailTo = "bcatlett-rossen14@my.whitworth.edu",
+				mode = ReportingInteractionMode.TOAST,
+				resToastText = R.string.acra_notification_text)
+				
+public class SherpinApplication extends Application 
+{
+	@Override
+	public void onCreate() 
+	{
+		super.onCreate();
+		ACRA.init(this);
+	}
+}

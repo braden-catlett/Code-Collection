@@ -1,0 +1,52 @@
+package net.sherpin.mediaviewer.classes;
+
+import java.io.InputStream;
+
+import net.sherpin.mediaviewer.R;
+import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
+import android.util.Log;
+import android.view.View;
+
+public class IconAsyncTask extends AsyncTask<IconItem, Drawable, Void>
+{
+	private IconViewHolder holder;
+
+	public IconAsyncTask(IconViewHolder holder)
+	{
+		this.holder = holder;
+	}
+
+	@Override
+	protected Void doInBackground(IconItem... params)
+	{
+		Drawable d = null;
+		try
+		{
+			InputStream is = (InputStream) new java.net.URL(params[0].Path).getContent();
+			d = Drawable.createFromStream(is, "Sherpa");
+		}
+		catch (Exception e)
+		{
+			Log.e("IconAsyncTask 768", "Unable to get icon image: " + e.getLocalizedMessage());
+		}
+		publishProgress(d);
+		return null;
+	}
+
+	@Override
+	protected void onProgressUpdate(Drawable... values)
+	{
+		super.onProgressUpdate(values);
+
+		if (values[0] == null)
+		{
+			holder.icon.setImageResource(R.drawable.minus);
+		}
+		else
+		{
+			holder.icon.setImageDrawable(values[0]);
+		}
+		holder.bar.setVisibility(View.INVISIBLE);
+	}
+}

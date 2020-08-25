@@ -1,0 +1,201 @@
+package net.sherpin.mediaviewer;
+
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+
+import net.sherpin.mediaviewer.classes.VideoDetail;
+import net.sherpin.mediaviewer.handlers.VideoDetailHandler;
+import net.sherpin.mediaviewer.utility.Global;
+import net.sherpin.mediaviewer.views.SeparatorView;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.HttpStatus;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.xml.sax.InputSource;
+import org.xml.sax.XMLReader;
+import org.xmlpull.v1.XmlPullParser;
+
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Bundle;
+import android.util.Log;
+import android.util.Xml;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.actionbarsherlock.app.SherlockFragmentActivity;
+
+public class MediaDetailActivity extends SherlockFragmentActivity
+{
+	private LinearLayout llMain;
+	private VideoDetailHandler vdethandler = new VideoDetailHandler();
+
+	/** Called when the activity is first created. */
+	@Override
+	public void onCreate(Bundle savedInstanceState)
+	{
+		super.onCreate(savedInstanceState);
+
+		Log.i("MyMediaGuide", "gettingPrefs");
+		SharedPreferences settings = getSharedPreferences(Global.filePrefs, 0);
+		Log.i("MyMediaGuide", "getting UserID");
+		String userid = settings.getString(Global.prefUserID, "7");
+
+		Log.i("MyMediaGuide", "populateVideoDetails");
+		populateVideoDetails(userid);
+		Log.i("MyMediaGuide", "setMainView");
+		setMainView();
+	}
+
+	private void populateVideoDetails(String userid)
+	{
+		try
+		{
+			// Get the appropriate VideoItem from the ListView, and request a
+			// page with
+			// that video showing
+			String idVideo = this.getIntent().getStringExtra("net.mymediaguide.mediaviewer.VideoID");
+			String urlVideo = String.format("http://www.mymediaguide.net/facebookapp/showtv.php?ID=%s", idVideo);
+
+			HttpGet hg = new HttpGet(urlVideo);
+			DefaultHttpClient client = new DefaultHttpClient();
+			HttpResponse resp = client.execute(hg);
+			if (resp.getStatusLine().getStatusCode() == HttpStatus.SC_OK)
+				showMediaDetail(resp);
+			else
+				showConnectionError(resp);
+
+			setContentView(llMain);
+		}
+		catch (Exception ex)
+		{
+			Toast.makeText(this.getApplicationContext(), String.format("Failed to connect: %s", ex.getMessage()), Toast.LENGTH_LONG).show();
+			Log.e(Global.tagHTTPGET, ex.getMessage());
+		}
+	}
+
+	private void showMediaDetail(HttpResponse resp)
+	{
+		try
+		{
+			// The data from the server is in XML, with the format:
+			// <program>
+			// <title/><description/>
+			// <castmembers><member><fname/><lname/><role/></member></castmembers>
+			// <showings><showing><source/><date/><time/></showing></showings>
+			// </program>
+			SAXParserFactory spf = SAXParserFactory.newInstance();
+			SAXParser sp = spf.newSAXParser();
+
+			// Use the cached VideoListHandler to parse the XML into a
+			// List<VideoItem> object
+			XMLReader rdr = sp.getXMLReader();
+			rdr.setContentHandler(vdethandler);
+
+			rdr.parse(new InputSource(resp.getEntity().getContent()));
+
+			VideoDetail vdet = vdethandler.getVideoDetail();
+
+			// Now, show the title and description in the top third, the cast in
+			// the middle third
+			// and the showings in the bottom third
+			llMain = new LinearLayout(this.getApplicationContext());
+			llMain.setOrientation(LinearLayout.VERTICAL);
+			llMain.setBackgroundColor(Color.parseColor("#3b5998"));
+			// ll.setWeightSum(9);
+
+			XmlPullParser parser = this.getResources().getXml(R.layout.title_view);
+			TextView tvTitle = new TextView(this.getApplicationContext(), Xml.asAttributeSet(parser));
+			tvTitle.setText(vdet.Title);
+			tvTitle.setBackgroundColor(Color.parseColor("#3b5998"));
+			tvTitle.setTextColor(Color.WHITE);
+			tvTitle.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, 0));
+			llMain.addView(tvTitle, 0);
+
+			parser = this.getResources().getXml(R.layout.desc_view);
+			TextView tvDesc = new TextView(this.getApplicationContext(), Xml.asAttributeSet(parser));
+			tvDesc.setText(vdet.Description);
+			tvDesc.setTextColor(Color.WHITE);
+			tvDesc.setBackgroundColor(Color.parseColor("#3b5998"));
+			tvDesc.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, 0));
+			llMain.addView(tvDesc, 1);
+
+			// Separator to separate the list of movies and the showings
+			llMain.addView(new SeparatorView(this.getApplicationContext()));
+
+			// Put the Cast Members into a ListView
+			parser = this.getResources().getXml(R.layout.list_view);
+			ListView lvCast = new ListView(this.getApplicationContext(), Xml.asAttributeSet(parser));
+			lvCast.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, 0));
+			lvCast.setAdapter(new ArrayAdapter<String>(this.getApplicationContext(), R.layout.videolist_item, vdet.CastMembers));
+			lvCast.setTextFilterEnabled(true);
+			lvCast.setDivider(new ColorDrawable(Color.parseColor("#3b5998")));
+			lvCast.setDividerHeight(2);
+			lvCast.setBackgroundColor(Color.WHITE);
+			llMain.addView(lvCast, 2);
+
+			llMain.addView(new SeparatorView(this.getApplicationContext()));
+
+			// Put the Showings into a ListView
+			parser = this.getResources().getXml(R.layout.list_view);
+			ListView lvShowings = new ListView(this.getApplicationContext(), Xml.asAttributeSet(parser));
+			lvShowings.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, 0));
+			lvShowings.setAdapter(new ArrayAdapter<String>(this.getApplicationContext(), R.layout.videolist_item, vdet.Showings));
+			lvShowings.setTextFilterEnabled(true);
+			lvShowings.setDivider(new ColorDrawable(Color.parseColor("#3b5998")));
+			lvShowings.setDividerHeight(2);
+			lvShowings.setBackgroundColor(Color.WHITE);
+			llMain.addView(lvShowings, 3);
+		}
+		catch (Exception ex)
+		{
+			Toast.makeText(this.getApplicationContext(), String.format("Failed to connect: %s", ex.getMessage()), Toast.LENGTH_LONG).show();
+			Log.e(Global.tagHTTPGET, ex.getMessage());
+		}
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(com.actionbarsherlock.view.Menu menu)
+	{
+		menu.add(0, Global.MENU_LOGOUT, 0, "Logout");
+		return super.onCreateOptionsMenu(menu);
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(com.actionbarsherlock.view.MenuItem item)
+	{
+		switch (item.getItemId())
+		{
+		case Global.MENU_LOGOUT:
+			Intent intent = new Intent();
+			intent.setClass(getApplicationContext(), net.sherpin.mediaviewer.HomeActivity.class);
+			this.startActivity(intent);
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
+	}
+
+	private void showConnectionError(HttpResponse resp)
+	{
+		llMain = new LinearLayout(this.getApplicationContext());
+		llMain.setOrientation(LinearLayout.VERTICAL);
+
+		TextView tv = new TextView(this.getApplicationContext());
+		tv.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT, 0));
+		tv.setText(String.format("Error connecting to server: %d -- '%s'", resp.getStatusLine().getStatusCode(), resp.getStatusLine()
+				.getReasonPhrase()));
+		llMain.addView(tv);
+	}
+
+	public void setMainView()
+	{
+		this.setContentView(llMain);
+	}
+}

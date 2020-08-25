@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/list_item_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/widebackground"
+    android:orientation="horizontal" >
+
+        <ImageView
+            android:id="@+id/list_item_icon"
+            android:layout_width="110dp"
+            android:layout_height="90dp"
+            android:layout_margin="10dp"
+            android:contentDescription="@string/videoicon"
+            android:src="@drawable/gear" />
+
+        <TextView
+            android:id="@+id/list_item_text"
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:padding="5dp"
+            android:textColor="@color/white"
+            android:ellipsize="end"
+            android:minLines="3"
+            android:textStyle="bold"
+            android:textSize="18sp" />
+
+	    <ImageView
+	        android:id="@+id/list_item_favicon"
+	        android:layout_width="30dp"
+	        android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_gravity="center"
+	        android:visibility="gone"
+	        android:contentDescription="@string/favicon"
+	        android:src="@drawable/new_icon" />
+
+</LinearLayout>
