@@ -1,0 +1,35 @@
+﻿<?php 
+   require_once './facebook/facebook.php';
+
+   $app_id = "326133152009";
+   $app_secret = "046b6f98c4efa02b6da0ee3e00ea1f96";
+   $my_url = "/simple.php";
+
+   $code = $_REQUEST["code"];
+
+   if(empty($code)) {
+     $_SESSION['state'] = md5(uniqid(rand(), TRUE)); //CSRF protection
+     $dialog_url = "https://www.facebook.com/dialog/oauth?client_id=" 
+       . $app_id . "&redirect_uri=" . urlencode($my_url) . "&state="
+       . $_SESSION['state'];
+
+     echo("<script> top.location.href='" . $dialog_url . "'</script>");
+   }
+
+   else {
+     $token_url = "https://graph.facebook.com/oauth/access_token?"
+       . "client_id=" . $app_id . "&redirect_uri=" . urlencode($my_url)
+       . "&client_secret=" . $app_secret . "&code=" . $code;
+
+     $response = file_get_contents($token_url);
+     $params = null;
+     parse_str($response, $params);
+
+     $graph_url = "https://graph.facebook.com/me?access_token=" 
+       . $params['access_token'];
+
+     $user = json_decode(file_get_contents($graph_url));
+     echo("Hello " . $user->id);
+   }
+
+ ?>

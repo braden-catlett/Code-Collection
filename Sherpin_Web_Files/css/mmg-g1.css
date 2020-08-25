@@ -1,0 +1,89 @@
+﻿/* DEFAULTS
+----------------------------------------------------------*/
+
+body   
+{
+    background: #fff;
+    font-size: .80em;
+    font-family: "Helvetica Neue", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
+    margin: 0px;
+    padding: 0px;
+    color: #696969;
+}
+
+div.border 
+{
+    border-style:solid; 
+    border-color:#77933c; 
+    border-width:3px;
+}
+
+b
+{
+	color:#77933c; 
+}
+
+.primary
+{
+    background:#77933c; 
+}
+
+.secondary
+{
+    background:#c3d69b;
+}
+
+a:link 
+{
+	text-decoration: none;
+}
+a:visited 
+{
+	text-decoration: none;
+}
+a:hover 
+{
+	text-decoration: underline;
+}
+
+/* HEADINGS   
+----------------------------------------------------------*/
+
+h1, h2, h3, h4, h5, h6
+{
+    font-size: 1.5em;
+    color: #77933c;
+    font-variant: small-caps;
+    text-transform: none;
+    font-weight: 200;
+    margin-bottom: 0px;
+}
+
+h1
+{
+    font-size: 1.6em;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+    color:#409341;
+}
+
+h2
+{
+    font-size: 1.5em;
+    font-weight: 600;
+}
+
+h3
+{
+    font-size: 1.2em;
+}
+
+h4
+{
+    font-size: 1.1em;
+}
+
+h5, h6
+{
+    font-size: 1em;
+}

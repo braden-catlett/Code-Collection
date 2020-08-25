@@ -1,0 +1,21 @@
+<div class="primary">
+    <script type="text/javascript">
+    	function getfeedbackurl() {
+    		var fd = "/feedback.php"
+    		var id = getsherpid();
+    		if (id != -1)
+    			fd = fd + "?sherp=" + id;
+			window.location = fd;
+    	}
+    </script>
+	<img src="/Images/logo.png" alt="" style="float:left" height="65px" />
+	<p style="text-align:left; float:left; vertical-align:middle">
+	    <span style="color:White; font-family:Berlin Sans FB Demi, Lucida Sans Unicode; font-size:48px; letter-spacing:2px">Sherpin.com</span><br />
+	    <span style="color:White; font-family:Calibri, Lucida Sans Unicode; font-size:16px"><i>Stop searching ... start watching</i></span>
+	</p>
+	<a id="feedbackurl" href="#" onclick="getfeedbackurl()" title="send us feedback!" style="float:right;" >
+		<span style="color:White; font-family:Berlin Sans FB Demi, Lucida Sans Unicode; font-size:48px; letter-spacing:2px">BETA</span>
+	</a>
+    <div style="clear:both"></div>
+    <div style="visibility:collapse" id="fb-root"></div>
+</div>

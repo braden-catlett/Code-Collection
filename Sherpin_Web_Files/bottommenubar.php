@@ -1,0 +1,6 @@
+<div class="primary" style="padding:5; width:inherit; text-align:center; vertical-align:bottom">
+<a id="social" style="padding-right:10px; font-size:medium; font-family:Calibri; color:<?php if ($page!="social") echo "Black"; else echo "White"; ?>; text-decoration:none" href="home.php" onclick="return seturl('social');">Social</a>
+<a id="mobile" style="padding-right:10px; font-size:medium; font-family:Calibri; color:<?php if ($page!="mobile") echo "Black"; else echo "White"; ?>; text-decoration:none" href="mobile.php" onclick="return seturl('mobile');">Mobile</a>
+<a id="feedback" style="padding-right:10px; font-size:medium; font-family:Calibri; color:<?php if ($page!="feedback") echo "Black"; else echo "White"; ?>; text-decoration:none" href="feedback.php" onclick="return seturl('feedback');">Feedback</a>
+<a id="review" style="visibility:collapse; font-size:medium; font-family:Calibri; color:<?php if ($page!="review") echo "Black"; else echo "White"; ?>; text-decoration:none" href="review.php" onclick="return seturl('review');">Review</a>
+</div>

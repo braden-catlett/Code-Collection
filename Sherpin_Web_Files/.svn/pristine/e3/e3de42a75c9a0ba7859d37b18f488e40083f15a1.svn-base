@@ -1,0 +1,350 @@
+﻿.sherpa {
+    position: relative; 
+    width: 100%; /* for IE 6 */
+    /*margin: 6px;
+    cursor:default;*/
+	height:auto;
+	width:80px;
+	float:left;
+	display:inline-block;
+    border-left-width:1px;
+    border-left-width:1px;
+    border-top-width:0px;
+    border-bottom-width:0px;
+	border-color:#FFFFFF;
+	border-left-style:solid;
+	border-right-style:solid;
+	border-top-style:none;
+	border-bottom-style:none;
+	background:#000000;
+}
+.sherpanew {
+    position: relative; 
+    width: 100%; /* for IE 6 */
+    /*margin: 6px;
+	padding: 5px;*/
+    cursor:pointer;
+	height:auto;
+	width:80px;
+	float:left;
+	display:inline-block;
+    border-left-width:1px;
+    border-left-width:1px;
+    border-top-width:0px;
+    border-bottom-width:0px;
+	border-left-style:solid;
+	border-right-style:solid;
+	border-top-style:none;
+	border-bottom-style:none;
+	border-color:#FFFFFF;
+	background:#000000;
+}
+.sherpaselected {
+    position: relative; 
+    width: 100%; /* for IE 6 */
+    /*margin: 6px;
+	padding: 5px;*/
+    cursor:pointer;
+	height:auto;
+	width:80px;
+	float:left;
+	display:inline-block;
+    border-left-width:1px;
+    border-left-width:1px;
+    border-top-width:0px;
+    border-bottom-width:0px;
+	border-left-style:solid;
+	border-right-style:solid;
+	border-top-style:none;
+	border-bottom-style:none;
+	border-color:#FFFFFF;
+	background:#98fe32;
+	color:#000000;
+}
+
+.sherpastack {
+    padding: 10px;
+}
+
+body   
+{
+	background: url('/Images/background.png') no-repeat center center fixed;
+	-webkit-background-size: 100% 100%;
+	-moz-background-size: 100% 100%;
+	background-size: 100% 100%;
+    font-size: .80em;
+    font-family: "Helvetica Neue", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
+    margin: 0px;
+    padding: 0px;
+    color: #B9B9B9;
+}
+p.sherp span.sherp {
+    color: white;
+    font: 12px Helvetica, Sans-Serif;
+	width: 80px;
+    background: rgb(0, 0, 0); /* fallback color */
+    padding: 4px;
+    margin: 4px;
+}
+p.carousel span.carousel {
+    position: absolute; 
+    bottom: 40px; 
+    left: 5px;
+    color: white;
+    font: 10px Helvetica, Sans-Serif;
+    background: rgb(0, 0, 0); /* fallback color */
+    background: rgba(0, 0, 0, 0.7);
+    padding: 4px;
+    margin: 4px;
+}
+p span.spacer {
+    padding:0 5px;
+}
+
+div.border 
+{
+    border-style:solid; 
+    border-color:#696969; 
+    border-width:3px;
+	/*background:#fff;*/
+}
+
+div.videohighlight
+{
+	max-height:100%;
+	width:100%;
+	margin:10px;
+	overflow-y:hidden;
+	float:left;
+	text-align:center
+}
+
+div.highlightheader
+{
+	max-height:100px;
+	width:95%;
+	overflow-y:hidden;
+	overflow-x:hidden;
+	white-space:nowrap;
+	margin-left:auto;
+	margin-right:auto;
+	border-style:none
+}
+
+div.pausesection {
+	margin-right:20px;
+	text-align:center
+}
+
+div.sherpalistparent {
+	overflow-x:hidden;
+	overflow-y:hidden;
+	white-space:nowrap;
+	position:fixed;
+	top:50px;
+	left:35px;
+	right:35px
+}
+
+div.sherpalisttop {
+	width:9999px;
+	overflow-x:hidden;
+	overflow-y:hidden;
+	white-space:nowrap;
+	position:relative;
+	left:150px;
+	background:#444444;
+	opacity:0.65;
+}
+
+img.sherpalistbutton {
+	height:40px;
+	position:fixed;
+	top: 45px;
+	vertical-align:center;
+	cursor:pointer;
+}
+
+div.videolistparent {
+	overflow-x:hidden;
+	overflow-y:hidden;
+	white-space:nowrap;
+	position:fixed;
+	bottom:20px;
+	left:35px;
+	right:35px
+}
+
+div.videolist {
+	width:99999px;
+	overflow-x:hidden;
+	overflow-y:hidden;
+	white-space:nowrap;
+	position:relative;
+	background:#444444;
+	opacity:0.65;
+}
+
+div.config {
+	background:#000000;
+	opacity:0.80;
+	position:fixed;
+	top:0px;
+	bottom:0px;
+	right:0px;
+	text-align:center;
+	width:50px
+}
+
+div.videolistitembutton {
+	height:100px;
+	cursor:pointer;
+	float:left;
+	max-width: 90px;
+}
+
+span.vidtitle {
+    color: #ffffff;
+    font: 10px Helvetica, Sans-Serif;
+	width: 80px;
+	max-width: 80px;
+	white-space: normal;
+	word-wrap: break-word;
+}
+
+img.videolistbutton {
+	height:70px;
+	position:fixed;
+	bottom: 25px;
+	vertical-align:center;
+	cursor:pointer;
+}
+
+img.drawer {
+	height:30px;
+	position:fixed;
+	bottom: 5px;
+	right: 100px;
+	vertical-align:center;
+	cursor:pointer;
+}
+
+img.videolistitem {
+	height:50px;
+	cursor:pointer;
+	padding:5px;
+}
+
+img.configbutton {
+	width:40px;
+	margin-bottom:30px;
+	cursor:pointer;
+}
+
+img.menubutton {
+	position:fixed;
+	top:5px;
+	right:15px;
+	width:30px;
+	cursor:pointer;
+}
+
+input.sherpaname {
+    position: absolute; 
+    bottom: 20px; 
+    left: 0; 
+    padding: 4px;
+    margin: 4px;
+    font-family: Helvetica, Sans-Serif;
+}
+
+img.pausebutton {
+	height:10px;
+	float:left;
+	margin-left:2px;
+	margin-top:12px;
+	margin-right:2px;
+	margin-bottom:2px;
+	vertical-align:text-bottom
+}
+
+img.edit {
+    position:absolute;
+    top:10px;
+    left:10px;
+}
+img.delete {
+    position:absolute;
+    top:105px;
+    left:10px;
+}
+
+img.favicon {
+	width:20px;
+	margin-left:5px;
+	margin-right:5px;
+}
+
+p.newcount {
+	position:absolute;
+	top:10px;
+	left:10px;
+	color:red;
+}
+
+.listitem {
+    font: 18px/28px Helvetica, Sans-Serif;
+    color:white;
+}
+
+h1, h2, h3, h4, h5, h6
+{
+    font-size: 1.5em;
+    font-variant: small-caps;
+    text-transform: none;
+    font-weight: 200;
+    margin-bottom: 0px;
+}
+
+h1
+{
+    font-size: 1.8em;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+}
+
+img.buttonbox {
+	cursor:pointer;
+	width:80px;
+	height:80px;
+}
+
+img.loginbox {
+	cursor:pointer;
+	width:80px;
+}
+
+/*
+img.buttonbox:hover {
+	width:103%;
+	height:auto;
+}
+
+img.buttonbox:active {
+	width:95%;
+	height:auto;
+}
+*/
+
+a:link 
+{
+	text-decoration: none;
+}
+a:visited 
+{
+	text-decoration: none;
+}
+a:hover 
+{
+	text-decoration: none;
+}

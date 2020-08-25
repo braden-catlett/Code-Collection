@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<!-- saved from url=(0014)about:internet -->
+<head>
+    <title>sherpin.com</title>
+    <style type="text/css">
+    html, body {
+	    height: 100%;
+	    overflow: auto;
+    }
+    body {
+	    padding: 0;
+	    margin: 0;
+    }
+    #silverlightControlHost {
+	    height: 100%;
+	    text-align:left;
+    }
+    </style>
+</head>
+<body>
+    <h1 style="text-align:left; background:#3b5998; color:White; vertical-align:top; font-family:Lucida Sans Unicode">
+        <img src="/Images/logo.png" alt="" style="vertical-align:middle" /> Sherpin
+    </h1>
+
+    <script type="text/javascript" src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php"> </script>
+    <script type="text/javascript" src="/script/fblogin.js"></script>
+    <script type="text/javascript">
+        function onSilverlightError(sender, args) {
+            var appSource = "";
+            if (sender != null && sender != 0) {
+                appSource = sender.getHost().Source;
+            }
+
+            var errorType = args.ErrorType;
+            var iErrorCode = args.ErrorCode;
+
+            if (errorType == "ImageError" || errorType == "MediaError") {
+                return;
+            }
+
+            var errMsg = "Unhandled Error in Silverlight Application " + appSource + "\n";
+
+            errMsg += "Code: " + iErrorCode + "    \n";
+            errMsg += "Category: " + errorType + "       \n";
+            errMsg += "Message: " + args.ErrorMessage + "     \n";
+
+            if (errorType == "ParserError") {
+                errMsg += "File: " + args.xamlFile + "     \n";
+                errMsg += "Line: " + args.lineNumber + "     \n";
+                errMsg += "Position: " + args.charPosition + "     \n";
+            }
+            else if (errorType == "RuntimeError") {
+                if (args.lineNumber != 0) {
+                    errMsg += "Line: " + args.lineNumber + "     \n";
+                    errMsg += "Position: " + args.charPosition + "     \n";
+                }
+                errMsg += "MethodName: " + args.methodName + "     \n";
+            }
+
+            throw new Error(errMsg);
+        }
+    </script>
+
+    <form id="form1" runat="server" style="height:80%;">
+        <div id="silverlightControlHost" style="border-style:solid; border-color:#3b5998; border-width:3px" >
+            <object id="_sl_facebookapp" data="data:application/x-silverlight-2," type="application/x-silverlight-2"
+                    width="354" height="100%" style="vertical-align:top; text-align:left">
+		      <param name="source" value="slMyMediaGuide2.xap"/>
+		      <param name="id" value="_sl_facebookapp" />
+		      <param name="onError" value="onSilverlightError" />
+		      <param name="background" value="white" />
+		      <param name="minRuntimeVersion" value="3.0.40818.0" />
+		      <param name="autoUpgrade" value="true" />
+		      <a href="http://go.microsoft.com/fwlink/?LinkID=149156&v=3.0.40818.0" style="text-decoration:none">
+ 			      <img src="http://go.microsoft.com/fwlink/?LinkId=108181" alt="Get Microsoft Silverlight" style="border-style:none"/>
+		      </a>
+	        </object>
+            <iframe id="_showvideo" style="height:440px;width:400px;border-style:none;position:relative;left:0px;top:0px;text-align:center" />
+            <iframe id="_sl_historyFrame" style="visibility:hidden;height:0px;width:0px;border:0px"></iframe>
+        </div>
+    </form>
+</body>
+</html>

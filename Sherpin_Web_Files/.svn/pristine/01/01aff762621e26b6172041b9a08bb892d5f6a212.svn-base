@@ -1,0 +1,47 @@
+function sherpaloading() {
+	var frmVideo = document.getElementById('_showvideo');
+	frmVideo.src = "/loading.html";
+}
+
+function novideos() {
+	var frmVideo = document.getElementById('_showvideo');
+	frmVideo.src = "/noresults.php";
+}
+
+function pinbtncontents(pin, id, profid, pinflag, idbtn) {
+	var pinimg = "";
+	var pinnext = 1-pin;
+	if (pin == "1")
+		pinimg = "/Images/pinned.png";
+	else
+		pinimg = "/Images/unpinned.png";
+	return '<img id="'+idbtn+'" src="' + pinimg + '" onclick="pinvideo('+id+', '+profid+', '+pinnext+', \''+idbtn+'\')" style="margin:2px;width:10px;cursor:pointer">';
+}
+
+function unselectchildren(divnode) {
+	var dnode = document.getElementById(divnode);
+	if (dnode != null) {
+		var cnode = dnode.firstChild;
+		while (cnode != null) {
+			cnode.style.backgroundColor = "#00263a";
+			cnode = cnode.nextSibling;
+		}
+	}
+}
+
+function showvideo(videoid, click) {
+	var avideo = document.getElementById('video' + videoid);
+	if (avideo != null) {
+		unselectchildren('videolist');
+		avideo.style.backgroundColor = "black";
+	}
+
+	var frmVideo = document.getElementById('_showvideo');
+	frmVideo.src = "/showvideo.php?id=" + videoid + "&click=" + click + "&share=0&header=0";
+}
+
+function setdivsize() {
+	var div = document.getElementById("divVideo");
+	var newheight = (document.body.clientHeight * 0.90) + "px";
+	div.style.height = newheight;
+}

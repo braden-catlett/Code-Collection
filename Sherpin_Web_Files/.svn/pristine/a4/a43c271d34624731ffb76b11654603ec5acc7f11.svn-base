@@ -1,0 +1,748 @@
+﻿var csherpa = 0;
+var mouse_down = 0;
+var timer_id;
+var cachedSherpas = Array();
+var cachedVideos = Array();
+var videohighlights = Array();
+var moveintervalid = 0;
+var movevideointervalid = 0;
+var drawerintervalid = 0;
+var configintervalid = 0;
+var drawershow = 35;
+var drawerhide = -45;
+var drawermove = 10;
+var drawervisible = true;
+var previewsherpaid = -1;
+var videohighlights = Array();
+var pauseHighlight = false;
+var pauseInterval = -1;
+var videoidCurrent = -1;
+
+function startmove(dir) {
+	moveintervalid = setInterval(function() { 
+		moveSherpas(dir); 
+	}, 30);
+}
+
+function stopmove() {
+	clearInterval(moveintervalid);
+}
+
+function moveSherpas(dir) {
+	var divstack = document.getElementById("sherpalist");
+	var widParent = getComputedWidth("sherpalistparent");
+	var l = parseInt(divstack.style.left);
+	var listwid = -1 * 50 * (cachedSherpas.length - 1);
+	if (l <= listwid && dir < 0) l = 0;
+	else if (l > widParent - 40 && dir > 0) l = widParent - 40;
+	else {
+		var delta = 5;
+		if (dir < 0)
+			l = l - delta;
+		else
+			l = l + delta;
+		divstack.style.left = l.toString() + "px";
+	}
+}
+
+function startvideomove(dir) {
+	movevideointervalid = setInterval(function() { 
+		moveVideos(dir); 
+	}, 30);
+}
+
+function stopvideomove() {
+	clearInterval(movevideointervalid);
+}
+
+function moveVideos(dir) {
+	var divstack = document.getElementById("videolist");
+	var widParent = getComputedWidth("videolistparent");
+	var l = parseInt(divstack.style.left);
+	var delta = 5;
+	if (dir < 0)
+		l = l - delta;
+	else
+		l = l + delta;
+	divstack.style.left = l.toString() + "px";
+}
+
+function positionsherpalist(sherpaid) {
+	var divlist = document.getElementById('sherpalist');
+	var l = 0;
+	
+	//move the drawer to highlight the current sherpa
+	var foundSherpa = false;
+	for (var i=0; foundSherpa == false && i<cachedSherpas.length; i++) {
+		if (sherpaid != null && cachedSherpas[i].ID == sherpaid) {
+			divlist.style.left = ((i-1) * -65).toString() + "px";
+			previewvideolist(cachedSherpas[i]);
+			foundSherpa = true;
+		}
+	}
+	if (foundSherpa == false)
+		previewvideolist(cachedSherpas[0]);
+}
+
+function hidedrawer() {
+	var divdrawer = document.getElementById('videolistparent');
+	if (window.event.clientY < divdrawer.offsetTop && drawervisible)
+		handledrawer(false);
+}
+
+function showdrawer() {
+	var divdrawer = document.getElementById('videolistparent');
+	if (window.event.clientY > divdrawer.offsetTop && !drawervisible)
+		handledrawer(true);
+}
+
+function handledrawer(visible) {
+	drawervisible = visible;
+	if (drawerintervalid != 0) return;
+	
+	var divdrawer = document.getElementById('videolistparent');
+	var imgleft = document.getElementById('imgleft');
+	var imgright = document.getElementById('imgright');
+	var imgnew = document.getElementById('imgNew');
+	//var imgdrawer = document.getElementById('imgdrawer');
+	
+	if (divdrawer != null && imgleft != null && imgright != null) {
+		var v = 'hidden';
+		var start = drawershow;
+		var end = drawerhide;
+		var delta = -1;
+		var drawerimg = '/Images/drawer.png';
+		if (visible) {
+			v = 'visible';
+			start = drawerhide;
+			end = drawershow;
+			delta = 1;
+			drawerimg = '/Images/drawerclose.png';
+		}
+		
+		//if (parseInt(divdrawer.style.bottom) <= drawerhide && !visible) return;
+		//if (parseInt(divdrawer.style.bottom) >= drawershow && visible) return;
+		
+		divdrawer.style.bottom = start.toString() + "px";
+		imgleft.style.bottom = start.toString() + "px";
+		imgright.style.bottom = start.toString() + "px";
+		imgnew.style.bottom = (start + 75).toString() + "px";
+		//imgdrawer.src = drawerimg;
+		/*
+		if (v == 'visible') {
+			divdrawer.style.visibility = v;
+			imgleft.style.visibility = v;
+			imgright.style.visibility = v;
+			imgnew.style.visibility = v;
+		}
+		*/
+		drawerintervalid = setInterval(function() { 
+			divdrawer.style.bottom = (parseInt(divdrawer.style.bottom) + (delta * drawermove)).toString() + "px";
+			imgleft.style.bottom = (parseInt(imgleft.style.bottom) + (delta * drawermove)).toString() + "px";
+			imgright.style.bottom = (parseInt(imgright.style.bottom) + (delta * drawermove)).toString() + "px";
+			imgnew.style.bottom = (parseInt(imgnew.style.bottom) + (delta * drawermove)).toString() + "px";
+			
+			//if (Math.abs(parseInt(divdrawer.style.bottom) - end) < drawermove) {
+			if (parseInt(divdrawer.style.bottom) < drawerhide || parseInt(divdrawer.style.bottom) > drawershow) {
+				clearInterval(drawerintervalid);
+				drawerintervalid = 0;
+				/*
+				if (v == 'hidden') {
+					divdrawer.style.visibility = v;
+					imgleft.style.visibility = v;
+					imgright.style.visibility = v;
+					imgnew.style.visibility = v;
+				}
+				*/
+			}
+		}, 30);
+	}
+}
+
+function configdrawer(show) {
+	var divdrawer = document.getElementById('config');
+	var imgmenu = document.getElementById('btnmenu');
+	
+	if (divdrawer != null && imgmenu != null) {
+		var v = 'visible';
+		var start = 0;
+		var end = -100;
+		var delta = -1;
+		if (show) {
+			v = 'hidden';
+			var start = -100;
+			var end = 0;
+			var delta = 1;
+		}
+		
+		imgmenu.style.visibility = v;
+		
+		divdrawer.style.right = start.toString() + "px";
+		configintervalid = setInterval(function() { 
+			divdrawer.style.right = (parseInt(divdrawer.style.right) + (delta * drawermove)).toString() + "px";
+			
+			if (Math.abs(parseInt(divdrawer.style.right) - end) < drawermove) {
+				clearInterval(configintervalid);
+			}
+		}, 30);
+	}
+}
+
+/*
+function addsherpa(id, sherpaname, viewfn, fnew, icon) {
+    var divstack = document.getElementById("sherpalist");
+    var fns = '';
+    var style = 'class="sherpa"';
+    if (fnew == 0) {
+        fns = 'onmouseover="sherpaonhover(this)" onmouseout="sherpaout(this)" onmousedown="starttimer()" onmouseup="stoptimer()"';
+        style = 'class="sherpanew"';
+    }
+    divstack.innerHTML = divstack.innerHTML + '<div ' + style + ' id="sherpa' + id + '" ' + fns + '></div>';
+	var sherpaid = "sherpa" + id;
+    var divsherpa = document.getElementById(sherpaid);
+    //divsherpa.innerHTML = divsherpa.innerHTML + '<img class="buttonbox" id="img'+sherpaid+'" style="border-color:#FFFF33;border-style:solid" src="' + icon + '" alt="" onclick="' + viewfn + '" />';
+
+    if (fnew == 0) {
+		var spnid = "span" + id;
+		var txt = sherpaname;
+		if (sherpaname.length > 10)
+			txt = sherpaname.substring(0, 10) + "...";
+        divsherpa.innerHTML = divsherpa.innerHTML + '<div id="btn' + sherpaid + '" class="sherp"><span class="sherp" id="' + spnid + '" onclick="' + viewfn + '">' + txt + '</span></div>';
+	}
+    else
+        divsherpa.innerHTML = divsherpa.innerHTML + '<input id="txtnewsherpa" class="sherpaname" style="width:70%" onchange="insertnewsherpa()" onfocus="cleartxt(this)" onblur="resettxt(this)" value="&lt;new sherpa&gt;"/>';
+    csherpa = csherpa + 1;
+	
+	cachedSherpas.push({ID: id, DIV: divsherpa, ICON:icon, TITLE:sherpaname});
+}
+*/
+
+function togglesherpamenu() {
+    var divstack = document.getElementById("sherpamenu");
+	if (divstack.style.visibility == "hidden")
+		divstack.style.visibility = "visible";
+	else
+		divstack.style.visibility = "hidden";
+}
+
+function addsherpa(id, sherpaname, viewfn, fnew, icon) {
+    var divstack = document.getElementById("sherpamenu");
+    var fns = '';
+    var style = 'class="sherpamenuitem"';
+    if (fnew == 0) {
+        fns = 'onmouseover="sherpaonhover(this)" onmouseout="sherpaout(this)" onmousedown="starttimer()" onmouseup="stoptimer()"';
+        style = 'class="sherpamenuitem"';
+    }
+    divstack.innerHTML = divstack.innerHTML + '<div ' + style + ' id="sherpa' + id + '" ' + fns + '></div>';
+	var sherpaid = "sherpa" + id;
+    var divsherpa = document.getElementById(sherpaid);
+    //divsherpa.innerHTML = divsherpa.innerHTML + '<img class="buttonbox" id="img'+sherpaid+'" style="border-color:#FFFF33;border-style:solid" src="' + icon + '" alt="" onclick="' + viewfn + '" />';
+
+    if (fnew == 0) {
+		var spnid = "span" + id;
+		var txt = sherpaname;
+		if (sherpaname.length > 30)
+			txt = sherpaname.substring(0, 30) + "...";
+        divsherpa.innerHTML = divsherpa.innerHTML + '<div id="btn' + sherpaid + '" ><p class="sherpamenuitem" id="' + spnid + '" onclick="' + viewfn + ';togglesherpamenu()">' + txt + '</p></div>';
+	}
+    else
+        divsherpa.innerHTML = divsherpa.innerHTML + '<input id="txtnewsherpa" class="sherpaname" style="width:70%" onchange="insertnewsherpa()" onfocus="cleartxt(this)" onblur="resettxt(this)" value="&lt;new sherpa&gt;"/>';
+    csherpa = csherpa + 1;
+	
+	cachedSherpas.push({ID: id, DIV: divsherpa, ICON:icon, TITLE:sherpaname});
+}
+
+function resettxt(tb) {
+    if (tb.value.length == 0)
+        tb.value = "<new sherpa>";
+}
+
+function insertnewsherpa() {
+    var txtname = document.getElementById("txtnewsherpa");
+    if (txtname.value.length == 0)
+        return;
+
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            var xmlDoc = xmlhttp.responseXML;
+            var res = xmlDoc.getElementsByTagName("result")[0];
+            var id = getattribute(res, "id");
+            window.location = "/sherpa_edit.php?ProfID=" + id.value.trim();
+        }
+    }
+    var url = "/xml/xml_addquickprofile.php?ProfName=" + txtname.value;
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
+}
+
+function starttimer() {
+    //mouse_down = 1;
+    //timer_id = window.setTimeout("timertimeout()", 1500);
+}
+
+function stoptimer() {
+    //mouse_down = 0;
+    //window.clearTimeout(timer_id);
+}
+
+function timertimeout() {
+    //window.clearTimeout(timer_id);
+    //if (mouse_down == 1) {
+    //    mouse_down = 0;
+    //    alert("timer done");
+    //}
+}
+
+function sherpaout(div) { }
+
+var divHolder = null;
+function sherpaonhover(div) {
+    if (divHolder == div)
+        return;
+
+    idsherpa = div.id.substring(6);
+    if (idsherpa == -1)
+        //don't edit/delete the backpack
+        return;
+
+    //first, hide the images if they exist
+    var editimg = document.getElementById('imgedit');
+    if (divHolder != null && editimg != null)
+        divHolder.removeChild(editimg);
+    var delimg = document.getElementById('imgdel');
+    if (divHolder != null && delimg != null)
+        divHolder.removeChild(delimg);
+
+    divHolder = div;
+}
+
+function addnewstack(stackname) {
+    var div = document.getElementById("sherpalist");
+    div.innerHTML = div.innerHTML + '<div id="' + stackname + '" class="sherpastack" style="float:left">';
+    return document.getElementById(stackname);
+}
+
+function populatesherpas() {
+    var div = document.getElementById("sherpalist");
+	if (div == null) return;
+    div.innerHTML = "";
+    csherpa = 0;
+
+    var maxrows = 200;
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            var xmlDoc = xmlhttp.responseXML;
+            var ps = xmlDoc.getElementsByTagName("Prof");
+            for (i = 0; i < ps.length; i++) {
+                var name = ps[i].getElementsByTagName("name")[0].childNodes[0].nodeValue.trim();
+                var icon = ps[i].getElementsByTagName("icon")[0].childNodes[0].nodeValue.trim();
+                var ids = ps[i].getElementsByTagName("pid");
+                var id = (ids[0].childNodes[0].nodeValue).trim();
+                var fnpopulate = "populatevideos(" + id + ", 0, " + maxrows + ")";
+                addsherpa(id, name, fnpopulate, 0, icon);
+            }
+        }
+    }
+    var url = "/xml/xml_profilelist.php";
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
+}
+
+function populatevideos(id, offset, start, length) {
+	var edtbutton = document.getElementById("sherpaeditbutton");
+	if (edtbutton != null)
+		edtbutton.onclick = function() {  window.location='sherpa_edit.php?ProfID=' + id; }
+
+	handledrawer(true);
+	if (pauseInterval != -1) 
+		clearInterval(pauseInterval);
+	getvideohighlights(document.body.clientHeight, id);
+	getallvideos(id);
+	if (pauseHighlight) highlightpause();
+	var foundSherpa = false;
+	for (var i=0; foundSherpa == false && i<cachedSherpas.length; i++) {
+		if (cachedSherpas[i].ID == id) {
+			highlightDiv(cachedSherpas[i].DIV);
+			foundSherpa = true;
+		}
+	}
+}
+
+function sherpaedit(id) {
+    window.location = "/sherpa_edit.php?ProfID=" + id;
+}
+
+function previewvideolist(sherpaid) {
+	if (sherpaid != null) {
+		previewsherpaid = sherpaid.ID;
+		highlightDiv(sherpaid.DIV);
+	}
+
+	var divPreviewList = document.getElementById('previewlist');
+	if (divPreviewList != null) {
+		var xmlhttp = new XMLHttpRequest();
+		xmlhttp.onreadystatechange = function () {
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				var xmlDoc = xmlhttp.responseXML;
+				if (xmlDoc == null) return;
+				var vidlist = xmlDoc.getElementsByTagName("VideoList")[0];
+				var profname = getattribute(vidlist, "ProfName")
+				var listhtml = '<div style="font-size:24px; margin-left:20px;color:white">results for: ' + profname.value + '</div>';
+				var vs = xmlDoc.getElementsByTagName("Video");
+				if (vs == null || vs.length == 0) {
+					divPreviewList.innerHTML = listhtml;
+					return;
+				}
+				listhtml = listhtml + '<div id="divVideoList">';
+				var idfirst = "";
+				for (i=0; i<vs.length; i++) {
+					var anew = getattribute(vs[i], "new");
+					var fw = "normal";
+					var newvid = false;
+					var pin = "0";
+					var id = (vs[i].getElementsByTagName("ID")[0].childNodes[0].nodeValue).trim();
+					var profid = (vs[i].getElementsByTagName("ProfID")[0].childNodes[0].nodeValue).trim();
+					var title = vs[i].getElementsByTagName("Title")[0].childNodes[0].nodeValue;
+					var favicon = vs[i].getElementsByTagName("favicon")[0].childNodes[0].nodeValue;
+					var tnail = "";
+					if (vs[i].getElementsByTagName("Thumbnail")[0].childNodes.length) {
+						tnail = vs[i].getElementsByTagName("Thumbnail")[0].childNodes[0].nodeValue;
+					}
+					var desc = "";
+					if (vs[i].getElementsByTagName("Desc")[0].childNodes[0] != null)
+						desc = vs[i].getElementsByTagName("Desc")[0].childNodes[0].nodeValue;
+					
+					var sherp = {ID:id, ProfID:profid, Title:title, New:newvid, Pin:pin, Favicon:favicon, Desc:desc, TNail: tnail};
+						
+					listhtml = listhtml + setupvideoitem2(sherp, i);
+					if (idfirst == "")
+						idfirst = id;
+				}
+				listhtml = listhtml + '</div>';
+
+				divPreviewList.innerHTML = listhtml;
+			}
+		}
+		var url = "/xml/xml_videolist.php?ProfID=" + sherpaid.ID + "&Mobile=2&StartRow=0&RowLimit=5";
+		xmlhttp.open("GET", url, true);
+		xmlhttp.send();
+	}
+}
+
+function highlightDiv(div) {
+	var divParent = document.getElementById('sherpalist');
+    var node = divParent.firstChild;
+    while (node) {
+		var img = document.getElementById('img'+(node.id));
+		if (img != null) {
+			if (node.id == div.id)
+				img.style.borderWidth = "3px";
+			else
+				img.style.borderWidth = "0px";
+		}
+		var divbtn = document.getElementById('btn'+(node.id))
+		if (divbtn != null) {
+			if (node.id == div.id)
+				divbtn.className = "sherpaselected";
+			else
+				divbtn.className = "sherpanew";
+		}
+		node = node.nextSibling;
+    }
+}
+
+function setupvideoitem2(sherp, offset) {
+	var fnshowsherpa = "populatevideos(" + sherp.ProfID + ", " + offset + ", 0, 200)";
+	
+	var atitle = "";
+	if (sherp.Desc.length > 0)
+		atitle = ' title="' + sherp.Desc.replace(/<[^>]*>/g, '').replace(/"/g, '\'') + '"';
+	var ficon = '<img src="' + sherp.Favicon + '" style="margin:2px;width:40px;">';
+	var tnail = "";
+	if (sherp.TNail.length > 0)
+		tnail = '<img src="' + sherp.TNail + '" style="margin:2px;width:50px;">';
+	var aitem = '<span class="listitem" style="margin:2px"' + atitle + '>' + sherp.Title + '</span>';
+	var vidimg = tnail;
+	if (tnail.length == 0)
+		vidimg = ficon;
+	var item = '<div id="video' + sherp.ID + '" style="background:#00263a;margin:6px;white-space:nowrap;overflow-x:hidden;cursor:pointer" onclick="' + fnshowsherpa + '" >' + vidimg + aitem + '</div>';
+
+	return item;
+}
+
+var ilap = 0;
+function highlightpause() {
+	pauseHighlight = !pauseHighlight;
+	var prefix = "g_";
+	if (pauseHighlight) prefix = "r_";
+	for (var iTmp = 1; iTmp <= 4; iTmp++) {
+		var img = prefix+"emptycircle.png";
+		if (iTmp <= ilap)
+			img = prefix+"fullcircle.png";
+		var imgPause = document.getElementById("pause" + iTmp.toString());
+		imgPause.src = "Images/" + img;
+	}
+}
+
+function getvideohighlights(clientHeight, idSherpa) {
+	videohighlights.length = 0;
+	
+	var highlight = document.getElementById('_showvideo');
+	if (highlight != null) {
+		var xmlhttp = new XMLHttpRequest();
+		xmlhttp.onreadystatechange = function () {
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				var xmlDoc = xmlhttp.responseXML;
+				if (xmlDoc == null) return;
+				var vidlist = xmlDoc.getElementsByTagName("VideoList")[0];
+				var sherpatitle = getattribute(vidlist, "ProfName");
+				var divSherpa = document.getElementById("spanSherpa");
+				divSherpa.innerHTML = sherpatitle.value.trim();
+				var vs = xmlDoc.getElementsByTagName("Video");
+				if (vs == null || vs.length == 0) {
+					return;
+				}
+				var idfirst = "";
+				for (i=0; i<vs.length; i++) {
+					var id = (vs[i].getElementsByTagName("ID")[0].childNodes[0].nodeValue).trim();
+					var title = vs[i].getElementsByTagName("Title")[0].childNodes[0].nodeValue;
+					var favicon = vs[i].getElementsByTagName("favicon")[0].childNodes[0].nodeValue;
+					var tnail = "";
+					if (vs[i].getElementsByTagName("Thumbnail")[0].childNodes.length) {
+						tnail = vs[i].getElementsByTagName("Thumbnail")[0].childNodes[0].nodeValue;
+					}
+					var desc = "";
+					if (vs[i].getElementsByTagName("Desc")[0].childNodes[0] != null)
+						desc = vs[i].getElementsByTagName("Desc")[0].childNodes[0].nodeValue;
+					
+					var sherp = {ID:id, Title:title, Favicon:favicon, Desc:desc, TNail: tnail};
+						
+					videohighlights.push(sherp);
+				}
+				
+				var div = document.getElementById("videohighlight");
+				var divheight = GetHeight() - getComputedHeight("sherpa_header") - 30; // - getComputedHeight("sherpalistparent");
+				div.style.height = divheight.toString() + "px";
+				var ihighlight = 0;
+				var divProgress = document.getElementById("spanProgress");
+				var divTitle = document.getElementById("spanTitle");
+				var imgFavicon = document.getElementById("sourceicon");
+
+				pauseInterval = setInterval(function() {
+					if (pauseHighlight || videohighlights.length == 0) return;
+					
+					ilap = (ilap + 1);
+					if (ilap >= 5) {
+						ihighlight=(ihighlight+1) % videohighlights.length;
+						highlight.src = "showvideo.php?header=0&id="+videohighlights[ihighlight].ID;
+						divProgress.innerHTML="(" + (ihighlight+1).toString() + "/" + videohighlights.length.toString() + ")";
+						divTitle.innerHTML = '<img class="favicon" src="' + videohighlights[ihighlight].Favicon + '">' + videohighlights[ihighlight].Title;
+						imgFavicon.src = videohighlights[ihighlight].Favicon;
+						highlightVideo(videohighlights[ihighlight].ID);
+						ilap = 0;
+						for (var iTmp = 1; iTmp <= 4; iTmp++) {
+							var imgPause = document.getElementById("pause" + iTmp.toString());
+							imgPause.src = "Images/emptycircle.png";
+						}
+					}
+					else {
+						var imgPause = document.getElementById("pause" + ilap.toString());
+						imgPause.src = "Images/fullcircle.png";
+					}
+				}, 5000);
+				highlight.src = "showvideo.php?header=0&id="+videohighlights[0].ID;
+				divProgress.innerHTML = "1/" + videohighlights.length.toString();
+				divTitle.innerHTML = '<img class="favicon" src="' + videohighlights[0].Favicon + '">' + videohighlights[0].Title;
+				imgFavicon.src = videohighlights[0].Favicon;
+			}
+		}
+		//var url = "/xml/xml_highlightvideos.php";
+		var url = "/xml/xml_videolist.php?ProfID=" + idSherpa + "&Mobile=2&StartRow=0&RowLimit=20";
+		xmlhttp.open("GET", url, true);
+		xmlhttp.send();
+	}
+}
+
+function getallvideos(sherpaid) {
+	cachedVideos.length = 0;
+	var videolist = document.getElementById('videolist');
+	if (videolist != null) {
+		var xmlhttp = new XMLHttpRequest();
+		xmlhttp.onreadystatechange = function () {
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				videolist.style.left = "50px";
+				vidlisthtml = "";
+				var xmlDoc = xmlhttp.responseXML;
+				if (xmlDoc == null) return;
+				var vidlist = xmlDoc.getElementsByTagName("VideoList")[0];
+				var vs = xmlDoc.getElementsByTagName("Video");
+				if (vs == null || vs.length == 0) {
+					return;
+				}
+				var sherpa = null;
+				for (i=0; i<cachedSherpas.length; i++) {
+					if (cachedSherpas[i].ID == sherpaid)
+						sherpa = cachedSherpas[i];
+				}
+
+				var spanSherpa = document.getElementById("sherpaname");
+				if (spanSherpa != null && sherpa != null)
+					spanSherpa.innerHTML = sherpa.TITLE;
+				var imgSherpa = document.getElementById("sherpaicon");
+				if (imgSherpa != null && sherpa != null)
+					imgSherpa.src = sherpa.ICON;
+
+				for (i=0; i<vs.length; i++) {
+					var id = (vs[i].getElementsByTagName("ID")[0].childNodes[0].nodeValue).trim();
+					var anew = getattribute(vs[i], "new");
+					var newvid = false;
+					if (anew != null && anew.value == "1")
+						newvid = true;
+					var apin = getattribute(vs[i], "pinned");
+					var pin = "0";
+					if (apin != null)
+						pin = apin.value;
+					var title = vs[i].getElementsByTagName("Title")[0].childNodes[0].nodeValue;
+					var favicon = vs[i].getElementsByTagName("favicon")[0].childNodes[0].nodeValue;
+					var tnail = "https://www.sherpin.com/Images/logo.png";
+					if (vs[i].getElementsByTagName("Thumbnail")[0].childNodes.length) {
+						tnail = vs[i].getElementsByTagName("Thumbnail")[0].childNodes[0].nodeValue;
+					}
+					var desc = "";
+					if (vs[i].getElementsByTagName("Desc")[0].childNodes[0] != null)
+						desc = vs[i].getElementsByTagName("Desc")[0].childNodes[0].nodeValue;
+					
+					var video = {ID:id, Title:title, Favicon:favicon, Desc:desc, TNail: tnail, New: newvid, Pinned: pin};
+					vidlisthtml = vidlisthtml + showvideoitem(video);
+					cachedVideos.push(video);
+					
+				}
+				videolist.innerHTML = vidlisthtml;
+				//highlightVideo(videohighlights[0].ID);
+			}
+		}
+		var url = "/xml/xml_videolist.php?ProfID=" + sherpaid + "&Mobile=2&StartRow=0&RowLimit=200";
+		xmlhttp.open("GET", url, true);
+		xmlhttp.send();
+	}
+}
+
+function filterresults() {
+	var vidlist = document.getElementById('videolist');
+	var newsource = document.getElementById('imgNew');
+	var newonly = false;
+	if (newsource.src.indexOf("all.png") != -1) {
+		newsource.src = "Images/new.png";
+		newsource.alt = "show all videos";
+		newsource.title = "show all videos";
+		newonly = true;
+	}
+	else {
+		newsource.src = "Images/all.png";
+		newsource.alt = "show new videos";
+		newsource.title = "show new videos";
+	}
+	//var searchtext = document.getElementById('txtSearch').value.toLowerCase();
+	var listhtml = "";
+	for (var i=0; i<cachedVideos.length; i++) {
+		var show = true;
+		if (newonly && !cachedVideos[i].New) { show = false; }
+		//if (show && searchtext.length > 0 && cachedVideos[i].Title.toLowerCase().indexOf(searchtext) == -1) { show = false; }
+
+		if (show) { listhtml = listhtml + showvideoitem(cachedVideos[i]); }
+	}
+	
+	vidlist.innerHTML = listhtml;
+}
+
+function showvideoitem(v) {
+	var html = '<div id="video'+v.ID+'" class="videolistitembutton">';
+	html = html + '<img class="videolistitem" src="' + v.TNail + '" alt="' + v.Title + '" onclick="selectvideo('+v.ID+', \'' + v.Title + '\', \'' + v.Favicon + '\')"><br/>';
+	var t = v.Title;
+	if (t.length > 35) {
+		t = t.substring(0,32) + " ...";
+	}
+	html = html + '<span id="vidtitle'+v.ID+'" class="vidtitle">'+t+'</span>';
+	html = html + '</div>';
+	
+	return html;
+}
+
+function selectvideo(videoid, videotitle, favicon) {
+	if (!pauseHighlight) highlightpause();
+	var highlight = document.getElementById('_showvideo');
+	highlight.src = "showvideo.php?header=0&id="+videoid;
+	var divProgress = document.getElementById("spanProgress");
+	var divTitle = document.getElementById("spanTitle");
+	divProgress = "";
+	divTitle.innerHTML = '<img class="favicon" src="' + favicon + '">' + videotitle;
+	
+	var imgSherpa = document.getElementById("sourceicon");
+	if (imgSherpa != null)
+		imgSherpa.src = favicon;
+
+	highlightVideo(videoid);
+}
+
+function highlightVideo(videoid) {
+	videoidCurrent = videoid;
+	divVideos = document.getElementById('videolist');
+	if (divVideos != null && divVideos.firstChild) {
+		var imgVideo = divVideos.firstChild;
+		while (imgVideo) {
+			if (imgVideo.nodeType == 1) { //image element
+				if (imgVideo.id == 'video'+videoid) {
+					imgVideo.style.background = '#98fe32';
+					var spantitle = imgVideo.firstChild.nextSibling;
+					spantitle.style.color = '#000000';
+				}
+				else {
+					imgVideo.style.background = '#444444';
+					var spantitle = imgVideo.firstChild.nextSibling;
+					spantitle.style.color = '#ffffff';
+				}
+			}
+			imgVideo = imgVideo.nextSibling;
+		}
+	}
+}
+
+function getnewcounts() {
+	if (USERID == -1) return;
+	for (var i=0; i<cachedSherpas.length; i++) {
+		if (cachedSherpas[i].ID >= 0)
+			getnewcount(cachedSherpas[i].ID, "span" + cachedSherpas[i].ID);
+	}
+}
+
+function getnewcount(id, spnid) {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            var xmlDoc = xmlhttp.responseXML;
+            var c = xmlDoc.getElementsByTagName("newcount")[0].childNodes[0].nodeValue.trim()
+			var spn = document.getElementById(spnid);
+			if (c != "0")
+				spn.innerHTML = spn.innerHTML + " (" + c + ")";
+        }
+    }
+    var url = "/xml/xml_newvideocount.php?ProfID=" + id;
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
+}
+
+function pinvideo() {
+	var xmlhttp = new XMLHttpRequest();
+	var url = "/xml/xml_pinvideo.php?ProfID=" + previewsherpaid + "&VideoID=" + videoidCurrent + "&Pin=1";
+	xmlhttp.open("GET", url, false);
+	xmlhttp.send();
+}
+
+function delvideo() {
+	var xmlhttp = new XMLHttpRequest();
+	var url = "/xml/xml_excludeuservideo.php?VideoID=" + videoidCurrent;
+	xmlhttp.open("GET", url, false);
+	xmlhttp.send();
+}

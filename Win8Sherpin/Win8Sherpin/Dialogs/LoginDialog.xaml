@@ -1,0 +1,92 @@
+﻿<common:LayoutAwarePage
+    x:Name="pageRoot"
+    x:Class="Win8Sherpin.Dialogs.LoginDialog"
+    DataContext="{Binding DefaultViewModel, RelativeSource={RelativeSource Self}}"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Win8Sherpin.Dialogs"
+    xmlns:common="using:Win8Sherpin.Common"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid
+        x:Name="RootPanel"
+        Opacity=".75"
+        HorizontalAlignment="Stretch"
+        VerticalAlignment="Stretch">
+        <Border
+            Background="White"
+            Margin="120">
+            <Grid Background="#696969" Margin="8">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                
+                <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                           HorizontalAlignment="Center"
+                           Margin="20"
+                           FontSize="24"
+                           Foreground="White"
+                           Text="Register using your Facebook account"
+                           />
+                <Button x:Name="btnFacebook"
+                    Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                    HorizontalAlignment="Center"
+                    Margin="20"
+                    Content="Facebook login"
+                    Click="CloseButton_Click">
+                </Button>
+
+                <TextBlock Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+                           HorizontalAlignment="Center"
+                           Margin="20,20,20,0"
+                           FontSize="24"
+                           Foreground="White"
+                           Text="Or create a new sherpin.com account"
+                           />
+                <TextBlock Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
+                           HorizontalAlignment="Center"
+                           Margin="20,0,20,20"
+                           FontSize="24"
+                           Foreground="Red"
+                           Text="It's fast and free"
+                           />
+                <TextBlock Grid.Row="4" Grid.Column="0"
+                           HorizontalAlignment="Right"
+                           Margin="20,20,20,0"
+                           FontSize="24"
+                           Foreground="White"
+                           Text="email: "
+                           />
+                <TextBox x:Name="txtemail" Grid.Row="4" Grid.Column="1" Margin="5" />
+                <TextBlock Grid.Row="5" Grid.Column="0"
+                           HorizontalAlignment="Right"
+                           Margin="20,20,20,0"
+                           FontSize="24"
+                           Foreground="White"
+                           Text="password: "
+                           />
+                <PasswordBox x:Name="txtpwd" Grid.Row="5" Grid.Column="1" Margin="5" />
+                <Button x:Name="btnSherpin"
+                    Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2"
+                    HorizontalAlignment="Center"
+                    Margin="20"
+                    Content="sherpin.com login"
+                    Click="CloseButton_Click">
+                </Button>
+            </Grid>
+        </Border>
+    </Grid>
+</common:LayoutAwarePage>

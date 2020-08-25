@@ -1,0 +1,51 @@
+﻿<span style="visibility:collapse" id="fb-root"></span>
+<script src="https://connect.facebook.net/en_US/all.js"></script>
+<script>
+    var FB_LOGIN = true;
+    var FB_ID = -2;
+    var FB_NAME = "";
+
+    FB.init({ appId: '326133152009', cookie: true, status: true, xfbml: true });
+    FB.Event.subscribe('auth.login', getlogininfo);
+    getlogininfo();
+
+    function getlogininfo(r) {
+        FB.getLoginStatus(function (response) {
+            if (response.session) {
+                FB.api('/me', function (resp) {
+                    if (resp.id != null) {
+                        FB_ID = resp.id;
+                        FB_NAME = resp.name;
+
+                        showuser();
+                    }
+                    else FB_ID = -1;
+                });
+            }
+            else FB_ID = -1;
+        });
+    }
+
+    function getfbid() { return FB_ID; }
+    function getusername() { return FB_NAME; }
+
+    function logout() {
+        FB.logout(function (response) {
+            hideuser(response);
+            window.location = "/home.php";
+        });
+    }
+
+    function hideuser(response) {
+        FB_ID = -1;
+        FB_NAME = "";
+
+        var viewer = document.getElementById("aviewer");
+        if (viewer != null) viewer.style.visibility = "collapse";
+
+        var btns = document.getElementById("loginbuttons");
+        if (btns != null) btns.style.visibility = "visible";
+        var loggedin = document.getElementById("loggedinuser");
+        if (loggedin != null) loggedin.style.visibility = "collapse";
+    }
+</script>
